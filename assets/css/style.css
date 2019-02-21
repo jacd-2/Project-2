@@ -1,0 +1,50 @@
+nav {
+    font-family: 'Ubuntu', sans-serif;
+}
+footer {
+    font-family: 'Ubuntu', sans-serif;
+}
+.back-1 {
+    width: 100%;
+    z-index: -1;
+}
+.back-1-text {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -30%);
+}
+section {
+    font-family: 'Anton', sans-serif;
+}
+.one-header {
+    font-size: 100px;
+}
+.back-1-body {
+    font-size: 30px;
+}
+@media only screen and (max-width: 1400px) {
+    .back-1-text {
+        position: absolute;
+        top: 40%;
+        transform: translate(-40%, -50%);
+    }
+  }
+@media only screen and (max-width: 1000px) {
+    .back-1 {
+        width: 1000px;
+        margin: auto;
+        z-index: -1;
+    }
+    .one-header {
+        font-size: 70px;
+    }
+    .back-1-body {
+        font-size: 20px;
+    }
+    .back-1-text {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+  }
