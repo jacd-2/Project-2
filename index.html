@@ -6,10 +6,15 @@
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <!-- <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" /> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Anton|Ubuntu" rel="stylesheet">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id"
+        content="242365270691-tbmh20lga8ti0pfe6r480c49e9o3qfmc.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
@@ -23,10 +28,55 @@
                 <li> <input id="search" type="search" required></li>
                 <li><label class="label-icon" for="search"><i class="material-icons">search</i></label>
                     <i class="material-icons">close</i></li>
-                <li><a href="#" class="">Sign Up</a></li>
-                <li><a href="#">Login</a></li>
-            </ul>
 
+                <li><a href="#">Login</a></li>
+                <li><a class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">Sign In</a></li>
+                <!-- <iframe
+                        src="https://developers.google.com/identity/sign-in/web/demos/signin_contextual_simple.jshtml?hl=en"
+                        style="width: 200px;
+                    height: 60px;"></iframe> -->
+                <li><a href="index.html" onclick="signOut();">Sign out</a></li>
+            </ul>
+            <!-- NEED TO RUN THROUGH SERVER, WILL WORK ON -->
+            <script>
+                function onSignIn(googleUser) {
+                    // Useful data for your client-side scripts:
+                    var profile = googleUser.getBasicProfile();
+                    console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+                    console.log('Full Name: ' + profile.getName());
+                    console.log('Given Name: ' + profile.getGivenName());
+                    console.log('Family Name: ' + profile.getFamilyName());
+                    console.log("Image URL: " + profile.getImageUrl());
+                    console.log("Email: " + profile.getEmail());
+
+                    // The ID token you need to pass to your backend:
+                    var id_token = googleUser.getAuthResponse().id_token;
+                    console.log("ID Token: " + id_token);
+                }
+                function signOut() {
+                    var auth2 = gapi.auth2.getAuthInstance();
+                    auth2.signOut().then(function () {
+                        console.log('User signed out.');
+                    });
+                }
+                function onSuccess(googleUser) {
+                    console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+                }
+                function onFailure(error) {
+                    console.log(error);
+                }
+                function renderButton() {
+                    gapi.signin2.render('g-signin2', {
+                        'scope': 'profile email',
+                        'width': 240,
+                        'height': 50,
+                        'longtitle': true,
+                        'theme': 'dark',
+                        'onsuccess': onSuccess,
+                        'onfailure': onFailure
+                    });
+                }
+            </script>
 
         </div>
     </nav>
@@ -36,6 +86,9 @@
             <i class="material-icons">close</i></li>
         <li><a href="#" class="btn waves-effect waves-light btn-small">Sign Up</a></li>
         <li><a href="#">Login</a></li>
+        <li>
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        </li>
     </ul>
 
     <section>
@@ -138,9 +191,11 @@
         </div>
     </footer>
     <!--JavaScript at end of body for optimized loading-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('.sidenav').sidenav();
