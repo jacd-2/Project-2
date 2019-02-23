@@ -63,34 +63,70 @@
               <table>
                 <thead>
                   <tr>
-                    <th>Sound Bank Name</th>
-                    <th>Genre</th>
-                    <th>Item Price</th>
+                    <th id="bank-name">Sounds</th>
+                    <th>House</th>
+                    <th>$15.00</th>
+                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
                   </tr>
                 </thead>
 
                 <tbody>
                   <tr>
-                    <td><a href="#">Bitchin Sounds</a></td>
-                    <td>House</td>
-                    <td>$15.00</td>
-                    <td><a id="play-sample" href="#"><i class="small material-icons">play_circle_outline</i></a></td>
+                    <td><a id="sample-name">kick</a>
+                      <div class="chip" id="genre">
+                        House
+                      </div>
                     </td>
+
+                    <td><a id="play-sample" href="#"><i class="small material-icons">play_circle_outline</i></a></td>
+                    <td>$0.25</td>
+                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
+                    <td><button class="btn black">Delete</button></td>
                   </tr>
                   <tr>
-                    <td><a href="#">Dubstep Drums</a></td>
-                    <td>Dubstep</td>
-                    <td>$1.76</td>
+                    <td>Snare</td>
                     <td><a id="play-sample" href="#"><i class="small material-icons">play_circle_outline</i></a></td>
-                    </td>
+                    <td>$0.25</td>
+                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
                   </tr>
                   <tr>
-                    <td><a href="#">Glitch Ambs</a></td>
-                    <td>Ambient</td>
-                    <td>$.00</td>
+                    <td>Build</td>
                     <td><a id="play-sample" href="#"><i class="small material-icons">play_circle_outline</i></a></td>
-                    </td>
+                    <td>$0.25</td>
+                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
                   </tr>
+                  <tr>
+                    <td>Hat Closed</td>
+                    <td><a id="play-sample" href="#"><i class="small material-icons">play_circle_outline</i></a></td>
+                    <td>$0.25</td>
+                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
+                  </tr>
+                  <tr>
+                    <td>Hat Open</td>
+                    <td><a id="play-sample" href="#"><i class="small material-icons">play_circle_outline</i></a></td>
+                    <td>$0.25</td>
+                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
+                  </tr>
+                  <tr>
+                    <td>kick</td>
+                    <td><a id="play-sample" href="#"><i class="small material-icons">play_circle_outline</i></a></td>
+                    <td>$0.25</td>
+                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
+                  </tr>
+                  <tr>
+                    <td>kick</td>
+                    <td><a id="play-sample"><i class="small material-icons">play_circle_outline</i></a></td>
+                    <td>$0.25</td>
+                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
+                  </tr>
+                  <tr>
+                    <td>kick</td>
+                    <td><a id="play-sample" href="#"><i class="small material-icons">play_circle_outline</i></a></td>
+                    <td>$0.25</td>
+                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
+                  </tr>
+
+
                 </tbody>
               </table>
               <br><br>
@@ -126,19 +162,19 @@
       <div class="modal-content">
         <h4>Upload</h4>
         <p>A bunch of text</p>
-        <form class="col s12">
+        <form class="col s12" id="submit-form">
           <div class="row">
             <div class="input-field col s6">
-              <input id="last_name" type="text" class="validate">
+              <input id="sound-name" type="text" class="validate">
               <label for="last_name">Sound Name</label>
             </div>
             <div class="input-field col s6">
-              <input id="last_name" type="text" class="validate">
+              <input id="genre" type="text" class="validate">
               <label for="last_name">Genre</label>
             </div>
           </div>
           <div class="row">
-              <!-- <input type="file"> -->
+            <!-- <input type="file"> -->
             <input id="file-up" type="file"> <a>Upload MP3</a>
           </div>
           <div class="modal-footer">
