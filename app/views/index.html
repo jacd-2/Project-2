@@ -24,8 +24,14 @@
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><input id="search" type="search" required></li>
                 <li><label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                <li><a href="#" class="">Sign Up</a></li>
-                <li><a href="#">Login</a></li>
+                    <!-- <li><a href="#" class="">Sign Up</a></li>
+                <li><a href="#">Login</a></li> -->
+                <li><a class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">Sign In</a></li>
+                <!-- <iframe
+                        src="https://developers.google.com/identity/sign-in/web/demos/signin_contextual_simple.jshtml?hl=en"
+                        style="width: 200px;
+                    height: 60px;"></iframe> -->
+                <li><a href="index.html" onclick="signOut();">Sign out</a></li>
             </ul>
 
 
@@ -33,51 +39,21 @@
         <ul id="mobile-demo" class="sidenav">
             <li> <input id="search" type="search" required></li>
             <li><label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                <i class="material-icons">close</i></li>
+                <!-- <i class="material-icons">close</i></li>
             <li><a href="#" class="">Sign Up</a></li>
-            <li><a href="#">Login</a></li>
+            <li><a href="#">Login</a></li> -->
+            <li><a class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">Sign In</a></li>
+            <!-- <iframe
+                    src="https://developers.google.com/identity/sign-in/web/demos/signin_contextual_simple.jshtml?hl=en"
+                    style="width: 200px;
+                height: 60px;"></iframe> -->
+            <li><a href="index.html" onclick="signOut();">Sign out</a></li>
         </ul>
     </nav>
-                <!-- NEED TO RUN THROUGH SERVER, WILL WORK ON -->
-                <script>
-                    function onSignIn(googleUser) {
-                        // Useful data for your client-side scripts:
-                        var profile = googleUser.getBasicProfile();
-                        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-                        console.log('Full Name: ' + profile.getName());
-                        console.log('Given Name: ' + profile.getGivenName());
-                        console.log('Family Name: ' + profile.getFamilyName());
-                        console.log("Image URL: " + profile.getImageUrl());
-                        console.log("Email: " + profile.getEmail());
-    
-                        // The ID token you need to pass to your backend:
-                        var id_token = googleUser.getAuthResponse().id_token;
-                        console.log("ID Token: " + id_token);
-                    }
-                    function signOut() {
-                        var auth2 = gapi.auth2.getAuthInstance();
-                        auth2.signOut().then(function () {
-                            console.log('User signed out.');
-                        });
-                    }
-                    function onSuccess(googleUser) {
-                        console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-                    }
-                    function onFailure(error) {
-                        console.log(error);
-                    }
-                    function renderButton() {
-                        gapi.signin2.render('g-signin2', {
-                            'scope': 'profile email',
-                            'width': 240,
-                            'height': 50,
-                            'longtitle': true,
-                            'theme': 'dark',
-                            'onsuccess': onSuccess,
-                            'onfailure': onFailure
-                        });
-                    }
-                </script>
+    <!-- NEED TO RUN THROUGH SERVER, WILL WORK ON -->
+    <script>
+
+    </script>
     <section>
         <div>
             <div class="caption center-align">
@@ -120,7 +96,7 @@
                         sounds!</p>
                     <p><a class="btn black center-align" href="#">Login</a></p>
 
-                            <img class="" style="width:75px" src="../../assets/images/snip.jpg">
+                    <img class="" style="width:75px" src="../../assets/images/snip.jpg">
 
                 </div>
 
@@ -223,6 +199,45 @@
                 fullWidth: true
             });
         });
+
+        // sign on functions
+        function onSignIn(googleUser) {
+            // Useful data for your client-side scripts:
+            var profile = googleUser.getBasicProfile();
+            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+            console.log('Full Name: ' + profile.getName());
+            console.log('Given Name: ' + profile.getGivenName());
+            console.log('Family Name: ' + profile.getFamilyName());
+            console.log("Image URL: " + profile.getImageUrl());
+            console.log("Email: " + profile.getEmail());
+
+            // The ID token you need to pass to your backend:
+            var id_token = googleUser.getAuthResponse().id_token;
+            console.log("ID Token: " + id_token);
+        }
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                console.log('User signed out.');
+            });
+        }
+        function onSuccess(googleUser) {
+            console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+        }
+        function onFailure(error) {
+            console.log(error);
+        }
+        function renderButton() {
+            gapi.signin2.render('g-signin2', {
+                'scope': 'profile email',
+                'width': 240,
+                'height': 50,
+                'longtitle': true,
+                'theme': 'dark',
+                'onsuccess': onSuccess,
+                'onfailure': onFailure
+            });
+        }
     </script>
 </body>
 

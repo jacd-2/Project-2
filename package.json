@@ -18,7 +18,8 @@
   "dependencies": {
     "aws-sdk": "2.x",
     "ejs": "2.x",
-    "express": "4.x"
+    "express": "4.x",
+    "sequelize": "^4.42.0"
   },
   "homepage": "https://github.com/jacd-2/Project-2#readme"
 }
