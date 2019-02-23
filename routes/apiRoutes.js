@@ -11,10 +11,16 @@ module.exports = function(app) {
 
   // Create a new example
   app.post("/api/users", function(req, res) {
-    db.Sounds.create(req.body).then(function(dbSounds) {
-      res.json(dbSounds);
+      db.Sounds.create({
+        userName: req.body.name,
+        category: req.body.genre,
+        price: req.body.price
+      }).then(function(dbPost) {
+        // We have access to the new todo as an argument inside of the callback function
+        res.json(dbPost);
+      });
     });
-  });
+  
 
   // User can modify their personal file
 
