@@ -6,9 +6,9 @@
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
+  <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
   <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Anton|Ubuntu" rel="stylesheet">
   <!-- google sign in -->
   <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -19,7 +19,7 @@
 <body>
   <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo logo"><img style="height:30px" src="assets/images/logo2.png"> Logo</a>
+      <a href="#" class="brand-logo logo"><img style="height:30px" src="../assets/images/download.png"> Logo</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><input id="search" type="search" required></li>
@@ -37,7 +37,7 @@
     <li><label class="label-icon" for="search"><i class="material-icons">search</i></label>
       <i class="material-icons">close</i></li>
     <li><a href="#" class="">Sign Up</a></li>
-    <li><a href="#">Login</a></li>
+    <li><a href="/users">Login</a></li>
   </ul>
 
   <section class="container">
@@ -48,7 +48,7 @@
         <div class="col s12 m12 l12">
           <div class="card">
             <div class="card-image">
-              <img src="assets/images/back-1.jpg">
+              <img src="../assets/images/back-1.jpg">
               <span class="card-title" id="user-name">User Name</span>
             </div>
             <div class="card-content" id="user-content">
@@ -117,6 +117,35 @@
       </div>
     </div>
 
+    <!-- Modal Trigger -->
+    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Upload Sound</a>
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>Upload</h4>
+        <p>A bunch of text</p>
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="last_name" type="text" class="validate">
+              <label for="last_name">Sound Name</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="last_name" type="text" class="validate">
+              <label for="last_name">Genre</label>
+            </div>
+          </div>
+          <div class="row">
+              <!-- <input type="file"> -->
+            <input href="/api/users" id="file-up" type="file">Upload MP3
+          </div>
+          <div class="modal-footer">
+            <button type="submit" id="upload" href="#!"
+              class="modal-close waves-effect waves-green btn-flat">Agree</button>
+          </div>
+        </form>
+      </div>
   </section>
 
 
@@ -177,8 +206,20 @@
     $(document).ready(function () {
       $('.sidenav').sidenav();
       $('.slider').slider();
+      $('.modal').modal();
       $('.carousel.carousel-slider').carousel({
         fullWidth: true
+      });
+
+      var input = $("input:file").css({
+        background: "yellow",
+        border: "3px red solid"
+      });
+      $("file-up")
+        .text("For this type jQuery found " + input.length + ".")
+        .css("color", "red");
+      $("form").submit(function (event) {
+        event.preventDefault();
       });
     });
   </script>
