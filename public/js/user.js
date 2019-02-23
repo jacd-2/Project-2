@@ -22,9 +22,9 @@ $(document).ready(function() {
     $(formSub).on("submit", function handleFormSubmit(event) {
       event.preventDefault();
       // Wont submit the post if we are missing a body or a title
-      if (genre.val().trim() === 0 || soundName.val().trim() === 0) {
-        return console.log("Nothing to submit");
-      }
+      // if (genre.val().trim() === 0 || soundName.val().trim() === 0) {
+      //   return console.log("Nothing to submit");
+      // }
       // Constructing a newSound object to hand to the database
       var newSound = {
         name: soundName.val().trim(),

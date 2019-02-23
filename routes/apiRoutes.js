@@ -3,15 +3,11 @@ var db = require("../models");
 
 module.exports = function (app) {
   // Get all examples
-  // app.get("/api/users/", function (req, res) {
-  //   db.Sounds.findAll({
-  //     where: {
-  //       category: req.params.genre
-  //     }
-  //   }).then(function (dbSounds) {
-  //     res.json(dbSounds);
-  //   })
-  // });
+  app.get("/api/users/", function (req, res) {
+    db.Sounds.findAll({}).then(function (dbSounds) {
+      res.json(dbSounds);
+    })
+  });
 
   // Create a new example
   app.post("/api/sounds", function (req, res) {
