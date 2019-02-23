@@ -17,7 +17,7 @@
 <body>
     <nav>
         <div class="nav-wrapper black">
-            <a href="#" class="brand-logo logo"><img style="height:30px" src="assets/images/logo2.png"> Logo</a>
+            <a href="#" class="brand-logo logo"><img style="height:30px" src="../../assets/images/logo2.png"> Logo</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li> <input id="search" type="search" required></li>
@@ -46,12 +46,18 @@
                 <div class="col s12 m12 l12">
                     <div class="card">
                         <div class="card-image">
-                            <img src="http://www.dwdrums.com/images/artists/wallpaper/enoughSaid-TommyClufetos-16x9.jpg">
-                            <span class="card-title" id="user-name">Bitchin Drums</span>
+                            <img
+                                src="http://www.dwdrums.com/images/artists/wallpaper/enoughSaid-TommyClufetos-16x9.jpg">
+                            <span class="card-title" id="bank-name">Bitchin Drums</span>
                         </div>
                         <div class="card-content" id="user-content">
                             <span class="card-title" id="user-name">User Name</span>
-                            <h6>House</h6><br>
+                            <div class="chip" id="genre">
+                                House
+                            </div>
+                            <div class="chip" id="genre">
+                                Drums
+                            </div>
                             <p>I am a very simple card. I am good at containing small bits of information.
                                 I am convenient because I require little markup to use effectively.</p>
                         </div>
@@ -60,61 +66,78 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Bitchin Sounds</th>
+                                        <th id="bank-name">Bitchin Sounds</th>
                                         <th>House</th>
                                         <th>$15.00</th>
-                                        <td><button class="btn black" href="#">Download</button></td>
+                                        <td><a class="" href="#"><img style="width:25px"
+                                                    src="../../assets/images/download.png"></a></td>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     <tr>
-                                        <td>kick</td>
-                                        <td>Sample</td>
+                                        <td><a id="sample-name">kick</a></td>
+                                        <td><a id="play-sample" href="#"><i
+                                                    class="small material-icons">play_circle_outline</i></a></td>
                                         <td>$0.25</td>
-                                        <td><button class="btn black" href="#">Download</button></td>
+                                        <td><a class="" href="#"><img style="width:25px"
+                                                    src="../../assets/images/download.png"></a></td>
                                     </tr>
                                     <tr>
                                         <td>Snare</td>
-                                        <td>Sample</td>
+                                        <td><a id="play-sample" href="#"><i
+                                                    class="small material-icons">play_circle_outline</i></a></td>
                                         <td>$0.25</td>
-                                        <td><button class="btn black" href="#">Download</button></td>
+                                        <td><a class="" href="#"><img style="width:25px"
+                                                    src="../../assets/images/download.png"></a></td>
                                     </tr>
                                     <tr>
                                         <td>Build</td>
-                                        <td>Sample</td>
+                                        <td><a id="play-sample" href="#"><i
+                                                    class="small material-icons">play_circle_outline</i></a></td>
                                         <td>$0.25</td>
-                                        <td><button class="btn black" href="#">Download</button></td>
+                                        <td><a class="" href="#"><img style="width:25px"
+                                                    src="../../assets/images/download.png"></a></td>
                                     </tr>
                                     <tr>
-                                        <td></td>
-                                        <td>Sample</td>
+                                        <td>Hat Closed</td>
+                                        <td><a id="play-sample" href="#"><i
+                                                    class="small material-icons">play_circle_outline</i></a></td>
                                         <td>$0.25</td>
-                                        <td><button class="btn black" href="#">Download</button></td>
+                                        <td><a class="" href="#"><img style="width:25px"
+                                                    src="../../assets/images/download.png"></a></td>
                                     </tr>
                                     <tr>
-                                        <td>kick</td>
-                                        <td>Sample</td>
+                                        <td>Hat Open</td>
+                                        <td><a id="play-sample" href="#"><i
+                                                    class="small material-icons">play_circle_outline</i></a></td>
                                         <td>$0.25</td>
-                                        <td><button class="btn black" href="#">Download</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>kick</td>
-                                        <td>Sample</td>
-                                        <td>$0.25</td>
-                                        <td><button class="btn black" href="#">Download</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>kick</td>
-                                        <td>Sample</td>
-                                        <td>$0.25</td>
-                                        <td><button class="btn black" href="#">Download</button></td>
+                                        <td><a class="" href="#"><img style="width:25px"
+                                                    src="../../assets/images/download.png"></a></td>
                                     </tr>
                                     <tr>
                                         <td>kick</td>
-                                        <td>Sample</td>
+                                        <td><a id="play-sample" href="#"><i
+                                                    class="small material-icons">play_circle_outline</i></a></td>
                                         <td>$0.25</td>
-                                        <td><button class="btn black" href="#">Download</button></td>   
+                                        <td><a class="" href="#"><img style="width:25px"
+                                                    src="../../assets/images/download.png"></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>kick</td>
+                                        <td><a id="play-sample"><i
+                                                    class="small material-icons">play_circle_outline</i></a></td>
+                                        <td>$0.25</td>
+                                        <td><a class="" href="#"><img style="width:25px"
+                                                    src="../../assets/images/download.png"></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>kick</td>
+                                        <td><a id="play-sample" href="#"><i
+                                                    class="small material-icons">play_circle_outline</i></a></td>
+                                        <td>$0.25</td>
+                                        <td><a class="" href="#"><img style="width:25px"
+                                                    src="../../assets/images/download.png"></a></td>
                                     </tr>
 
 
@@ -146,10 +169,37 @@
         </div>
 
     </section>
+    <br>
+    <br>
+    <br>
+    <br>
 
+    <section>
+        <div class="container">
+            <div class="row">
+                <h4>Customers who liked this pack also liked:</h4>
+                <div class="col s3 m3"><img
+                        src="http://www.dwdrums.com/images/artists/wallpaper/enoughSaid-TommyClufetos-16x9.jpg" alt=""
+                        class="materialboxed responsive-img"><span class="card-title center-align"
+                        id="bank-name">Bitchin Drums</span></div>
+                <div class="col s3 m3"><img src="https://wallpapercave.com/wp/XWx75m7.jpg" alt=""
+                        class="materialboxed responsive-img rounded"><span class="card-title center-align" id="bank-name">Guitar
+                        Sounds</span></div>
+                <div class="col s3 m3"><img src="https://wallpaperplay.com/walls/full/f/f/6/200727.jpg" alt=""
+                        class="materialboxed responsive-img"><span class="card-title center-align" id="bank-name">Grand
+                        Piano</span></div>
+                <div class="col s3 m3"><img src="https://ak8.picdn.net/shutterstock/videos/1844368/thumb/1.jpg" alt=""
+                        class="materialboxed responsive-img"><span class="card-title center-align" id="bank-name">Stingy
+                        Hats</span></div>
 
-
-
+            </div>
+        </div>
+        </div>
+    </section>
+    <br>
+    <br>
+    <br>
+    <br>
 
 
 
@@ -158,14 +208,15 @@
             <div class="row">
                 <div class="col l6 s12">
                     <h5 class="white-text">Logo</h5>
-                    <p class="grey-text text-lighten-4">We are all about sharing our sounds, click the links to get starter!</p>
+                    <p class="grey-text text-lighten-4">We are all about sharing our sounds, click the links to get
+                        starter!</p>
                 </div>
                 <div class="col l4 offset-l2 s12">
                     <h5 class="white-text">Links</h5>
                     <ul>
                         <li><a class="grey-text text-lighten-3" href="#!">Contact Us</a></li>
                         <li><a class="grey-text text-lighten-3" href="#!">Login</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Sign UP</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Sign Up</a></li>
                         <li><a class="grey-text text-lighten-3" href="#!">Blog</a></li>
                     </ul>
                 </div>
@@ -179,7 +230,8 @@
         </div>
     </footer>
     <!--JavaScript at end of body for optimized loading-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="assets/js/app.js"></script>
@@ -192,6 +244,10 @@
                 fullWidth: true
             });
         });
+        var mb = document.querySelectorAll('.materialboxed');
+        M.Materialbox.init(mb, {
+
+        })
     </script>
 </body>
 
