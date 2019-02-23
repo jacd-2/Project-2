@@ -1,0 +1,24 @@
+{
+  "name": "project-2",
+  "version": "1.0.0",
+  "description": "music library",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacd-2/Project-2.git"
+  },
+  "author": "josh jenkin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jacd-2/Project-2/issues"
+  },
+  "dependencies": {
+    "aws-sdk": "2.x",
+    "ejs": "2.x",
+    "express": "4.x"
+  },
+  "homepage": "https://github.com/jacd-2/Project-2#readme"
+}
