@@ -1,8 +1,10 @@
 nav {
     font-family: 'Ubuntu', sans-serif;
+    background-image: url("../images/sec-4-back.jpg");
 }
 footer {
     font-family: 'Ubuntu', sans-serif;
+    background-image: url("../images/sec-4-back.jpg");
 }
 .back-1 {
     width: 100%;
@@ -60,4 +62,8 @@ section {
   }
   .sec-4 {
     background-image: url("../images/sec-4-back.jpg")
+}
+.sec-4-body {
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
