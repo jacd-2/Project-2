@@ -16,8 +16,17 @@ module.exports = function(app) {
     });
   });
 
+  // User can modify their personal file
+
+  app.put("/api/users/:id", function(req, res) {
+    db.Sounds.update({ where: { id: req.params.id } }).then(function (dbSounds) {
+      res.json(dbSounds);
+    });
+    
+  });
+  
   // Delete an example by id
-  app.delete("/api/users", function(req, res) {
+  app.delete("/api/users/:id", function(req, res) {
     db.Sounds.destroy({ where: { id: req.params.id } }).then(function(
       dbSounds
     ) {

@@ -118,7 +118,7 @@
     </div>
 
     <!-- Modal Trigger -->
-    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Upload Sound</a>
+    <a class="black btn modal-trigger" href="#modal1">Upload Sound</a>
 
     <!-- Modal Structure -->
     <div id="modal1" class="modal">
@@ -138,10 +138,10 @@
           </div>
           <div class="row">
               <!-- <input type="file"> -->
-            <input href="/api/users" id="file-up" type="file">Upload MP3
+            <input id="file-up" type="file"> <a>Upload MP3</a>
           </div>
           <div class="modal-footer">
-            <button type="submit" id="upload" href="#!"
+            <button type="submit" id="upload-song" href="/api/users"
               class="modal-close waves-effect waves-green btn-flat">Agree</button>
           </div>
         </form>
@@ -211,10 +211,7 @@
         fullWidth: true
       });
 
-      var input = $("input:file").css({
-        background: "yellow",
-        border: "3px red solid"
-      });
+      var input = $("input:file");
       $("file-up")
         .text("For this type jQuery found " + input.length + ".")
         .css("color", "red");
