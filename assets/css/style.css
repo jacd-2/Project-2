@@ -48,3 +48,6 @@ section {
         transform: translate(-50%, -50%);
     }
   }
+  .parallax-container {
+    height: 400px;
+  }
