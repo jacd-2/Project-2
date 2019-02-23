@@ -58,3 +58,6 @@ section {
       padding-top: 5%;
       padding-bottom: 5%;
   }
+  .sec-4 {
+    background-image: url("../images/sec-4-back.jpg")
+}
