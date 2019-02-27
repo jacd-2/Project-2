@@ -67,3 +67,7 @@ section {
     padding-top: 5%;
     padding-bottom: 5%;
 }
+.snip {
+    float: right;
+    margin-right: 25%;
+}
