@@ -12,25 +12,27 @@ $(document).ready(function() {
       soundId = url.split("=")[1];
       getPostData(soundId);
     }
-  
+    // var genreArr = [
+    //   "Tech"
+    // ]
     // Getting jQuery references to the post body, title, form, and category select
     var soundName = $("#sound-name");
-    var genre = $("#genre");
+    var genre1 = $("#genre");
     var formSub = $("#submit-form");
-
+    console.log(genre1);
     // Adding an event listener for when the form is submitted
     $(formSub).on("submit", function handleFormSubmit(event) {
       event.preventDefault();
       // Wont submit the post if we are missing a body or a title
-      // if (genre.val().trim() === 0 || soundName.val().trim() === 0) {
+      // if (!genre.val().trim() || !soundName.val().trim()) {
       //   return console.log("Nothing to submit");
       // }
       // Constructing a newSound object to hand to the database
       var newSound = {
         name: soundName.val().trim(),
-        genre: genre.val().trim()
+        genre: genre1.val().trim()
       };
-  
+      
       console.log(newSound);
 
       // If we're updating a post run updatePost to update a post

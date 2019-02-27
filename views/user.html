@@ -5,6 +5,7 @@
   <title>Project</title>
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <!--Import materialize.css-->
   <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
   <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
@@ -73,7 +74,7 @@
                 <tbody>
                   <tr>
                     <td><a id="sample-name">kick</a>
-                      <div class="chip" id="genre">
+                      <div class="chip">
                         House
                       </div>
                     </td>
@@ -169,14 +170,23 @@
               <label for="sound-name">Sound Name</label>
             </div>
             <div class="input-field col s6">
-              <input id="genre" type="text" class="validate">
-              <label for="genre">Genre</label>
+              <!-- <input id="genre" type="text" class="validate">
+              <label for="genre">Genre</label> -->
+
+              <select class="form-control" id="genre">
+                  <option value="" disabled selected>Choose your option</option>
+                  <option>House</option>
+                  <option>Dubstep</option>
+                  <option>EDM</option>
+                  <option>Ambient</option>
+                  <option>Rock</option>
+                </select>
             </div>
           </div>
-          <!-- <div class="row"> -->
+          <div class="row">
           <!-- <input type="file"> -->
-          <!-- <input id="file-up" type="file"> <a>Upload MP3</a> -->
-          <!-- </div> -->
+          <input id="file-up" type="file"> <a>Upload MP3</a>
+          </div>
           <div class="modal-footer">
             <button type="submit" id="upload-song" class="modal-close waves-effect waves-green btn-flat">Agree</button>
           </div>
@@ -245,6 +255,7 @@
       $('.carousel.carousel-slider').carousel({
         fullWidth: true
       });
+      $('.dropdown-trigger').dropdown();
 
       var input = $("input:file");
       $("file-up")
