@@ -62,7 +62,6 @@ $(document).ready(function () {
     displaySounds();
   });
 
-  displaySounds();
   function displaySounds(Sounds) {
 
     var searchIn = $("#search-input");
