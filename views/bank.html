@@ -2,29 +2,33 @@
 <html>
 
 <head>
-    <title>Project</title>
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Anton|Ubuntu" rel="stylesheet">
-    <!-- google sign in -->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Project</title>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Anton|Ubuntu" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    
+    
+        <!-- google sign in -->
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
 </head>
 
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo logo"><img style="height:30px" src="../../assets/images/logo2.png"> Logo</a>
+            <a href="/" class="brand-logo logo"><img style="height:30px" src="../../assets/images/logo2.png"> Logo</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><input id="search" type="search" required></li>
                 <li><label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                    <i class="material-icons">close</i></li>
+                    <i href="/search" class="material-icons">close</i></li>
                 <li><a href="#" class="">Sign Up</a></li>
                 <li><a href="#">Login</a></li>
             </ul>
@@ -47,19 +51,19 @@
             <div class="row">
                 <div class="col s12 m12 l12">
                     <div class="card">
-                        <div class="card-image">
+                        <!-- <div class="card-image">
                             <img
                                 src="http://www.dwdrums.com/images/artists/wallpaper/enoughSaid-TommyClufetos-16x9.jpg">
                             <span class="card-title" id="bank-name">Bitchin Drums</span>
-                        </div>
+                        </div> -->
                         <div class="card-content" id="user-content">
-                            <span class="card-title" id="user-name">User Name</span>
-                            <div class="chip" id="genre">
+                            <span class="card-title">Sounds</span>
+                            <!-- <div class="chip">
                                 House
                             </div>
-                            <div class="chip" id="genre">
+                            <div class="chip">
                                 Drums
-                            </div>
+                            </div> -->
                             <p>I am a very simple card. I am good at containing small bits of information.
                                 I am convenient because I require little markup to use effectively.</p>
                         </div>
@@ -68,81 +72,15 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th id="bank-name">Bitchin Sounds</th>
-                                        <th>House</th>
-                                        <th>$15.00</th>
-                                        <td><a class="" href="#"><img style="width:25px"
-                                                    src="../../assets/images/download.png"></a></td>
+                                        <th id="bank-name">Sounds</th>
+                                        <th>Genre</th>
+                                        <th>File</th>
+                                        <th><a class="" href="#"><img style="width:25px"
+                                                    src="../../assets/images/download.png"></a></th>
                                     </tr>
                                 </thead>
 
-                                <tbody>
-                                    <tr>
-                                        <td><a id="sample-name">kick</a></td>
-                                        <td><a id="play-sample" href="#"><i
-                                                    class="small material-icons">play_circle_outline</i></a></td>
-                                        <td>$0.25</td>
-                                        <td><a class="" href="#"><img style="width:25px"
-                                                    src="../../assets/images/download.png"></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Snare</td>
-                                        <td><a id="play-sample" href="#"><i
-                                                    class="small material-icons">play_circle_outline</i></a></td>
-                                        <td>$0.25</td>
-                                        <td><a class="" href="#"><img style="width:25px"
-                                                    src="../../assets/images/download.png"></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Build</td>
-                                        <td><a id="play-sample" href="#"><i
-                                                    class="small material-icons">play_circle_outline</i></a></td>
-                                        <td>$0.25</td>
-                                        <td><a class="" href="#"><img style="width:25px"
-                                                    src="../../assets/images/download.png"></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hat Closed</td>
-                                        <td><a id="play-sample" href="#"><i
-                                                    class="small material-icons">play_circle_outline</i></a></td>
-                                        <td>$0.25</td>
-                                        <td><a class="" href="#"><img style="width:25px"
-                                                    src="../../assets/images/download.png"></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hat Open</td>
-                                        <td><a id="play-sample" href="#"><i
-                                                    class="small material-icons">play_circle_outline</i></a></td>
-                                        <td>$0.25</td>
-                                        <td><a class="" href="#"><img style="width:25px"
-                                                    src="../../assets/images/download.png"></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>kick</td>
-                                        <td><a id="play-sample" href="#"><i
-                                                    class="small material-icons">play_circle_outline</i></a></td>
-                                        <td>$0.25</td>
-                                        <td><a class="" href="#"><img style="width:25px"
-                                                    src="../../assets/images/download.png"></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>kick</td>
-                                        <td><a id="play-sample"><i
-                                                    class="small material-icons">play_circle_outline</i></a></td>
-                                        <td>$0.25</td>
-                                        <td><a class="" href="#"><img style="width:25px"
-                                                    src="../../assets/images/download.png"></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>kick</td>
-                                        <td><a id="play-sample" href="#"><i
-                                                    class="small material-icons">play_circle_outline</i></a></td>
-                                        <td>$0.25</td>
-                                        <td><a class="" href="#"><img style="width:25px"
-                                                    src="../../assets/images/download.png"></a></td>
-                                    </tr>
-
-
+                                <tbody class="th-body">
                                 </tbody>
                             </table>
                             <br><br>
@@ -233,11 +171,10 @@
         </div>
     </footer>
     <!--JavaScript at end of body for optimized loading-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script type="text/javascript" src="js/user.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {

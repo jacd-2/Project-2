@@ -9,13 +9,31 @@ module.exports = function (app) {
     })
   });
 
+  app.get("/api/search", function (req, res) {
+    // var query = {};
+    // if (req.query.author_id) {
+    //   query.AuthorId = req.query.author_id;
+    // }
+    // console.log(res);
+    db.Sounds.findAll({
+      // where: {
+      //   genre: req.params.genre
+      // }
+      // include: dbUsers
+    }).then(function (dbSounds) {
+      // console.log(dbSounds);
+      res.json(dbSounds);
+    })
+  });
+
 
   // Create a new example
   app.post("/api/sounds", function (req, res) {
     console.log(req.body);
     db.Sounds.create({
       name: req.body.name,
-      genre: req.body.genre
+      genre: req.body.genre,
+      file: req.body.file
     }).then(function (dbSounds) {
       // We have access to the new todo as an argument inside of the callback function
       res.json(dbSounds);
