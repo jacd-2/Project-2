@@ -60,6 +60,7 @@ $(document).ready(function () {
 
   $("#search-form").on("submit", function () {
     event.preventDefault();
+    $(".th-body").empty();
     displaySounds();
   });
 
