@@ -2,22 +2,23 @@
 <html>
 
 <head>
-        <title>Project</title>
-        <!--Import Google Icon Font-->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!--Import materialize.css-->
-        <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-        <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Anton|Ubuntu" rel="stylesheet">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    
-    
-        <!-- google sign in -->
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <!--Let browser know website is optimized for mobile-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+    <title>Project</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Anton|Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+    <!-- google sign in -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 </head>
 
 <body>
@@ -26,6 +27,9 @@
             <a href="/" class="brand-logo logo"><img style="height:30px" src="../../assets/images/logo2.png"> Logo</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li>
+                    <link for="search" type="submit"><a href="/search"><i class="fa fa-search"></i></a></link>
+                </li>
                 <li><a href="#" class="">Sign Up</a></li>
                 <li><a href="#">Login</a></li>
             </ul>
@@ -48,23 +52,24 @@
             <div class="row">
                 <div class="col s12 m12 l12">
                     <div class="card">
-<!-- 
+                        <!-- 
                             <div id="search-form">
                                     <form formaction="/search" class="white" method="get">
                                     <input id="search-input" type="text" placeholder="Search Sound or Genre" name="search" formaction="/search">
                                     <button for="search" type="submit"><i class="fa fa-search"></i></button>
                                     </form>
                                 </div> -->
-                                <div class="input-field" id="search-form">
-                                    <form formaction="/search" class="white" method="get">
-                                      
-                                        <input id="search-input" type="text" placeholder="Search Sound or Genre" name="search" formaction="/search">
-                                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                                        
-                                      
-                                    </form>
-                                </div>
- 
+                        <div class="input-field" id="search-form">
+                            <form formaction="/search" class="white" method="get">
+
+                                <input id="search-input" type="text" placeholder="Search Sound or Genre" name="search"
+                                    formaction="/search">
+                                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+
+
+                            </form>
+                        </div>
+
                         <!-- <div class="card-image">
                             <img
                                 src="http://www.dwdrums.com/images/artists/wallpaper/enoughSaid-TommyClufetos-16x9.jpg">

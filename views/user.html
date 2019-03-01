@@ -5,13 +5,15 @@
   <title>Project</title>
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <!--Import materialize.css-->
   <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
   <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/css?family=Anton|Ubuntu" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
   <!-- google sign in -->
   <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -25,9 +27,9 @@
       <a href="/" class="brand-logo logo"><img style="height:30px" src="../assets/images/download.png"> Logo</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><input id="search" type="search" required></li>
-        <li><label href="/search" class="label-icon" for="search"><i class="material-icons">search</i></label>
-          <i class="material-icons">close</i></li>
+        <li>
+          <link for="search" type="submit"><a href="/search"><i class="fa fa-search"></i></a></link>
+        </li>
         <li><a href="#" class="">Sign Up</a></li>
         <li><a href="#">Login</a></li>
       </ul>
@@ -176,18 +178,18 @@
               <label for="genre">Genre</label> -->
 
               <select class="form-control" id="genre">
-                  <option value="" disabled selected>Choose your option</option>
-                  <option>House</option>
-                  <option>Dubstep</option>
-                  <option>EDM</option>
-                  <option>Ambient</option>
-                  <option>Rock</option>
-                </select>
+                <option value="" disabled selected>Choose your option</option>
+                <option>House</option>
+                <option>Dubstep</option>
+                <option>EDM</option>
+                <option>Ambient</option>
+                <option>Rock</option>
+              </select>
             </div>
           </div>
           <div class="row">
-          <!-- <input type="file"> -->
-          <input id="file-up" type="file"> <a>Upload MP3</a>
+            <!-- <input type="file"> -->
+            <input id="file-up" type="file"> <a>Upload MP3</a>
           </div>
           <div class="modal-footer">
             <button type="submit" id="upload-song" class="modal-close waves-effect waves-green btn-flat">Agree</button>
