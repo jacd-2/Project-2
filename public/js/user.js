@@ -94,12 +94,13 @@ $(document).ready(function () {
             "<td><a href='#'><img style='width:25px' src='../../assets/images/download.png'></a></td></tr>"
           console.log(displayTable);
           $(".th-body").append(displayTable);
-
+          
         } else {
           console.log("We don't have any Sounds that match that search")
           $("#user-content").html("<div>We don't have any Sounds that match that search<div>");
-        }
-      }
+        };
+        searchIn.val("");
+      };
     });
   }
 
