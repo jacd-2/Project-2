@@ -10,6 +10,10 @@
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Anton|Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
     <!-- google sign in -->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <!--Let browser know website is optimized for mobile-->
@@ -24,9 +28,11 @@
             <a href="#" class="brand-logo logo"><img style="height:30px" src="../assets/images/download.png"> Logo</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><input id="search" type="search" required></li>
-                <li><label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                    <!-- <li><a href="#" class="">Sign Up</a></li>
+                <li>     
+                        <link for="search" type="submit"><a href="/search"><i class="fa fa-search"></i></a></link>
+
+                </li>
+                <!-- <li><a href="#" class="">Sign Up</a></li>
                 <li><a href="#">Login</a></li> -->
                 <li><a class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" href="/users">Sign In</a></li>
                 <!-- <iframe
@@ -39,9 +45,13 @@
 
         </div>
         <ul id="mobile-demo" class="sidenav">
-            <li> <input id="search" type="search" required></li>
-            <li><label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                <!-- <i class="material-icons">close</i></li>
+            <li>
+                <form id="search-input" action="/search" class="white">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button id="search" type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </li>
+            <!-- <i class="material-icons">close</i></li>
             <li><a href="#" class="">Sign Up</a></li>
             <li><a href="#">Login</a></li> -->
             <li><a class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" href="/users">Sign In</a></li>
@@ -90,7 +100,7 @@
 
     <section class="sec-4">
         <div class="container sec-4-body">
-                <img class="snip z-depth-5" style="width:300px" src="../../assets/images/snip.jpg">
+            <img class="snip z-depth-5" style="width:300px" src="../../assets/images/snip.jpg">
             <div class="caption center-align">
                 <div class=" white-text left-align">
                     <h1 class="two-header">Best<br>Sounds<br>Around</h1>

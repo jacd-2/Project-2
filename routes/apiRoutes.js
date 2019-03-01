@@ -4,7 +4,28 @@ var db = require("../models");
 module.exports = function (app) {
   // Get all examples
   app.get("/api/users/", function (req, res) {
-    db.Sounds.findAll({}).then(function (dbSounds) {
+    db.Sounds.findAll({
+      where: {
+        id: users
+      }
+    }).then(function (dbSounds) {
+      res.json(dbSounds);
+    })
+  });
+
+  app.get("/api/search", function (req, res) {
+    // var query = {};
+    // if (req.query.author_id) {
+    //   query.AuthorId = req.query.author_id;
+    // }
+    // console.log(res);
+    db.Sounds.findAll({
+      // where: {
+      //   genre: req.params.genre
+      // }
+      // include: dbUsers
+    }).then(function (dbSounds) {
+      // console.log(dbSounds);
       res.json(dbSounds);
     })
   });
@@ -15,7 +36,8 @@ module.exports = function (app) {
     console.log(req.body);
     db.Sounds.create({
       name: req.body.name,
-      genre: req.body.genre
+      genre: req.body.genre,
+      file: req.body.file
     }).then(function (dbSounds) {
       // We have access to the new todo as an argument inside of the callback function
       res.json(dbSounds);
