@@ -26,8 +26,12 @@
             <a href="/" class="brand-logo logo"><img style="height:30px" src="../../assets/images/logo2.png"> Logo</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><input id="search" type="search" required></li>
-                <li><label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                <li><div id="search-form">
+                        <form formaction="/search" class="white" method="get">
+                        <input id="search-input" type="text" placeholder="Search Sound or Genre" name="search" formaction="/search">
+                        <button for="search" type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
                     <i href="/search" class="material-icons">close</i></li>
                 <li><a href="#" class="">Sign Up</a></li>
                 <li><a href="#">Login</a></li>
@@ -51,6 +55,21 @@
             <div class="row">
                 <div class="col s12 m12 l12">
                     <div class="card">
+
+                                    <div id="search-form">
+                                            <form formaction="/search" class="white" method="get">
+                                            <input id="search-input" type="text" placeholder="Search Sound or Genre" name="search" formaction="/search">
+                                            <button for="search" type="submit"><i class="fa fa-search"></i></button>
+                                            </form>
+                                        </div>
+                                    <!-- <form formaction="/search" class="white" method="get">
+                                      <div class="input-field" id="search-form">
+                                        <input id="search-input" type="text" placeholder="Search Sound or Genre" name="search" formaction="/search">
+                                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                        
+                                      </div>
+                                    </form> -->
+ 
                         <!-- <div class="card-image">
                             <img
                                 src="http://www.dwdrums.com/images/artists/wallpaper/enoughSaid-TommyClufetos-16x9.jpg">

@@ -4,7 +4,11 @@ var db = require("../models");
 module.exports = function (app) {
   // Get all examples
   app.get("/api/users/", function (req, res) {
-    db.Sounds.findAll({}).then(function (dbSounds) {
+    db.Sounds.findAll({
+      where: {
+        id: users
+      }
+    }).then(function (dbSounds) {
       res.json(dbSounds);
     })
   });

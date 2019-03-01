@@ -30,8 +30,8 @@ $(document).ready(function () {
     // }
     // Constructing a newSound object to hand to the database
     var newSound = {
-      name: soundName.val().trim(),
-      genre: genre1.val().trim(),
+      name: soundName.val().trim().toLowerCase(),
+      genre: genre1.val().trim().toLowerCase(),
       file: mp3File.val().trim()
     };
 
@@ -42,8 +42,7 @@ $(document).ready(function () {
     if (updating) {
       newSound.id = soundId;
       updatePost(newSound);
-    }
-    else {
+    } else {
       submitSound(newSound);
     }
   });
@@ -55,7 +54,9 @@ $(document).ready(function () {
     });
   }
 
-
+// function newPage(){
+//   window.location.href = "/search";
+// }
 
   $("#search-form").on("submit", function () {
     event.preventDefault();
@@ -65,25 +66,37 @@ $(document).ready(function () {
   function displaySounds(Sounds) {
 
     var searchIn = $("#search-input");
-    var searchVal = searchIn.val().trim();
+    var searchVal = searchIn.val().trim().toLowerCase();
     console.log(searchVal);
 
     $.get("/api/search", Sounds, function (data) {
       for (var i = 0; i < data.length; i++) {
-
+        
         if (searchVal === data[i].genre) {
 
-        console.log(data[i].name, data[i].genre, data[i].file);
+        // console.log(data[i].name, data[i].genre, data[i].file);
 
         var displayTable = "<tr><td>" + data[i].name + "</td>" +
           "<td>" + data[i].genre + "</td>" +
           "<td>" + data[i].file + "</td>" +
           "<td><a href='#'><img style='width:25px' src='../../assets/images/download.png'></a></td></tr>"
-        // console.log(displayTable);
-        $("#th-body").append(displayTable);
+        console.log(displayTable);
+        $(".th-body").append(displayTable);
+
+        } else if (searchVal === data[i].name) {
+
+          // console.log(data[i].name, data[i].genre, data[i].file);
+  
+          var displayTable = "<tr><td>" + data[i].name + "</td>" +
+            "<td>" + data[i].genre + "</td>" +
+            "<td>" + data[i].file + "</td>" +
+            "<td><a href='#'><img style='width:25px' src='../../assets/images/download.png'></a></td></tr>"
+          console.log(displayTable);
+          $(".th-body").append(displayTable);
 
         } else {
-          $("user-content").html("<div>We don't have any Sounds that match that search<div>");
+          console.log("We don't have any Sounds that match that search")
+          $("#user-content").html("<div>We don't have any Sounds that match that search<div>");
         }
       }
     });
