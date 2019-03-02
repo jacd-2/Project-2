@@ -2,7 +2,7 @@
 var express = require("express");
 const aws = require('aws-sdk');
 // var exphbs = require("express-handlebars");
-
+var url = require('url');
 var db = require("./models");
 
 var app = express();
@@ -15,6 +15,7 @@ app.use(express.static("public"));
 
 aws.config.region = 'us-west-2';
 
+var S3_BUCKET = process.env.S3_BUCKET;
 // app.set('views', './views');
 // app.use(express.static('./public'));
 // app.engine('html', require('ejs').renderFile);
