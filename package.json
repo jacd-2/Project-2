@@ -21,6 +21,7 @@
   "dependencies": {
     "aws-sdk": "^2.413.0",
     "chai": "^4.2.0",
+    "dotenv": "^6.2.0",
     "ejs": "2.x",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.1",
