@@ -1,4 +1,5 @@
 var db = require("../models");
+const aws = require('aws-sdk');
 
 
 module.exports = function (app) {
@@ -42,6 +43,54 @@ module.exports = function (app) {
       // We have access to the new todo as an argument inside of the callback function
       res.json(dbSounds);
     });
+  });
+
+  // Create a user in DB
+  app.post("/api/users", function (req, res) {
+    console.log(req.body);
+    db.Users.create({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      email: req.body.email,
+      password: req.body.password
+    }).then(function (dbUsers) {
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(dbUsers);
+    });
+  });
+
+  // S3 get routes
+  app.get('/sign-s3', (req, res) => {
+    console.log(req.query, "hello");
+    const s3 = new aws.S3();
+    const fileName = req.query['file-name'];
+    const fileType = req.query['file-type'];
+    const S3_BUCKET = 'jacd-music-project';
+    const s3Params = {
+      Bucket: S3_BUCKET,
+      Key: fileName,
+      Expires: 60,
+      ContentType: fileType,
+      ACL: 'public-read'
+    };
+
+    s3.getSignedUrl('putObject', s3Params, (err, data) => {
+      if (err) {
+        console.log(err);
+        return res.end();
+      }
+      const returnData = {
+        signedRequest: data,
+        url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
+      };
+      res.write(JSON.stringify(returnData));
+      res.end();
+    });
+  });
+
+  app.post('/users', (req, res) => {
+    console.log(req);
+    // TODO: Read POSTed form data and do something useful
   });
 
 
