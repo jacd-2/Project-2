@@ -19,6 +19,7 @@
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 </head>
 
 <body>
@@ -30,8 +31,12 @@
         <li>
           <link for="search" type="submit"><a href="/search"><i class="fa fa-search"></i></a></link>
         </li>
-        <li><a href="#" class="">Sign Up</a></li>
-        <li><a href="#">Login</a></li>
+        <li><a data-target="modal2" class="modal-trigger" ref="#modal2">Sign In</a></li>
+        <!-- <iframe
+                src="https://developers.google.com/identity/sign-in/web/demos/signin_contextual_simple.jshtml?hl=en"
+                style="width: 200px;
+            height: 60px;"></iframe> -->
+        <li><a data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
       </ul>
 
 
@@ -42,8 +47,12 @@
     <li> <input id="search" type="search" required></li>
     <li><label class="label-icon" for="search"><i class="material-icons">search</i></label>
       <i class="material-icons">close</i></li>
-    <li><a href="#" class="">Sign Up</a></li>
-    <li><a href="/users">Login</a></li>
+    <li><a data-target="modal2" class="modal-trigger" ref="#modal2">Sign In</a></li>
+    <!-- <iframe
+              src="https://developers.google.com/identity/sign-in/web/demos/signin_contextual_simple.jshtml?hl=en"
+              style="width: 200px;
+          height: 60px;"></iframe> -->
+    <li><a data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
   </ul>
 
   <section class="container">
@@ -212,7 +221,36 @@
   </section>
 
 
+  <!-- Sign in modal -->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <h4>Login</h4>
+      <form>
+        <input type="email" placeholder="email">
+        <input type="password" placeholder="Password">
+    </div>
+    <div class="modal-footer">
+      <a type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+    </form>
+  </div>
 
+  <!-- Sign up modal -->
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <h4>Sign Up</h4>
+      <form>
+        <input type="text" placeholder="First Name">
+        <input type="text" placeholder="Last Name">
+        <input type="email" placeholder="email">
+        <input type="password" placeholder="Password">
+    </div>
+    <div class="modal-footer">
+      <a type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+    </form>
+  </div>
+  </section>
 
 
   <br>
@@ -265,7 +303,9 @@
   <script type="text/javascript" src="js/user.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
   <script type="text/javascript">
+
     $(document).ready(function () {
+      console.log("ready!");
       $('.sidenav').sidenav();
       $('.slider').slider();
       $('.modal').modal();
@@ -284,48 +324,48 @@
     });
 
     // handling mp3 submition
-    (() => {
-      document.getElementById("file-input").onchange = () => {
-        const files = document.getElementById('file-input').files;
-        const file = files[0];
-        if (file == null) {
-          return alert('No file selected.');
-        }
-        getSignedRequest(file);
-      };
-    })();
-    function getSignedRequest(file) {
-      const xhr = new XMLHttpRequest();
-      xhr.open('GET', `/users/sign-s3?file-name=${file.name}&file-type=audio/mpeg`);
-      xhr.onreadystatechange = () => {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            const response = JSON.parse(xhr.responseText);
-            uploadFile(file, response.signedRequest, response.url);
-          }
-          else {
-            alert('Could not get signed URL.');
-          }
-        }
-      };
-      xhr.send();
-    }
-    function uploadFile(file, signedRequest, url) {
-      const xhr = new XMLHttpRequest();
-      xhr.open('PUT', signedRequest);
-      xhr.onreadystatechange = () => {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            document.getElementById('sound-name').src = url;
-            // document.getElementById('avatar-url').value = url;
-          }
-          else {
-            alert('Could not upload file.');
-          }
-        }
-      };
-      xhr.send(file);
-    }
+    // (() => {
+    //   document.getElementById("file-input").onchange = () => {
+    //     const files = document.getElementById('file-input').files;
+    //     const file = files[0];
+    //     if (file == null) {
+    //       return alert('No file selected.');
+    //     }
+    //     getSignedRequest(file);
+    //   };
+    // })();
+    // function getSignedRequest(file) {
+    //   const xhr = new XMLHttpRequest();
+    //   xhr.open('GET', `/users/sign-s3?file-name=${file.name}&file-type=audio/mpeg`);
+    //   xhr.onreadystatechange = () => {
+    //     if (xhr.readyState === 4) {
+    //       if (xhr.status === 200) {
+    //         const response = JSON.parse(xhr.responseText);
+    //         uploadFile(file, response.signedRequest, response.url);
+    //       }
+    //       else {
+    //         alert('Could not get signed URL.');
+    //       }
+    //     }
+    //   };
+    //   xhr.send();
+    // }
+    // function uploadFile(file, signedRequest, url) {
+    //   const xhr = new XMLHttpRequest();
+    //   xhr.open('PUT', signedRequest);
+    //   xhr.onreadystatechange = () => {
+    //     if (xhr.readyState === 4) {
+    //       if (xhr.status === 200) {
+    //         document.getElementById('sound-name').src = url;
+    //         // document.getElementById('avatar-url').value = url;
+    //       }
+    //       else {
+    //         alert('Could not upload file.');
+    //       }
+    //     }
+    //   };
+    //   xhr.send(file);
+    // }
 
   </script>
 </body>

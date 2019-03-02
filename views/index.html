@@ -33,12 +33,12 @@
                 </li>
                 <!-- <li><a href="#" class="">Sign Up</a></li>
                 <li><a href="#">Login</a></li> -->
-                <li><a class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" href="/users">Sign In</a></li>
+                <li><a data-target="modal2" class="modal-trigger" ref="#modal2">Sign In</a></li>
                 <!-- <iframe
                         src="https://developers.google.com/identity/sign-in/web/demos/signin_contextual_simple.jshtml?hl=en"
                         style="width: 200px;
                     height: 60px;"></iframe> -->
-                <li><a href="index.html" onclick="signOut();">Sign out</a></li>
+                <li><a data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
             </ul>
 
 
@@ -53,12 +53,12 @@
             <!-- <i class="material-icons">close</i></li>
             <li><a href="#" class="">Sign Up</a></li>
             <li><a href="#">Login</a></li> -->
-            <li><a class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" href="/users">Sign In</a></li>
+            <li><a data-target="modal2" class="modal-trigger" ref="#modal2">Sign In</a></li>
             <!-- <iframe
                     src="https://developers.google.com/identity/sign-in/web/demos/signin_contextual_simple.jshtml?hl=en"
                     style="width: 200px;
                 height: 60px;"></iframe> -->
-            <li><a href="index.html" onclick="signOut();">Sign out</a></li>
+            <li><a data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
         </ul>
     </nav>
     <!-- NEED TO RUN THROUGH SERVER, WILL WORK ON -->
@@ -74,7 +74,7 @@
                     <p class="back-1-body">Join our growing group of producers<br>
                         and contribute to our library of high quality<br>
                         sounds!</p>
-                    <p><a class="btn black center-align" href="#">Login</a></p>
+                    <p><a class="btn black center-align" href="/users">Login</a></p>
                 </div>
 
             </div>
@@ -89,9 +89,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col s12 white-text">
-                        <h2 class="blue-text text-blue darken-1">Check out our Users Sound Banks</h2>
+                        <h2 class="blue-text text-blue darken-1">Check out our Users Sound</h2>
                         <p class="blue-text text-blue darken-1">The best sounds around, click below to get start</p>
-                        <a class="btn-large black">Click Me!</a>
+                        <a class="btn-large black" href="/search">Click Me!</a>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@
                     <p class="">Join our growing group of producers<br>
                         and contribute to our library of high quality<br>
                         sounds!</p>
-                    <p><a class="btn black center-align" href="#">Login</a></p>
+                    <p><a class="btn black center-align" href="/users">Login</a></p>
                 </div>
 
             </div>
@@ -123,7 +123,7 @@
                     <div class="col s12 white-text">
                         <h2 class="blue-text text-blue darken-1">Are you listening yet?</h2>
                         <p class="blue-text text-blue darken-1">Get Some!</p>
-                        <a class="btn-large black">Click Me!</a>
+                        <a class="btn-large black" href="/search">Click Me!</a>
                     </div>
                 </div>
             </div>
@@ -166,6 +166,40 @@
         </div>
     </section>
 
+
+    <section>
+        <!-- Sign in modal -->
+        <div id="modal2" class="modal">
+            <div class="modal-content">
+                <h4>Login</h4>
+                <form>
+                    <input type="email" placeholder="email">
+                    <input type="password" placeholder="Password">
+            </div>
+            <div class="modal-footer">
+                <a type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+            </form>
+        </div>
+
+        <!-- Sign up modal -->
+        <div id="modal3" class="modal">
+            <div class="modal-content">
+                <h4>Sign Up</h4>
+                <form>
+                    <input type="text" placeholder="First Name">
+                    <input type="text" placeholder="Last Name">
+                    <input type="email" placeholder="email">
+                    <input type="password" placeholder="Password">
+            </div>
+            <div class="modal-footer">
+                <a type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+            </form>
+        </div>
+    </section>
+
+
     <footer class="page-footer">
         <div class="container">
             <div class="row">
@@ -202,6 +236,7 @@
         $(document).ready(function () {
             $('.sidenav').sidenav();
             $('.slider').slider();
+            $('.modal').modal();
             $('.parallax').parallax();
             $('.carousel.carousel-slider').carousel({
                 fullWidth: true
