@@ -3,7 +3,7 @@ var express = require("express");
 const aws = require('aws-sdk');
 var sequelize = require('sequelize');
 // var exphbs = require("express-handlebars");
-var url = require('url');
+// var url = require('url');
 var db = require("./models");
 
 var app = express();
