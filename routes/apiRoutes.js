@@ -59,13 +59,14 @@ module.exports = function (app) {
     });
   });
 
+  const S3_BUCKET = process.env.S3_BUCKET;
   // S3 get routes
   app.get('/sign-s3', (req, res) => {
     console.log(req.query, "hello");
     const s3 = new aws.S3();
     const fileName = req.query['file-name'];
     const fileType = req.query['file-type'];
-    const S3_BUCKET = 'jacd-music-project';
+    // const S3_BUCKET = 'jacd-music-project';
     const s3Params = {
       Bucket: S3_BUCKET,
       Key: fileName,
