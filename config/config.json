@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "password",
-    "database": "song_info_db",
-    "host": "127.0.0.1",
+    "username": "vdh9bjkfvhccxent",
+    "password": "s1r1cdiyqiumxf00",
+    "database": "xdhebf3bnwzuktjh",
+    "host": "yhrz9vns005e0734.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "test": {
@@ -14,10 +14,7 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": "password",
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "use_env_variable": "mysql://vdh9bjkfvhccxent:s1r1cdiyqiumxf00@yhrz9vns005e0734.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/xdhebf3bnwzuktjh",
     "dialect": "mysql"
   }
 }
