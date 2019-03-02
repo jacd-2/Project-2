@@ -1,5 +1,6 @@
 // require("dotenv").config();
 var express = require("express");
+const aws = require('aws-sdk');
 // var exphbs = require("express-handlebars");
 
 var db = require("./models");
@@ -12,6 +13,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
 
+aws.config.region = 'us-west-2';
+
+// app.set('views', './views');
+// app.use(express.static('./public'));
+// app.engine('html', require('ejs').renderFile);
+// app.listen(process.env.PORT || 3000);
+
+const S3_BUCKET = process.env.S3_BUCKET;
 // Handlebars
 // app.engine(
 //   "handlebars",

@@ -28,18 +28,17 @@
             <a href="#" class="brand-logo logo"><img style="height:30px" src="../assets/images/download.png"> Logo</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li>     
-                        <link for="search" type="submit"><a href="/search"><i class="fa fa-search"></i></a></link>
-
+                <li>
+                    <link for="search" type="submit"><a href="/search"><i class="fa fa-search"></i></a></link>
                 </li>
                 <!-- <li><a href="#" class="">Sign Up</a></li>
                 <li><a href="#">Login</a></li> -->
-                <li><a class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" href="/users">Sign In</a></li>
+                <li><a data-target="modal2" class="modal-trigger" ref="#modal2">Sign In</a></li>
                 <!-- <iframe
                         src="https://developers.google.com/identity/sign-in/web/demos/signin_contextual_simple.jshtml?hl=en"
                         style="width: 200px;
                     height: 60px;"></iframe> -->
-                <li><a href="index.html" onclick="signOut();">Sign out</a></li>
+                <li><a data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
             </ul>
 
 
@@ -54,12 +53,12 @@
             <!-- <i class="material-icons">close</i></li>
             <li><a href="#" class="">Sign Up</a></li>
             <li><a href="#">Login</a></li> -->
-            <li><a class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" href="/users">Sign In</a></li>
+            <li><a data-target="modal2" class="modal-trigger" ref="#modal2">Sign In</a></li>
             <!-- <iframe
                     src="https://developers.google.com/identity/sign-in/web/demos/signin_contextual_simple.jshtml?hl=en"
                     style="width: 200px;
                 height: 60px;"></iframe> -->
-            <li><a href="index.html" onclick="signOut();">Sign out</a></li>
+            <li><a data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
         </ul>
     </nav>
     <!-- NEED TO RUN THROUGH SERVER, WILL WORK ON -->
@@ -75,7 +74,7 @@
                     <p class="back-1-body">Join our growing group of producers<br>
                         and contribute to our library of high quality<br>
                         sounds!</p>
-                    <p><a class="btn black center-align" href="#">Login</a></p>
+                    <p><a class="btn black center-align" data-target="modal3" class="modal-trigger" href="#modal3">Sign Up</a></p>
                 </div>
 
             </div>
@@ -90,9 +89,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col s12 white-text">
-                        <h2 class="blue-text text-blue darken-1">Check out our Users Sound Banks</h2>
+                        <h2 class="blue-text text-blue darken-1">Check out our Users Sound</h2>
                         <p class="blue-text text-blue darken-1">The best sounds around, click below to get start</p>
-                        <a class="btn-large black">Click Me!</a>
+                        <a class="btn-large black" href="/search">Click Me!</a>
                     </div>
                 </div>
             </div>
@@ -107,7 +106,7 @@
                     <p class="">Join our growing group of producers<br>
                         and contribute to our library of high quality<br>
                         sounds!</p>
-                    <p><a class="btn black center-align" href="#">Login</a></p>
+                    <p><a class="btn black center-align" data-target="modal2" class="modal-trigger" ref="#modal2">Login</a></p>
                 </div>
 
             </div>
@@ -124,7 +123,7 @@
                     <div class="col s12 white-text">
                         <h2 class="blue-text text-blue darken-1">Are you listening yet?</h2>
                         <p class="blue-text text-blue darken-1">Get Some!</p>
-                        <a class="btn-large black">Click Me!</a>
+                        <a class="btn-large black" href="/search">Click Me!</a>
                     </div>
                 </div>
             </div>
@@ -134,11 +133,11 @@
         <div class="container sec-3-content">
             <h3>Contact Us</h3><br>
             <div class="row">
-                <form class="col s12">
+                <form class="col s12" action="mailto:josh.jenkin@live.com" method="post" enctype="text/plain">
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="last_name" type="text" class="validate">
-                            <label for="last_name">First Name</label>
+                            <input id="first_name" type="text" class="validate">
+                            <label for="first_name">First Name</label>
                         </div>
                         <div class="input-field col s6">
                             <input id="last_name" type="text" class="validate">
@@ -153,11 +152,11 @@
                     </div>
                     <div class="row">
                         <div class="col s12">
-                            This is an inline input field:
+                            Let us know what's in your brain!:
                             <div class="input-field inline">
-                                <input id="email_inline" type="email" class="validate">
-                                <label for="email_inline">Email</label>
-                                <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+                                <input id="email_text" type="text">
+                                <label for="email_text">Brain Contents</label>
+                          
                                 <button class="btn black" type="submit" href="#">Submit</button>
                             </div>
                         </div>
@@ -166,6 +165,43 @@
             </div>
         </div>
     </section>
+
+
+    <section>
+        <!-- Sign in modal -->
+        <div id="modal2" class="modal">
+            <div class="modal-content">
+                <h4>Login</h4>
+                <form>
+                    <input type="email" placeholder="email">
+                    <input type="password" placeholder="Password">
+            </div>
+            <div class="modal-footer">
+                <a type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+            </form>
+        </div>
+
+        <!-- Sign up modal -->
+        <div id="modal3" class="modal">
+            <div class="modal-content">
+                <h4>Sign Up</h4>
+                <form>
+                    <input type="text" placeholder="First Name">
+                    <input type="text" placeholder="Last Name">
+                    <input type="email" placeholder="email">
+                    <input type="password" placeholder="Password">
+            </div>
+            <div class="modal-footer">
+                <a type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+            </form>
+            <div class="center-align"><h5>Already have an account</h5><br>
+                <button data-target="modal2" class="modal-trigger btn black center-align" ref="#modal2">Login</button><br><br>
+            </div>
+        </div>
+    </section>
+
 
     <footer class="page-footer">
         <div class="container">
@@ -180,7 +216,7 @@
                     <ul>
                         <li><a class="grey-text text-lighten-3" href="#!">Contact Us</a></li>
                         <li><a class="grey-text text-lighten-3" href="#!">Login</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Sign Up</a></li>
+                        <li><a class="grey-text text-lighten-3" data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
                         <li><a class="grey-text text-lighten-3" href="#!">Blog</a></li>
                     </ul>
                 </div>
@@ -203,6 +239,7 @@
         $(document).ready(function () {
             $('.sidenav').sidenav();
             $('.slider').slider();
+            $('.modal').modal();
             $('.parallax').parallax();
             $('.carousel.carousel-slider').carousel({
                 fullWidth: true

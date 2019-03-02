@@ -2,32 +2,40 @@
 <html>
 
 <head>
-        <title>Project</title>
-        <!--Import Google Icon Font-->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!--Import materialize.css-->
-        <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-        <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Anton|Ubuntu" rel="stylesheet">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    
-    
-        <!-- google sign in -->
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <!--Let browser know website is optimized for mobile-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+    <title>Project</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Anton|Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+    <!-- google sign in -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 </head>
 
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="/" class="brand-logo logo"><img style="height:30px" src="../../assets/images/logo2.png"> Logo</a>
+            <a href="/" class="brand-logo logo"><img style="height:30px" src="../assets/images/download.png"> Logo</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="#" class="">Sign Up</a></li>
-                <li><a href="#">Login</a></li>
+                <li>
+                    <link for="search" type="submit"><a href="/search"><i class="fa fa-search"></i></a></link>
+                </li>
+                <li><a data-target="modal2" class="modal-trigger" ref="#modal2">Sign In</a></li>
+                <!-- <iframe
+                        src="https://developers.google.com/identity/sign-in/web/demos/signin_contextual_simple.jshtml?hl=en"
+                        style="width: 200px;
+                    height: 60px;"></iframe> -->
+                <li><a data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
             </ul>
 
 
@@ -37,40 +45,33 @@
         <li> <input id="search" type="search" required></li>
         <li><label class="label-icon" for="search"><i class="material-icons">search</i></label>
             <i class="material-icons">close</i></li>
-        <li><a href="#" class="">Sign Up</a></li>
-        <li><a href="#">Login</a></li>
+            <li><a data-target="modal2" class="modal-trigger" ref="#modal2">Sign In</a></li>
+            <!-- <iframe
+                    src="https://developers.google.com/identity/sign-in/web/demos/signin_contextual_simple.jshtml?hl=en"
+                    style="width: 200px;
+                height: 60px;"></iframe> -->
+            <li><a data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
     </ul>
-
+    <br>
+    <br>
+    <br>
     <section class="container">
         <div class="fullscreen">
-
-
             <div class="row">
                 <div class="col s12 m12 l12">
                     <div class="card">
-<!-- 
-                            <div id="search-form">
-                                    <form formaction="/search" class="white" method="get">
-                                    <input id="search-input" type="text" placeholder="Search Sound or Genre" name="search" formaction="/search">
-                                    <button for="search" type="submit"><i class="fa fa-search"></i></button>
-                                    </form>
-                                </div> -->
-                                <div class="input-field" id="search-form">
-                                    <form formaction="/search" class="white" method="get">
-                                      
-                                        <input id="search-input" type="text" placeholder="Search Sound or Genre" name="search" formaction="/search">
-                                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                                        
-                                      
-                                    </form>
-                                </div>
- 
-                        <!-- <div class="card-image">
-                            <img
-                                src="http://www.dwdrums.com/images/artists/wallpaper/enoughSaid-TommyClufetos-16x9.jpg">
-                            <span class="card-title" id="bank-name">Bitchin Drums</span>
-                        </div> -->
-                        <div class="card-content" id="user-content">
+                        <div class="card-title center-align search-title">Search our Sounds!</div>
+
+                        
+                            <div class="input-field search-title" id="search-form">
+                                <form formaction="/search" class="white" method="get">
+
+                                    <input id="search-input" type="text" placeholder="Search Sound or Genre"
+                                        name="search" formaction="/search">
+                                    <label class="label-icon right" for="search"><i class="material-icons">search</i></label>
+                                </form>
+                            </div>
+                            <div class="card-content center-align">
                             <span class="card-title">Sounds</span>
                             <!-- <div class="chip">
                                 House
@@ -78,10 +79,9 @@
                             <div class="chip">
                                 Drums
                             </div> -->
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                                I am convenient because I require little markup to use effectively.</p>
+                            <a id="words-for-card"><p>Here is where you can find the best sounds from the best producers around the town!</p></a>
                         </div>
-                        <div class="card-action" id="user-website">
+                        <div class="card-action" id="search-card">
                             <a href="#">This is a link</a>
                             <table>
                                 <thead>
@@ -149,14 +149,46 @@
 
             </div>
         </div>
-        </div>
+        
     </section>
     <br>
     <br>
     <br>
     <br>
 
-
+        <!-- Sign in modal -->
+        <div id="modal2" class="modal">
+                <div class="modal-content">
+                    <h4>Login</h4>
+                    <form>
+                        <input type="email" placeholder="email">
+                        <input type="password" placeholder="Password">
+                </div>
+                <div class="modal-footer">
+                    <a type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                </div>
+                </form>
+            </div>
+    
+            <!-- Sign up modal -->
+            <div id="modal3" class="modal">
+                <div class="modal-content">
+                    <h4>Sign Up</h4>
+                    <form>
+                        <input type="text" placeholder="First Name">
+                        <input type="text" placeholder="Last Name">
+                        <input type="email" placeholder="email">
+                        <input type="password" placeholder="Password">
+                </div>
+                <div class="modal-footer">
+                    <a type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                </div>
+                </form>
+                <div class="center-align"><h5>Already have an account</h5><br>
+                    <button data-target="modal2" class="modal-trigger btn black center-align" ref="#modal2">Login</button><br><br>
+                </div>
+            </div>
+        </section>
 
     <footer class="page-footer">
         <div class="container">
@@ -192,7 +224,9 @@
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            $('#search-card').hide();
             $('.sidenav').sidenav();
+            $('.modal').modal();
             $('.slider').slider();
             $('.carousel.carousel-slider').carousel({
                 fullWidth: true
@@ -203,6 +237,3 @@
 
         })
     </script>
-</body>
-
-</html>
