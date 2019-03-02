@@ -74,7 +74,7 @@
                     <p class="back-1-body">Join our growing group of producers<br>
                         and contribute to our library of high quality<br>
                         sounds!</p>
-                    <p><a class="btn black center-align" href="/users">Login</a></p>
+                    <p><a class="btn black center-align" data-target="modal3" class="modal-trigger" href="#modal3">Sign Up</a></p>
                 </div>
 
             </div>
@@ -106,7 +106,7 @@
                     <p class="">Join our growing group of producers<br>
                         and contribute to our library of high quality<br>
                         sounds!</p>
-                    <p><a class="btn black center-align" href="/users">Login</a></p>
+                    <p><a class="btn black center-align" data-target="modal2" class="modal-trigger" ref="#modal2">Login</a></p>
                 </div>
 
             </div>
@@ -133,11 +133,11 @@
         <div class="container sec-3-content">
             <h3>Contact Us</h3><br>
             <div class="row">
-                <form class="col s12">
+                <form class="col s12" action="mailto:josh.jenkin@live.com" method="post" enctype="text/plain">
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="last_name" type="text" class="validate">
-                            <label for="last_name">First Name</label>
+                            <input id="first_name" type="text" class="validate">
+                            <label for="first_name">First Name</label>
                         </div>
                         <div class="input-field col s6">
                             <input id="last_name" type="text" class="validate">
@@ -152,11 +152,11 @@
                     </div>
                     <div class="row">
                         <div class="col s12">
-                            This is an inline input field:
+                            Let us know what's in your brain!:
                             <div class="input-field inline">
-                                <input id="email_inline" type="email" class="validate">
-                                <label for="email_inline">Email</label>
-                                <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+                                <input id="email_text" type="text">
+                                <label for="email_text">Brain Contents</label>
+                          
                                 <button class="btn black" type="submit" href="#">Submit</button>
                             </div>
                         </div>
@@ -196,6 +196,9 @@
                 <a type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</a>
             </div>
             </form>
+            <div class="center-align"><h5>Already have an account</h5><br>
+                <button data-target="modal2" class="modal-trigger btn black center-align" ref="#modal2">Login</button><br><br>
+            </div>
         </div>
     </section>
 
@@ -213,7 +216,7 @@
                     <ul>
                         <li><a class="grey-text text-lighten-3" href="#!">Contact Us</a></li>
                         <li><a class="grey-text text-lighten-3" href="#!">Login</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Sign Up</a></li>
+                        <li><a class="grey-text text-lighten-3" data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
                         <li><a class="grey-text text-lighten-3" href="#!">Blog</a></li>
                     </ul>
                 </div>
