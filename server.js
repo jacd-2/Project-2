@@ -20,7 +20,6 @@ aws.config.region = 'us-west-2';
 // app.engine('html', require('ejs').renderFile);
 // app.listen(process.env.PORT || 3000);
 
-const S3_BUCKET = process.env.S3_BUCKET;
 // Handlebars
 // app.engine(
 //   "handlebars",

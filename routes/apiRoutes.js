@@ -1,5 +1,5 @@
 var db = require("../models");
-const aws = require('aws-sdk');
+var aws = require('aws-sdk');
 
 
 module.exports = function (app) {
@@ -59,14 +59,15 @@ module.exports = function (app) {
     });
   });
 
+  var S3_BUCKET = process.env.S3_BUCKET;
   // S3 get routes
   app.get('/sign-s3', (req, res) => {
     console.log(req.query, "hello");
-    const s3 = new aws.S3();
-    const fileName = req.query['file-name'];
-    const fileType = req.query['file-type'];
-    const S3_BUCKET = 'jacd-music-project';
-    const s3Params = {
+    var s3 = new aws.S3();
+    var fileName = req.query['file-name'];
+    var fileType = req.query['file-type'];
+    // var S3_BUCKET = 'jacd-music-project';
+    var s3Params = {
       Bucket: S3_BUCKET,
       Key: fileName,
       Expires: 60,
@@ -79,7 +80,7 @@ module.exports = function (app) {
         console.log(err);
         return res.end();
       }
-      const returnData = {
+      var returnData = {
         signedRequest: data,
         url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
       };
