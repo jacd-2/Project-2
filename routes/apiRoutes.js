@@ -1,9 +1,11 @@
 require('dotenv').config()
 var db = require("../models");
 // var url = require('url');
-var aws = require('aws-sdk');
-aws.config.region = 'us-west-2';
-
+var AWS = require('aws-sdk');
+// AWS.config.region = 'us-west-2';
+// var config = new AWS.Config({
+//   accessKeyId: process.env.accessKeyId, secretAccessKey: process.env.secretAccessKey, region: 'us-west-2'
+// });
 module.exports = function (app) {
   // Get all examples
   app.get("/api/users/", function (req, res) {
@@ -64,9 +66,12 @@ module.exports = function (app) {
   var S3_BUCKET = process.env.S3_BUCKET;
 
   // S3 get routes
+  // console.log(process.env)
   app.get('/sign-s3', (req, res) => {
     console.log(req.query, "hello");
-    var s3 = new aws.S3();
+    var s3 = new AWS.S3({
+      accessKeyId: process.env.AWSAccessKeyId, secretAccessKey: process.env.AWSSecretKey, region: 'us-west-2'
+    });
     var fileName = req.query['file-name'];
     var fileType = req.query['file-type'];
     // var S3_BUCKET = 'jacd-music-project';
@@ -79,13 +84,15 @@ module.exports = function (app) {
     };
 
     s3.getSignedUrl('putObject', s3Params, (err, data) => {
+      console.log(s3)
+      console.log(`https://${S3_BUCKET}.s3.amazonAWS.com/${fileName}`);
       if (err) {
         console.log(err);
         return res.end();
       }
       var returnData = {
         signedRequest: data,
-        url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
+        url: `https://${S3_BUCKET}.s3.amazonAWS.com/${fileName}`
       };
       res.write(JSON.stringify(returnData));
       res.end();
