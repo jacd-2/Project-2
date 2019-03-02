@@ -1,7 +1,7 @@
 var db = require("../models");
 var url = require('url');
 var aws = require('aws-sdk');
-
+aws.config.region = 'us-west-2';
 
 module.exports = function (app) {
   // Get all examples
