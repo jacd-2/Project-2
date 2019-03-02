@@ -1,4 +1,5 @@
 var db = require("../models");
+var url = require('url');
 var aws = require('aws-sdk');
 
 
@@ -59,7 +60,7 @@ module.exports = function (app) {
     });
   });
 
-  // var S3_BUCKET = process.env.S3_BUCKET;
+  
   // S3 get routes
   app.get('/sign-s3', (req, res) => {
     console.log(req.query, "hello");
