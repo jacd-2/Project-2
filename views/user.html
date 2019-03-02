@@ -166,7 +166,7 @@
     <div id="modal1" class="modal">
       <div class="modal-content">
         <h4>Upload</h4>
-        <p>A bunch of text</p>
+        <p>Choose a name for your file, what genre it is and upload the file</p>
         <form class="col s12" id="submit-form">
           <div class="row">
             <div class="input-field col s6">
@@ -178,7 +178,7 @@
               <label for="genre">Genre</label> -->
 
               <select class="form-control" id="genre">
-                <option value="" disabled selected>Choose your option</option>
+                <option value="" disabled selected>Choose a genre</option>
                 <option>House</option>
                 <option>Dubstep</option>
                 <option>EDM</option>
@@ -189,7 +189,20 @@
           </div>
           <div class="row">
             <!-- <input type="file"> -->
-            <input id="file-up" type="file"> <a>Upload MP3</a>
+            <input id="file-input" type="file"> <a>Upload MP3</a><br>
+            <p><label for="file">File progress:</label>
+              <progress id="file-load" max="100" value=""> 70% </progress>
+            </p>
+            <!-- possibly use to login while uploading -->
+            <!-- <img id="preview" src="/images/default.png">
+
+            <form method="POST" action="/save-details">
+              <input type="hidden" id="avatar-url" name="avatar-url" value="/images/default.png">
+              <input type="text" name="username" placeholder="Username"><br>
+              <input type="text" name="full-name" placeholder="Full name"><br><br>
+              <input type="submit" value="Update profile">
+            </form> -->
+
           </div>
           <div class="modal-footer">
             <button type="submit" id="upload-song" class="modal-close waves-effect waves-green btn-flat">Agree</button>
@@ -269,6 +282,51 @@
         event.preventDefault();
       });
     });
+
+    // handling mp3 submition
+    (() => {
+      document.getElementById("file-input").onchange = () => {
+        const files = document.getElementById('file-input').files;
+        const file = files[0];
+        if (file == null) {
+          return alert('No file selected.');
+        }
+        getSignedRequest(file);
+      };
+    })();
+    function getSignedRequest(file) {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', `/users/sign-s3?file-name=${file.name}&file-type=audio/mpeg`);
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            uploadFile(file, response.signedRequest, response.url);
+          }
+          else {
+            alert('Could not get signed URL.');
+          }
+        }
+      };
+      xhr.send();
+    }
+    function uploadFile(file, signedRequest, url) {
+      const xhr = new XMLHttpRequest();
+      xhr.open('PUT', signedRequest);
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            document.getElementById('sound-name').src = url;
+            // document.getElementById('avatar-url').value = url;
+          }
+          else {
+            alert('Could not upload file.');
+          }
+        }
+      };
+      xhr.send(file);
+    }
+
   </script>
 </body>
 
