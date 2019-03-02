@@ -1,16 +1,16 @@
 {
   "development": {
-    "username": "wplgmex8ko3y15q4",
-    "password": "c8d6t0og5swh1hgo",
-    "database": "ekgruzthzw386tgo",
-    "host": "k3xio06abqa902qt.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "username": "root",
+    "password": "password",
+    "database": "song_info_db",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
-    "username": "wplgmex8ko3y15q4",
-    "password": "c8d6t0og5swh1hgo",
-    "database": "ekgruzthzw386tgo",
-    "host": "k3xio06abqa902qt.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "username": "root",
+    "password": "password",
+    "database": "song_info_db",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
