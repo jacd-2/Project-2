@@ -59,14 +59,14 @@ module.exports = function (app) {
     });
   });
 
-  var S3_BUCKET = process.env.S3_BUCKET;
+  // var S3_BUCKET = process.env.S3_BUCKET;
   // S3 get routes
   app.get('/sign-s3', (req, res) => {
     console.log(req.query, "hello");
     var s3 = new aws.S3();
     var fileName = req.query['file-name'];
     var fileType = req.query['file-type'];
-    // var S3_BUCKET = 'jacd-music-project';
+    var S3_BUCKET = 'jacd-music-project';
     var s3Params = {
       Bucket: S3_BUCKET,
       Key: fileName,
