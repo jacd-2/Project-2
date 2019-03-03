@@ -239,14 +239,16 @@
   <div id="modal3" class="modal">
     <div class="modal-content">
       <h4>Sign Up</h4>
-      <form>
-        <input type="text" placeholder="First Name">
-        <input type="text" placeholder="Last Name">
-        <input type="email" placeholder="email">
-        <input type="password" placeholder="Password">
+      <form id="sign-up-submit">
+        <input id="new-user-name" type="text" placeholder="User Name">
+        <input id="user-first-name" type="text" placeholder="First Name">
+        <input id="user-last-name" type="text" placeholder="Last Name">
+        <input id="user-up-email" type="email" placeholder="email">
+        <input id="user-up-password" placeholder="Password">
     </div>
     <div class="modal-footer">
-      <a type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+      <!-- href="/users" -->
+      <button type="submit" class="modal-close waves-effect waves-green btn-flat">Agree</button>
     </div>
     </form>
     <div class="center-align">
@@ -318,6 +320,59 @@
       });
       $('.dropdown-trigger').dropdown();
 
+
+
+      // pushing new user info to DB
+
+      var userName = $("#new-user-name");
+      var firstName = $("#user-first-name");
+      var lastName = $("#user-last-name");
+      var userEmail = $("#user-up-email");
+      var userPassword = $("#user-up-password");
+      console.log(firstName)
+      $("#sign-up-submit").on("submit", function signUpSubmit(event) {
+        event.preventDefault();
+        validateUser();
+        // console.log(newUser);
+      })
+
+      function validateUser(Users) {
+        var newUser = {
+          user_name: userName.val().trim().toLowerCase(),
+          first_name: firstName.val().trim().toLowerCase(),
+          last_name: lastName.val().trim().toLowerCase(),
+          email: userEmail.val().trim().toLowerCase(),
+          password: userPassword.val().trim().toLowerCase()
+        }
+        $.get("/api/users", Users, function (data) {
+          console.log("looking for this!!!!!!!!!!!!", data);
+          for (var i = 0; i < data.length; i++) {
+            if (newUser.user_name === data[i].user_name) {
+              M.toast({ html: 'That User Name is already taken, please choose another' });
+              return;
+            } else if (newUser.email === data[i].email) {
+              M.toast({ html: 'We already have an account with that email, please sign in!' });
+              return;
+            } 
+            if ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email)) {
+              submitUser(newUser);
+            }
+          }
+        })
+      }
+
+      function submitUser(User) {
+        $.post("/api/users", User, function () {
+          // window.location.href = "/users/:id";
+        });
+      }
+
+
+
+
+
+
+
       var input = $("input:file");
       $("file-up")
         .text("For this type jQuery found " + input.length + ".")
@@ -340,12 +395,13 @@
     })();
     function getSignedRequest(file) {
       var xhr = new XMLHttpRequest();
-      xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=audio/mpeg`);
+      xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
             var response = JSON.parse(xhr.responseText);
             uploadFile(file, response.signedRequest, response.url);
+            console.log(file, response.signedRequest, response.url);
           }
           else {
             alert('Could not get signed URL.');
@@ -356,12 +412,13 @@
     }
     function uploadFile(file, signedRequest, url) {
       var xhr = new XMLHttpRequest();
-      xhr.open('PUT', signedRequest);
+      xhr.open('POST', signedRequest);
+      console.log(file, signedRequest, url);
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
-            console.log(url);
-            document.getElementById('sound-name').src = url;
+            console.log(file);
+            document.getElementById('file-input').src = url;
 
             // document.getElementById('avatar-url').value = url;
           }

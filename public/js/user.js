@@ -14,28 +14,28 @@ $(document).ready(function () {
   }
 
   // pushing user ifo to db
-  var firstName = $("#user-name");
-  var lastName = $("#user-last");
-  var userEmail = $("#user-up-email");
-  var userPassword = $("#user-up-password");
+  // var firstName = $("#user-name");
+  // var lastName = $("#user-last");
+  // var userEmail = $("#user-up-email");
+  // var userPassword = $("#user-up-password");
 
-  $("#sign-up-submit").on("submit", function signUpSubmit(event){
-    event.preventDefault();
-    console.log(firstName)
-    var newUser = {
-      first_name: firstName.val().trim().toLowerCase(),
-      last_name: lastName.val().trim().toLowerCase(),
-      email: userEmail.val().trim().toLowerCase(),
-      password: userPassword.val().trim().toLowerCase()
-    }
-    submitUser(newUser);
-    console.log(newUser);
-  })
-  function submitUser(){
-    $.post("/api/users", User, function () {
-      // window.location.href = "/users/:id";
-    });
-  }
+  // $("#sign-up-submit").on("submit", function signUpSubmit(event){
+  //   event.preventDefault();
+  //   console.log(firstName)
+  //   var newUser = {
+  //     first_name: firstName.val().trim().toLowerCase(),
+  //     last_name: lastName.val().trim().toLowerCase(),
+  //     email: userEmail.val().trim().toLowerCase(),
+  //     password: userPassword.val().trim().toLowerCase()
+  //   }
+  //   submitUser(newUser);
+  //   console.log(newUser);
+  // })
+  // function submitUser(){
+  //   $.post("/api/users", User, function () {
+  //     // window.location.href = "/users/:id";
+  //   });
+  // }
 
 
   var soundName = $("#sound-name");
