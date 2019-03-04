@@ -41,8 +41,7 @@ module.exports = function (app) {
 
   // Create a user in DB
   app.post("/api/users", function (req, res) {
-
-    console.log(req.body);
+    // console.log(req.body);
     db.Users.create({
       user_name: req.body.user_name,
       first_name: req.body.first_name,
@@ -63,8 +62,35 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/api/users/:id", function (req, res) {
+    console.log(req.body.id);
+    
+    db.Users.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbUsers) {
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(dbUsers);
+    });
+  });
 
 
+  // getting specific user sounds
+  app.get("/api/sounds", function (req, res) {
+    console.log(req.query.users_id);
+    var query = {};
+    if (req.query.users_id) {
+      query.UserId = req.query.users_id;
+    }
+    db.Sounds.findAll({
+      where: query,
+      include: [db.Users]
+    }).then(function (dbSounds) {
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(dbSounds);
+    });
+  });
 
 
   // S3 API routes

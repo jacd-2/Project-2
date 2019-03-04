@@ -225,12 +225,12 @@
   <div id="modal2" class="modal">
     <div class="modal-content">
       <h4>Login</h4>
-      <form>
-        <input type="email" placeholder="email">
-        <input type="password" placeholder="Password">
+      <form id="sign-in-submit">
+        <input id="existing-email" type="email" placeholder="email">
+        <input id="existing-password" type="password" placeholder="Password">
     </div>
     <div class="modal-footer">
-      <a type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+      <button type="submit" class="modal-close waves-effect waves-green btn-flat">Agree</button>
     </div>
     </form>
   </div>
@@ -345,27 +345,64 @@
           password: userPassword.val().trim().toLowerCase()
         }
         $.get("/api/users", Users, function (data) {
-          console.log("looking for this!!!!!!!!!!!!", data);
-          for (var i = 0; i < data.length; i++) {
-            if (newUser.user_name === data[i].user_name) {
-              M.toast({ html: 'That User Name is already taken, please choose another' });
-              return;
-            } else if (newUser.email === data[i].email) {
-              M.toast({ html: 'We already have an account with that email, please sign in!' });
-              return;
-            } 
-            if ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email)) {
-              submitUser(newUser);
-            }
-          }
-        })
-      }
+          // console.log("looking for this!!!!!!!!!!!!", data);
 
+          for (var i = 0; i < data.length; i++) {
+
+            // switch (data[i]) {
+            //   case (newUser.user_name === data[i].user_name):
+            //     M.toast({ html: 'That User Name is already taken, please choose another' });
+            //     break;
+            //   case (newUser.email === data[i].email):
+            //     M.toast({ html: 'We already have an account with that email, please sign in!' });
+            //     break;
+            //   case ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email)):
+            //     submitUser(newUser);
+            //     break;
+            // }
+            if (newUser.user_name === data[i].user_name) {
+              M.toast({ html: '!!!That User Name is already taken, please choose another!!!', displayLength: 5000 });
+              break;
+            } else if (newUser.email === data[i].email) {
+              M.toast({ html: '!!!We already have an account with that email, please sign in!!!', displayLength: 5000 });
+              break;
+            } else {
+              // ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email))
+              submitUser(newUser);
+            };
+          };
+        });
+      };
+      // submit new user to db
       function submitUser(User) {
         $.post("/api/users", User, function () {
           // window.location.href = "/users/:id";
         });
-      }
+      };
+
+      // find sounds by specific user
+      $("#sign-in-submit").on("submit", function (event) {
+        event.preventDefault();
+        signInExistingUser();
+      });
+
+      function signInExistingUser(Users) {
+        var existEmail = $("#existing-email");
+        var existPass = $("#existing-password");
+        var exEM = existEmail.val().trim();
+        var exPass = existPass.val().trim();
+          // console.log(exEM, exPass);
+        $.get("/api/users", Users, function (data) {
+          console.log(data);
+          for (var i = 0; i < data.length; i++){
+            // console.log(data[i].user_name);
+            if ((exEM === data[i].email) && (exPass === data[i].password)) {
+              console.log(data[i].user_name);
+            };
+          };
+        });
+
+      };
 
 
 
