@@ -258,11 +258,11 @@
 
     $(document).ready(function () {
       console.log("ready!");
-      $("section").hide();
+      // $("section").hide();
       $('.sidenav').sidenav();
       $('.slider').slider();
       $('.modal').modal();
-      $("#modal2").show();
+      // $("#modal2").show();
       $('.carousel.carousel-slider').carousel({
         fullWidth: true
       });
@@ -270,7 +270,7 @@
 
       // putting footer on bottom on page load
       // $("footer").css({"position": "absolute", "bottom": "0", "width": "100%"})
-      $("footer").hide();
+      // $("footer").hide();
       // pushing new user info to DB
 
       var userName = $("#new-user-name");
@@ -282,7 +282,7 @@
       $("#sign-up-submit").on("submit", function signUpSubmit(event) {
         event.preventDefault();
         validateUser();
-        // console.log(newUser);
+        
       })
 
       function validateUser(Users) {
@@ -294,8 +294,8 @@
           password: userPassword.val().trim().toLowerCase()
         }
         $.get("/api/users", Users, function (data) {
-          // console.log("looking for this!!!!!!!!!!!!", data);
-
+          console.log("looking for this!!!!!!!!!!!!", data);
+          submitUser(newUser);
           for (var i = 0; i < data.length; i++) {
 
             // switch (data[i]) {
@@ -315,8 +315,9 @@
             } else if (newUser.email === data[i].email) {
               M.toast({ html: '!!!We already have an account with that email, please sign in!!!', displayLength: 5000 });
               break;
-            } else {
+            } if ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email)) {
               // ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email))
+              
               submitUser(newUser);
             };
           };
@@ -365,12 +366,19 @@
 
               existEmail.val("")
               existPass.val("")
+              removeSignins();
             };
           };
         });
 
       };
-
+      function removeSignins() {
+        $("#nav-mobile").html(
+          "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
+          "<li><a href='/' class='modal-trigger' id='sign-out'>Sign Out</a></li>"
+        )
+        // $("#sign-out")
+      }
 
 
 
