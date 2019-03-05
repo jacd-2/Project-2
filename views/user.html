@@ -282,7 +282,7 @@
       $("#sign-up-submit").on("submit", function signUpSubmit(event) {
         event.preventDefault();
         validateUser();
-        
+
       })
 
       function validateUser(Users) {
@@ -317,7 +317,7 @@
               break;
             } if ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email)) {
               // ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email))
-              
+
               submitUser(newUser);
             };
           };
@@ -366,19 +366,25 @@
 
               existEmail.val("")
               existPass.val("")
-              removeSignins();
+              $("#nav-mobile").html(
+                "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
+                "<li><a href='/' class='modal-trigger' id='sign-out'>Hello " + data[i].user_name + "!</a></li > " +
+                "<li><a href='/' class='modal-trigger' id='sign-out'>Sign Out</a></li>"
+              )
+              // removeSignins();
             };
           };
         });
 
       };
-      function removeSignins() {
-        $("#nav-mobile").html(
-          "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
-          "<li><a href='/' class='modal-trigger' id='sign-out'>Sign Out</a></li>"
-        )
-        // $("#sign-out")
-      }
+      // function removeSignins() {
+      //   $("#nav-mobile").html(
+      //     "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
+      //     "<li><a href='/' class='modal-trigger' id='sign-out'>Hello" + </a></li>" +
+      //     "<li><a href='/' class='modal-trigger' id='sign-out'>Sign Out</a></li>"
+      //   )
+      //   // $("#sign-out")
+      // }
 
 
 
