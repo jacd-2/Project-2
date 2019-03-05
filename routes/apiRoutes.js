@@ -18,6 +18,8 @@ module.exports = function (app) {
   //   })
   // });
 
+// ----------------------------Searching DB for sounds--------------------------------
+
   app.get("/api/search", function (req, res) {
     db.Sounds.findAll({}).then(function (dbSounds) {
       // console.log(dbSounds);
@@ -25,19 +27,9 @@ module.exports = function (app) {
     })
   });
 
+// -----------------------------------------------------------------------------------
 
-  // Create a new example
-  app.post("/api/sounds", function (req, res) {
-    console.log(req.body);
-    db.Sounds.create({
-      name: req.body.name,
-      genre: req.body.genre,
-      file: req.body.file
-    }).then(function (dbSounds) {
-      // We have access to the new todo as an argument inside of the callback function
-      res.json(dbSounds);
-    });
-  });
+// ----------------------------------User Info----------------------------------------
 
   // Create a user in DB
   app.post("/api/users", function (req, res) {
@@ -76,6 +68,11 @@ module.exports = function (app) {
   // });
 
 
+// -----------------------------------------------------------------------------------
+
+
+// -----------------------Adding new sound to DB with user info-----------------------
+
   // getting specific user sounds
   app.get("/api/sounds", function (req, res) {
     console.log(req.query.users_id);
@@ -92,6 +89,28 @@ module.exports = function (app) {
     });
   });
 
+  // Create a new example this will become what is below
+  app.post("/api/sounds", function (req, res) {
+    console.log(req.body);
+    db.Sounds.create({
+      name: req.body.name,
+      genre: req.body.genre,
+      file: req.body.file
+    }).then(function (dbSounds) {
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(dbSounds);
+    });
+  });
+  app.post("/api/posts", function(req, res) {
+    db.Post.create(req.body).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  });
+
+// ----------------------------------------------------------------------------------
+
+
+// ----------------------------------S3 Routes---------------------------------------
 
   // S3 API routes
   var S3_BUCKET = process.env.S3_BUCKET;

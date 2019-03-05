@@ -6,12 +6,12 @@ module.exports = function(sequelize, DataTypes) {
     email: DataTypes.STRING,
     password: DataTypes.STRING
   });
-  // Users.associate = function(models) {
-  // //   // Associating Author with Posts
-  // //   // When an Author is deleted, also delete any associated Posts
-  //   Users.hasMany(models.Sounds, {
-  //     onDelete: "cascade"
-  //   });
-  // };
+  Users.associate = function(models) {
+  //   // Associating Author with Posts
+  //   // When an Author is deleted, also delete any associated Posts
+    Users.hasMany(models.Sounds, {
+      onDelete: "cascade"
+    });
+  };
   return Users;
 };
