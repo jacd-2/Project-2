@@ -74,3 +74,6 @@ section {
 .search-title {
     padding: 25px;
 }
+/* .search-button-bank {
+    button: focus {outline:0;}
+} */

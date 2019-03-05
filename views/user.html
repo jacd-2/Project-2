@@ -64,11 +64,11 @@
           <div class="card">
             <div class="card-image">
               <img src="../assets/images/back-1.jpg">
-              <span class="card-title" id="user-name">User Name</span>
+              <span class="card-title" id="specific-user-name"></span>
             </div>
             <div class="card-content">
-              <span class="card-title" id="user-name">User Name</span>
-              <h6>More Info</h6><br>
+              <!-- <span class="card-title" id="user-name">User Name</span> -->
+              <h6 id="specific-user-email"></h6><br>
               <p>I am a very simple card. I am good at containing small bits of information.
                 I am convenient because I require little markup to use effectively.</p>
             </div>
@@ -77,69 +77,15 @@
               <table>
                 <thead>
                   <tr>
+                  <tr>
                     <th id="bank-name">Sounds</th>
-                    <th>House</th>
-                    <th>$15.00</th>
-                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
+                    <th>Genre</th>
+                    <th>File</th>
+                    <th><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></th>
                   </tr>
                 </thead>
 
-                <tbody>
-                  <tr>
-                    <td><a id="sample-name">kick</a>
-                      <div class="chip">
-                        House
-                      </div>
-                    </td>
-
-                    <td><a id="play-sample" href="#"><i class="small material-icons">play_circle_outline</i></a></td>
-                    <td>$0.25</td>
-                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
-                    <td><button class="btn black">Delete</button></td>
-                  </tr>
-                  <tr>
-                    <td>Snare</td>
-                    <td><a id="play-sample" href="#"><i class="small material-icons">play_circle_outline</i></a></td>
-                    <td>$0.25</td>
-                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
-                  </tr>
-                  <tr>
-                    <td>Build</td>
-                    <td><a id="play-sample" href="#"><i class="small material-icons">play_circle_outline</i></a></td>
-                    <td>$0.25</td>
-                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
-                  </tr>
-                  <tr>
-                    <td>Hat Closed</td>
-                    <td><a id="play-sample" href="#"><i class="small material-icons">play_circle_outline</i></a></td>
-                    <td>$0.25</td>
-                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
-                  </tr>
-                  <tr>
-                    <td>Hat Open</td>
-                    <td><a id="play-sample" href="#"><i class="small material-icons">play_circle_outline</i></a></td>
-                    <td>$0.25</td>
-                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
-                  </tr>
-                  <tr>
-                    <td>kick</td>
-                    <td><a id="play-sample" href="#"><i class="small material-icons">play_circle_outline</i></a></td>
-                    <td>$0.25</td>
-                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
-                  </tr>
-                  <tr>
-                    <td>kick</td>
-                    <td><a id="play-sample"><i class="small material-icons">play_circle_outline</i></a></td>
-                    <td>$0.25</td>
-                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
-                  </tr>
-                  <tr>
-                    <td>kick</td>
-                    <td><a id="play-sample" href="#"><i class="small material-icons">play_circle_outline</i></a></td>
-                    <td>$0.25</td>
-                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
-                  </tr>
-
+                <tbody id="th-body-user">
 
                 </tbody>
               </table>
@@ -225,12 +171,12 @@
   <div id="modal2" class="modal">
     <div class="modal-content">
       <h4>Login</h4>
-      <form>
-        <input type="email" placeholder="email">
-        <input type="password" placeholder="Password">
+      <form id="sign-in-submit">
+        <input id="existing-email" type="email" placeholder="email">
+        <input id="existing-password" type="password" placeholder="Password">
     </div>
     <div class="modal-footer">
-      <a type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+      <button type="submit" class="modal-close waves-effect waves-green btn-flat">Agree</button>
     </div>
     </form>
   </div>
@@ -239,14 +185,16 @@
   <div id="modal3" class="modal">
     <div class="modal-content">
       <h4>Sign Up</h4>
-      <form>
-        <input type="text" placeholder="First Name">
-        <input type="text" placeholder="Last Name">
-        <input type="email" placeholder="email">
-        <input type="password" placeholder="Password">
+      <form id="sign-up-submit">
+        <input id="new-user-name" type="text" placeholder="User Name">
+        <input id="user-first-name" type="text" placeholder="First Name">
+        <input id="user-last-name" type="text" placeholder="Last Name">
+        <input id="user-up-email" type="email" placeholder="email">
+        <input id="user-up-password" placeholder="Password">
     </div>
     <div class="modal-footer">
-      <a type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+      <!-- href="/users" -->
+      <button type="submit" class="modal-close waves-effect waves-green btn-flat">Agree</button>
     </div>
     </form>
     <div class="center-align">
@@ -310,13 +258,124 @@
 
     $(document).ready(function () {
       console.log("ready!");
+      $("section").hide();
       $('.sidenav').sidenav();
       $('.slider').slider();
       $('.modal').modal();
+      $("#modal2").show();
       $('.carousel.carousel-slider').carousel({
         fullWidth: true
       });
       $('.dropdown-trigger').dropdown();
+
+      // putting footer on bottom on page load
+      // $("footer").css({"position": "absolute", "bottom": "0", "width": "100%"})
+      $("footer").hide();
+      // pushing new user info to DB
+
+      var userName = $("#new-user-name");
+      var firstName = $("#user-first-name");
+      var lastName = $("#user-last-name");
+      var userEmail = $("#user-up-email");
+      var userPassword = $("#user-up-password");
+      console.log(firstName)
+      $("#sign-up-submit").on("submit", function signUpSubmit(event) {
+        event.preventDefault();
+        validateUser();
+        // console.log(newUser);
+      })
+
+      function validateUser(Users) {
+        var newUser = {
+          user_name: userName.val().trim().toLowerCase(),
+          first_name: firstName.val().trim().toLowerCase(),
+          last_name: lastName.val().trim().toLowerCase(),
+          email: userEmail.val().trim().toLowerCase(),
+          password: userPassword.val().trim().toLowerCase()
+        }
+        $.get("/api/users", Users, function (data) {
+          // console.log("looking for this!!!!!!!!!!!!", data);
+
+          for (var i = 0; i < data.length; i++) {
+
+            // switch (data[i]) {
+            //   case (newUser.user_name === data[i].user_name):
+            //     M.toast({ html: 'That User Name is already taken, please choose another' });
+            //     break;
+            //   case (newUser.email === data[i].email):
+            //     M.toast({ html: 'We already have an account with that email, please sign in!' });
+            //     break;
+            //   case ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email)):
+            //     submitUser(newUser);
+            //     break;
+            // }
+            if (newUser.user_name === data[i].user_name) {
+              M.toast({ html: '!!!That User Name is already taken, please choose another!!!', displayLength: 5000 });
+              break;
+            } else if (newUser.email === data[i].email) {
+              M.toast({ html: '!!!We already have an account with that email, please sign in!!!', displayLength: 5000 });
+              break;
+            } else {
+              // ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email))
+              submitUser(newUser);
+            };
+          };
+        });
+      };
+      // submit new user to db
+      function submitUser(User) {
+        $.post("/api/users", User, function () {
+          // window.location.href = "/users/:id";
+        });
+      };
+
+      // find sounds by specific user
+      $("#sign-in-submit").on("submit", function (event) {
+        event.preventDefault();
+        signInExistingUser();
+      });
+
+      function signInExistingUser(Users) {
+        var existEmail = $("#existing-email");
+        var existPass = $("#existing-password");
+        var exEM = existEmail.val().trim();
+        var exPass = existPass.val().trim();
+        // console.log(exEM, exPass);
+        $.get("/api/users", Users, function (data) {
+          console.log(data);
+          for (var i = 0; i < data.length; i++) {
+            // console.log(data[i].user_name);
+            if ((exEM === data[i].email) && (exPass === data[i].password)) {
+              $("section").show();
+              $("#modal2").hide();
+              $("footer").show();
+              // $("footer").css({"position": "absolute", "margin-bottom": "0"})
+              console.log(data[i].user_name);
+              $("#specific-user-name").html(data[i].user_name);
+              $("#specific-user-email").html(data[i].email);
+              // $('#search-card').show();
+              // console.log(data[i].name, data[i].genre, data[i].file);
+              // displaying here specific sounds from a specific user
+              var displayTable = "<tr><td>" + data[i].name + "</td>" +
+                "<td>" + data[i].genre + "</td>" +
+                "<td>" + data[i].file + "</td>" +
+                "<td><a href='#'><img style='width:25px' src='../../assets/images/download.png'></a></td></tr>"
+              console.log(displayTable);
+              $(".th-body-user").append(displayTable);
+
+              existEmail.val("")
+              existPass.val("")
+            };
+          };
+        });
+
+      };
+
+
+
+
+
+
 
       var input = $("input:file");
       $("file-up")
@@ -340,12 +399,13 @@
     })();
     function getSignedRequest(file) {
       var xhr = new XMLHttpRequest();
-      xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=audio/mpeg`);
+      xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
             var response = JSON.parse(xhr.responseText);
             uploadFile(file, response.signedRequest, response.url);
+            console.log(file, response.signedRequest, response.url);
           }
           else {
             alert('Could not get signed URL.');
@@ -356,11 +416,14 @@
     }
     function uploadFile(file, signedRequest, url) {
       var xhr = new XMLHttpRequest();
-      xhr.open('PUT', signedRequest);
+      xhr.open('POST', signedRequest);
+      console.log(file, signedRequest, url);
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
-            document.getElementById('sound-name').src = url;
+            console.log(file);
+            document.getElementById('file-input').src = url;
+
             // document.getElementById('avatar-url').value = url;
           }
           else {

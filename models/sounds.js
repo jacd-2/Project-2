@@ -5,14 +5,14 @@ module.exports = function(sequelize, DataTypes) {
     file: DataTypes.STRING
   });
 
-  // Sounds.associate = function(models) {
-  //   // We're saying that a Post should belong to an Author
-  //   // A Post can't be created without an Author due to the foreign key constraint
-  //   Sounds.belongsTo(models.User, {
-  //     foreignKey: {
-  //       allowNull: false
-  //     }
-  //   });
-  // };
+  Sounds.associate = function(models) {
+    // We're saying that a Post should belong to an Author
+    // A Post can't be created without an Author due to the foreign key constraint
+    Sounds.belongsTo(models.Users, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
   return Sounds;
 };
