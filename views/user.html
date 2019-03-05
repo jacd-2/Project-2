@@ -20,12 +20,20 @@
 </head>
 
 <body>
+
   <nav>
     <div class="nav-wrapper">
       <a href="/" class="brand-logo logo"><img style="height:30px" src="../assets/images/download.png"> Logo</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><input id="search" type="search" required></li>
+<!--         <li><input style="color: white" id="search" type="search" required></li>     -->
+        <li>
+        <form action="../js/user.js">
+          Search <input id="search" type="search" required><br>
+          <input id="search-input" type="submit">
+        </form>
+
+        </li>
         <li><label href="/search" class="label-icon" for="search"><i class="material-icons">search</i></label>
           <i class="material-icons">close</i></li>
         <li><a href="#" class="">Sign Up</a></li>
@@ -73,7 +81,7 @@
                   </tr>
                 </thead>
 
-                <tbody>
+                <tbody id="t-body">
                   <tr>
                     <td><a id="sample-name">kick</a>
                       <div class="chip">
@@ -86,48 +94,12 @@
                     <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
                     <td><button class="btn black">Delete</button></td>
                   </tr>
-                  <tr>
-                    <td>Snare</td>
-                    <td><a id="play-sample" href="#"><i class="small material-icons">play_circle_outline</i></a></td>
-                    <td>$0.25</td>
-                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
-                  </tr>
+                    
                   <tr>
                     <td>Build</td>
                     <td><a id="play-sample" href="#"><i class="small material-icons">play_circle_outline</i></a></td>
                     <td>$0.25</td>
-                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
-                  </tr>
-                  <tr>
-                    <td>Hat Closed</td>
-                    <td><a id="play-sample" href="#"><i class="small material-icons">play_circle_outline</i></a></td>
-                    <td>$0.25</td>
-                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
-                  </tr>
-                  <tr>
-                    <td>Hat Open</td>
-                    <td><a id="play-sample" href="#"><i class="small material-icons">play_circle_outline</i></a></td>
-                    <td>$0.25</td>
-                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
-                  </tr>
-                  <tr>
-                    <td>kick</td>
-                    <td><a id="play-sample" href="#"><i class="small material-icons">play_circle_outline</i></a></td>
-                    <td>$0.25</td>
-                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
-                  </tr>
-                  <tr>
-                    <td>kick</td>
-                    <td><a id="play-sample"><i class="small material-icons">play_circle_outline</i></a></td>
-                    <td>$0.25</td>
-                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
-                  </tr>
-                  <tr>
-                    <td>kick</td>
-                    <td><a id="play-sample" href="#"><i class="small material-icons">play_circle_outline</i></a></td>
-                    <td>$0.25</td>
-                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
-                  </tr>
+                  
 
 
                 </tbody>
@@ -247,9 +219,9 @@
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script type="text/javascript" src="js/user.js"></script>
-  <script type="text/javascript" src="js/materialize.min.js"></script>
-  <script type="text/javascript">
+  <script type="text/javascript" src="../js/user.js"></script>
+<!--   <script type="text/javascript" src="../public/js/user.js"></script>
+ -->  <script type="text/javascript">
     $(document).ready(function () {
       $('.sidenav').sidenav();
       $('.slider').slider();

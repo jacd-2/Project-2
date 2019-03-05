@@ -1,15 +1,15 @@
 var db = require("../models");
+var UserDB = require('../models/users');
 
 
 module.exports = function (app) {
   // Get all examples
   app.get("/api/users/", function (req, res) {
     db.Sounds.findAll({
-      where: {
-        id: users
-      }
+     
     }).then(function (dbSounds) {
-      res.json(dbSounds);
+      console.log(dbSounds)
+      res.send(dbSounds)
     })
   });
 

@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
   console.log("test");
   // Gets an optional query string from our url (i.e. ?post_id=23)
@@ -58,15 +59,17 @@ $(document).ready(function () {
 //   window.location.href = "/search";
 // }
 
-  $("#search-form").on("submit", function () {
+  $("#search-input").on("click", function () {
     event.preventDefault();
     $(".th-body").empty();
+    console.log("this is only a test you cop");
+
     displaySounds();
-  });
+  }); 
 
   function displaySounds(Sounds) {
-
-    var searchIn = $("#search-input");
+    console.log("this is only a test you loser")
+    var searchIn = $("#search");
     var searchVal = searchIn.val().trim().toLowerCase();
     console.log(searchVal);
 
@@ -75,25 +78,25 @@ $(document).ready(function () {
         
         if (searchVal === data[i].genre) {
 
-        // console.log(data[i].name, data[i].genre, data[i].file);
+        console.log(data[i].name, data[i].genre, data[i].file);
 
         var displayTable = "<tr><td>" + data[i].name + "</td>" +
           "<td>" + data[i].genre + "</td>" +
           "<td>" + data[i].file + "</td>" +
           "<td><a href='#'><img style='width:25px' src='../../assets/images/download.png'></a></td></tr>"
-        console.log(displayTable);
-        $(".th-body").append(displayTable);
+        //console.log(displayTable);
+        $("#t-body").append(displayTable);
 
         } else if (searchVal === data[i].name) {
 
-          // console.log(data[i].name, data[i].genre, data[i].file);
+          console.log(data[i].name, data[i].genre, data[i].file);
   
           var displayTable = "<tr><td>" + data[i].name + "</td>" +
             "<td>" + data[i].genre + "</td>" +
             "<td>" + data[i].file + "</td>" +
             "<td><a href='#'><img style='width:25px' src='../../assets/images/download.png'></a></td></tr>"
           console.log(displayTable);
-          $(".th-body").append(displayTable);
+          $("#t-body").append(displayTable);
           
         } else {
           console.log("We don't have any Sounds that match that search")

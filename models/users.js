@@ -1,13 +1,21 @@
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('song_info_db', 'root', '1Likeomlets', {
+  dialect: 'mysql'
+})
+
 module.exports = function(sequelize, DataTypes) {
   var Users = sequelize.define("user", {
-    name: DataTypes.STRING
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true 
+    },
+    name: DataTypes.STRING,
+    createdAt: Sequelize.DATE,
+    updatedAt: Sequelize.DATE,
   });
-  // User.associate = function(models) {
-  //   // Associating Author with Posts
-  //   // When an Author is deleted, also delete any associated Posts
-  //   User.hasMany(models.Sounds, {
-  //     onDelete: "cascade"
-  //   });
-  // };
+  
   return Users;
 };
+
+
