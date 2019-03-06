@@ -13,13 +13,35 @@ $(document).ready(function () {
     soundId = url.split("=")[1];
     getPostData(soundId);
   }
-  // var genreArr = [
-  //   "Tech"
-  // ]
-  // Getting jQuery references to the post body, title, form, and category select
+
+  // pushing user ifo to db
+  // var firstName = $("#user-name");
+  // var lastName = $("#user-last");
+  // var userEmail = $("#user-up-email");
+  // var userPassword = $("#user-up-password");
+
+  // $("#sign-up-submit").on("submit", function signUpSubmit(event){
+  //   event.preventDefault();
+  //   console.log(firstName)
+  //   var newUser = {
+  //     first_name: firstName.val().trim().toLowerCase(),
+  //     last_name: lastName.val().trim().toLowerCase(),
+  //     email: userEmail.val().trim().toLowerCase(),
+  //     password: userPassword.val().trim().toLowerCase()
+  //   }
+  //   submitUser(newUser);
+  //   console.log(newUser);
+  // })
+  // function submitUser(){
+  //   $.post("/api/users", User, function () {
+  //     // window.location.href = "/users/:id";
+  //   });
+  // }
+
+
   var soundName = $("#sound-name");
   var genre1 = $("#genre");
-  var mp3File = $("#file-up");
+  var mp3File = $("#file-input");
   var formSub = $("#submit-form");
 
   // Adding an event listener for when the form is submitted
@@ -55,53 +77,53 @@ $(document).ready(function () {
     });
   }
 
-// function newPage(){
-//   window.location.href = "/search";
-// }
+  // function newPage(){
+  //   window.location.href = "/search";
+  // }
 
-  $("#search-input").on("click", function () {
-    event.preventDefault();
-    $(".th-body").empty();
-    console.log("this is only a test you cop");
 
-    displaySounds();
-  }); 
+  var searchIn = $("#search-input");
+
+
+    $("#search-form").on("submit", function () {
+      event.preventDefault();
+      $(".th-body").empty();
+      // $('#search-card').show();
+      displaySounds();
+    });
+
 
   function displaySounds(Sounds) {
-    console.log("this is only a test you loser")
-    var searchIn = $("#search");
     var searchVal = searchIn.val().trim().toLowerCase();
     console.log(searchVal);
-
+    if (!searchVal) {
+      M.toast({ html: 'Please enter something in the search bar, searching by Genre will give you the best results!' });
+      return;
+    }
     $.get("/api/search", Sounds, function (data) {
       for (var i = 0; i < data.length; i++) {
-        
-        if (searchVal === data[i].genre) {
 
-        console.log(data[i].name, data[i].genre, data[i].file);
 
-        var displayTable = "<tr><td>" + data[i].name + "</td>" +
-          "<td>" + data[i].genre + "</td>" +
-          "<td>" + data[i].file + "</td>" +
-          "<td><a href='#'><img style='width:25px' src='../../assets/images/download.png'></a></td></tr>"
-        //console.log(displayTable);
-        $("#t-body").append(displayTable);
+        if ((searchVal === data[i].genre) || (searchVal === data[i].name)) {
+          $('#search-card').show();
+          // console.log(data[i].name, data[i].genre, data[i].file);
 
-        } else if (searchVal === data[i].name) {
-
-          console.log(data[i].name, data[i].genre, data[i].file);
-  
           var displayTable = "<tr><td>" + data[i].name + "</td>" +
             "<td>" + data[i].genre + "</td>" +
             "<td>" + data[i].file + "</td>" +
             "<td><a href='#'><img style='width:25px' src='../../assets/images/download.png'></a></td></tr>"
           console.log(displayTable);
-          $("#t-body").append(displayTable);
-          
-        } else {
-          console.log("We don't have any Sounds that match that search")
-          $("#user-content").html("<div>We don't have any Sounds that match that search<div>");
-        };
+
+          $(".th-body").append(displayTable);
+          $("#words-for-card").html("These are all the sounds that match your search criteria");
+          // return;
+        }
+        // else {
+        //   console.log("We don't have any Sounds that match that search")
+        //   $("#words-for-card").text("We don't have any Sounds that match that search");
+        //   $('#search-card').hide();
+
+        // };
         searchIn.val("");
       };
     });

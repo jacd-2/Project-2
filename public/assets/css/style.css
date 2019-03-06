@@ -71,3 +71,9 @@ section {
     float: right;
     margin-right: 25%;
 }
+.search-title {
+    padding: 25px;
+}
+/* .search-button-bank {
+    button: focus {outline:0;}
+} */

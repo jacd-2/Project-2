@@ -5,18 +5,21 @@
   <title>Project</title>
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <!--Import materialize.css-->
   <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <!-- <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" /> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/css?family=Anton|Ubuntu" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
   <!-- google sign in -->
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 </head>
 
 <body>
@@ -26,18 +29,16 @@
       <a href="/" class="brand-logo logo"><img style="height:30px" src="../assets/images/download.png"> Logo</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-<!--         <li><input style="color: white" id="search" type="search" required></li>     -->
-        <li>
-        <form action="../js/user.js">
-          Search <input id="search" type="search" required><br>
-          <input id="search-input" type="submit">
-        </form>
 
+        <li>
+          <link for="search" type="submit"><a href="/search"><i class="fa fa-search"></i></a></link>
         </li>
-        <li><label href="/search" class="label-icon" for="search"><i class="material-icons">search</i></label>
-          <i class="material-icons">close</i></li>
-        <li><a href="#" class="">Sign Up</a></li>
-        <li><a href="#">Login</a></li>
+        <li><a data-target="modal2" class="modal-trigger" ref="#modal2">Sign In</a></li>
+        <!-- <iframe
+                src="https://developers.google.com/identity/sign-in/web/demos/signin_contextual_simple.jshtml?hl=en"
+                style="width: 200px;
+            height: 60px;"></iframe> -->
+        <li><a data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
       </ul>
 
 
@@ -48,8 +49,12 @@
     <li> <input id="search" type="search" required></li>
     <li><label class="label-icon" for="search"><i class="material-icons">search</i></label>
       <i class="material-icons">close</i></li>
-    <li><a href="#" class="">Sign Up</a></li>
-    <li><a href="/users">Login</a></li>
+    <li><a data-target="modal2" class="modal-trigger" ref="#modal2">Sign In</a></li>
+    <!-- <iframe
+              src="https://developers.google.com/identity/sign-in/web/demos/signin_contextual_simple.jshtml?hl=en"
+              style="width: 200px;
+          height: 60px;"></iframe> -->
+    <li><a data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
   </ul>
 
   <section class="container">
@@ -61,11 +66,11 @@
           <div class="card">
             <div class="card-image">
               <img src="../assets/images/back-1.jpg">
-              <span class="card-title" id="user-name">User Name</span>
+              <span class="card-title" id="specific-user-name"></span>
             </div>
             <div class="card-content">
-              <span class="card-title" id="user-name">User Name</span>
-              <h6>More Info</h6><br>
+              <!-- <span class="card-title" id="user-name">User Name</span> -->
+              <h6 id="specific-user-email"></h6><br>
               <p>I am a very simple card. I am good at containing small bits of information.
                 I am convenient because I require little markup to use effectively.</p>
             </div>
@@ -74,33 +79,16 @@
               <table>
                 <thead>
                   <tr>
+                  <tr>
                     <th id="bank-name">Sounds</th>
-                    <th>House</th>
-                    <th>$15.00</th>
-                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
+                    <th>Genre</th>
+                    <th>File</th>
+                    <th><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></th>
                   </tr>
                 </thead>
 
-                <tbody id="t-body">
-                  <tr>
-                    <td><a id="sample-name">kick</a>
-                      <div class="chip">
-                        House
-                      </div>
-                    </td>
 
-                    <td><a id="play-sample" href="#"><i class="small material-icons">play_circle_outline</i></a></td>
-                    <td>$0.25</td>
-                    <td><a class="" href="#"><img style="width:25px" src="../../assets/images/download.png"></a></td>
-                    <td><button class="btn black">Delete</button></td>
-                  </tr>
-                    
-                  <tr>
-                    <td>Build</td>
-                    <td><a id="play-sample" href="#"><i class="small material-icons">play_circle_outline</i></a></td>
-                    <td>$0.25</td>
-                  
-
+                <tbody id="th-body-user">
 
                 </tbody>
               </table>
@@ -136,7 +124,7 @@
     <div id="modal1" class="modal">
       <div class="modal-content">
         <h4>Upload</h4>
-        <p>A bunch of text</p>
+        <p>Choose a name for your file, what genre it is and upload the file</p>
         <form class="col s12" id="submit-form">
           <div class="row">
             <div class="input-field col s6">
@@ -148,18 +136,31 @@
               <label for="genre">Genre</label> -->
 
               <select class="form-control" id="genre">
-                  <option value="" disabled selected>Choose your option</option>
-                  <option>House</option>
-                  <option>Dubstep</option>
-                  <option>EDM</option>
-                  <option>Ambient</option>
-                  <option>Rock</option>
-                </select>
+                <option value="" disabled selected>Choose a genre</option>
+                <option>House</option>
+                <option>Dubstep</option>
+                <option>EDM</option>
+                <option>Ambient</option>
+                <option>Rock</option>
+              </select>
             </div>
           </div>
           <div class="row">
-          <!-- <input type="file"> -->
-          <input id="file-up" type="file"> <a>Upload MP3</a>
+            <!-- <input type="file"> -->
+            <input id="file-input" type="file"> <a>Upload MP3</a><br>
+            <p><label for="file">File progress:</label>
+              <progress id="file-load" max="100" value=""> 70% </progress>
+            </p>
+            <!-- possibly use to login while uploading -->
+            <!-- <img id="preview" src="/images/default.png">
+
+            <form method="POST" action="/save-details">
+              <input type="hidden" id="avatar-url" name="avatar-url" value="/images/default.png">
+              <input type="text" name="username" placeholder="Username"><br>
+              <input type="text" name="full-name" placeholder="Full name"><br><br>
+              <input type="submit" value="Update profile">
+            </form> -->
+
           </div>
           <div class="modal-footer">
             <button type="submit" id="upload-song" class="modal-close waves-effect waves-green btn-flat">Agree</button>
@@ -169,7 +170,42 @@
   </section>
 
 
+  <!-- Sign in modal -->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <h4>Login</h4>
+      <form id="sign-in-submit">
+        <input id="existing-email" type="email" placeholder="email">
+        <input id="existing-password" type="password" placeholder="Password">
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="modal-close waves-effect waves-green btn-flat">Agree</button>
+    </div>
+    </form>
+  </div>
 
+  <!-- Sign up modal -->
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <h4>Sign Up</h4>
+      <form id="sign-up-submit">
+        <input id="new-user-name" type="text" placeholder="User Name">
+        <input id="user-first-name" type="text" placeholder="First Name">
+        <input id="user-last-name" type="text" placeholder="Last Name">
+        <input id="user-up-email" type="email" placeholder="email">
+        <input id="user-up-password" placeholder="Password">
+    </div>
+    <div class="modal-footer">
+      <!-- href="/users" -->
+      <button type="submit" class="modal-close waves-effect waves-green btn-flat">Agree</button>
+    </div>
+    </form>
+    <div class="center-align">
+      <h5>Already have an account</h5><br>
+      <button data-target="modal2" class="modal-trigger btn black center-align" ref="#modal2">Login</button><br><br>
+    </div>
+  </div>
+  </section>
 
 
   <br>
@@ -219,17 +255,131 @@
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script type="text/javascript" src="../js/user.js"></script>
-<!--   <script type="text/javascript" src="../public/js/user.js"></script>
- -->  <script type="text/javascript">
+
+  <script type="text/javascript" src="js/user.js"></script>
+  <!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
+  <script type="text/javascript">
+
     $(document).ready(function () {
+      console.log("ready!");
+      $("section").hide();
       $('.sidenav').sidenav();
       $('.slider').slider();
       $('.modal').modal();
+      $("#modal2").show();
       $('.carousel.carousel-slider').carousel({
         fullWidth: true
       });
       $('.dropdown-trigger').dropdown();
+
+      // putting footer on bottom on page load
+      // $("footer").css({"position": "absolute", "bottom": "0", "width": "100%"})
+      $("footer").hide();
+      // pushing new user info to DB
+
+      var userName = $("#new-user-name");
+      var firstName = $("#user-first-name");
+      var lastName = $("#user-last-name");
+      var userEmail = $("#user-up-email");
+      var userPassword = $("#user-up-password");
+      console.log(firstName)
+      $("#sign-up-submit").on("submit", function signUpSubmit(event) {
+        event.preventDefault();
+        validateUser();
+        // console.log(newUser);
+      })
+
+      function validateUser(Users) {
+        var newUser = {
+          user_name: userName.val().trim().toLowerCase(),
+          first_name: firstName.val().trim().toLowerCase(),
+          last_name: lastName.val().trim().toLowerCase(),
+          email: userEmail.val().trim().toLowerCase(),
+          password: userPassword.val().trim().toLowerCase()
+        }
+        $.get("/api/users", Users, function (data) {
+          // console.log("looking for this!!!!!!!!!!!!", data);
+
+          for (var i = 0; i < data.length; i++) {
+
+            // switch (data[i]) {
+            //   case (newUser.user_name === data[i].user_name):
+            //     M.toast({ html: 'That User Name is already taken, please choose another' });
+            //     break;
+            //   case (newUser.email === data[i].email):
+            //     M.toast({ html: 'We already have an account with that email, please sign in!' });
+            //     break;
+            //   case ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email)):
+            //     submitUser(newUser);
+            //     break;
+            // }
+            if (newUser.user_name === data[i].user_name) {
+              M.toast({ html: '!!!That User Name is already taken, please choose another!!!', displayLength: 5000 });
+              break;
+            } else if (newUser.email === data[i].email) {
+              M.toast({ html: '!!!We already have an account with that email, please sign in!!!', displayLength: 5000 });
+              break;
+            } else {
+              // ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email))
+              submitUser(newUser);
+            };
+          };
+        });
+      };
+      // submit new user to db
+      function submitUser(User) {
+        $.post("/api/users", User, function () {
+          // window.location.href = "/users/:id";
+        });
+      };
+
+      // find sounds by specific user
+      $("#sign-in-submit").on("submit", function (event) {
+        event.preventDefault();
+        signInExistingUser();
+      });
+
+      function signInExistingUser(Users) {
+        var existEmail = $("#existing-email");
+        var existPass = $("#existing-password");
+        var exEM = existEmail.val().trim();
+        var exPass = existPass.val().trim();
+        // console.log(exEM, exPass);
+        $.get("/api/users", Users, function (data) {
+          console.log(data);
+          for (var i = 0; i < data.length; i++) {
+            // console.log(data[i].user_name);
+            if ((exEM === data[i].email) && (exPass === data[i].password)) {
+              $("section").show();
+              $("#modal2").hide();
+              $("footer").show();
+              // $("footer").css({"position": "absolute", "margin-bottom": "0"})
+              console.log(data[i].user_name);
+              $("#specific-user-name").html(data[i].user_name);
+              $("#specific-user-email").html(data[i].email);
+              // $('#search-card').show();
+              // console.log(data[i].name, data[i].genre, data[i].file);
+              // displaying here specific sounds from a specific user
+              var displayTable = "<tr><td>" + data[i].name + "</td>" +
+                "<td>" + data[i].genre + "</td>" +
+                "<td>" + data[i].file + "</td>" +
+                "<td><a href='#'><img style='width:25px' src='../../assets/images/download.png'></a></td></tr>"
+              console.log(displayTable);
+              $(".th-body-user").append(displayTable);
+
+              existEmail.val("")
+              existPass.val("")
+            };
+          };
+        });
+
+      };
+
+
+
+
+
+
 
       var input = $("input:file");
       $("file-up")
@@ -239,6 +389,55 @@
         event.preventDefault();
       });
     });
+
+    // handling mp3 submition
+    (() => {
+      document.getElementById("file-input").onchange = () => {
+        var files = document.getElementById('file-input').files;
+        var file = files[0];
+        if (file == null) {
+          return alert('No file selected.');
+        }
+        getSignedRequest(file);
+      };
+    })();
+    function getSignedRequest(file) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            uploadFile(file, response.signedRequest, response.url);
+            console.log(file, response.signedRequest, response.url);
+          }
+          else {
+            alert('Could not get signed URL.');
+          }
+        }
+      };
+      xhr.send();
+    }
+    function uploadFile(file, signedRequest, url) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', signedRequest);
+      console.log(file, signedRequest, url);
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            console.log(file);
+            document.getElementById('file-input').src = url;
+
+            // document.getElementById('avatar-url').value = url;
+          }
+          else {
+            alert('Could not upload file.');
+          }
+        }
+      };
+      xhr.send(file);
+    }
+
   </script>
 </body>
 

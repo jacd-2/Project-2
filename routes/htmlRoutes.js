@@ -13,6 +13,8 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../views/bank.html"));
   });
 
+  // app.get('/account', (req, res) => res.render('account.html'));
+
   // Render 404 page for any unmatched routes
   // app.get("*", function(req, res) {
   //   res.render("404");

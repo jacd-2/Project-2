@@ -9,15 +9,12 @@
   "test": {
     "username": "root",
     "password": "password",
-    "database": "database_test",
+    "database": "song_info_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": "1Likeomlets",
-    "database": "song_info_db",
-    "host": "127.0.0.1",
+    "use_env_variable": "mysql://wplgmex8ko3y15q4:c8d6t0og5swh1hgo@k3xio06abqa902qt.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/ekgruzthzw386tgo",
     "dialect": "mysql"
   }
 }
