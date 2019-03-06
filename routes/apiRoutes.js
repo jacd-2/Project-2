@@ -55,18 +55,18 @@ module.exports = function (app) {
     });
   });
 
-  // app.get("/api/users/:id", function (req, res) {
-  //   console.log(req.body.id);
+  app.get("/api/users/:id", function (req, res) {
+    console.log(req.body.id);
     
-  //   db.Users.findOne({
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   }).then(function (dbUsers) {
-  //     // We have access to the new todo as an argument inside of the callback function
-  //     res.json(dbUsers);
-  //   });
-  // });
+    db.Users.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbUsers) {
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(dbUsers);
+    });
+  });
 
 
 // -----------------------------------------------------------------------------------
@@ -102,7 +102,7 @@ module.exports = function (app) {
       res.json(dbSounds);
     });
   });
-  app.post("/api/posts", function(req, res) {
+  app.post("/api/sounds", function(req, res) {
     db.Post.create(req.body).then(function(dbPost) {
       res.json(dbPost);
     });

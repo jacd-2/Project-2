@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('song_info_db', 'root', '1Likeomlets', {
-  dialect: 'mysql'
-})
+// const sequelize = new Sequelize('song_info_db', 'root', '1Likeomlets', {
+//   dialect: 'mysql'
+// })
 
 module.exports = function(sequelize, DataTypes) {
 
