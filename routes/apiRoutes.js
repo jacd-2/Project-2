@@ -117,7 +117,7 @@ module.exports = function (app) {
   var S3_BUCKET = process.env.S3_BUCKET;
   var s3Params = {};
   // S3 get routes
-  // console.log(process.env)
+  console.log(S3_BUCKET);
   app.get('/sign-s3', (req, res) => {
     console.log(req.query, "hello");
     var s3 = new AWS.S3({
