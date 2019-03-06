@@ -42,6 +42,8 @@ module.exports = function (app) {
       email: req.body.email,
       password: req.body.password
     }).then(function (dbUsers) {
+      console.log(dbUsers + "THIS IS THE DB USERS BRO");
+      req.session.Users = dbUsers;
       // We have access to the new todo as an argument inside of the callback function
       res.json(dbUsers);
     });
@@ -50,6 +52,8 @@ module.exports = function (app) {
   app.get("/api/users", function (req, res) {
     console.log("LOOOOOOOOKING!!!!!!!!!!", req.body);
     db.Users.findAll({}).then(function (dbUsers) {
+      console.log(dbUsers);
+
       // We have access to the new todo as an argument inside of the callback function
       res.json(dbUsers);
     });
@@ -162,6 +166,13 @@ module.exports = function (app) {
   //   // TODO: Read POSTed form data and do something useful
   // });
 
+  app.post('/login', (req, res) => {
+    console.log(req.body);
+    req.session.userID = req.body.userID;
+    req.session.loggedIn = true;
+    res.redirect("/");
+  });
+
 
   // User can modify their personal file
 
@@ -191,3 +202,5 @@ module.exports = function (app) {
   //   });
   // });
 };
+
+
