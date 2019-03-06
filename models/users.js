@@ -1,7 +1,3 @@
-const Sequelize = require('sequelize');
-// const sequelize = new Sequelize('song_info_db', 'root', '', {
-//   dialect: 'mysql'
-// })
 
 module.exports = function(sequelize, DataTypes) {
 

@@ -34,7 +34,7 @@ module.exports = function (app) {
 
   // Create a user in DB
   app.post("/api/users", function (req, res) {
-    console.log(req.body);
+    // console.log(req.body);
     db.Users.create({
       user_name: req.body.user_name,
       first_name: req.body.first_name,
@@ -50,9 +50,9 @@ module.exports = function (app) {
   });
   // getting db info for users
   app.get("/api/users", function (req, res) {
-    console.log("LOOOOOOOOKING!!!!!!!!!!", req.body);
+    // console.log("LOOOOOOOOKING!!!!!!!!!!", req.body);
     db.Users.findAll({}).then(function (dbUsers) {
-      console.log(dbUsers);
+      // console.log(dbUsers);
 
       // We have access to the new todo as an argument inside of the callback function
       res.json(dbUsers);
@@ -96,21 +96,23 @@ module.exports = function (app) {
 
   // Create a new example this will become what is below
   app.post("/api/sounds", function (req, res) {
-    console.log(req.body);
+    console.log("!!!!!!!!!!!!!!!!!!!!", req.body);
     db.Sounds.create({
       name: req.body.name,
       genre: req.body.genre,
-      file: req.body.file
+      file: req.body.file,
+      UserId: req.session.userID
     }).then(function (dbSounds) {
       // We have access to the new todo as an argument inside of the callback function
       res.json(dbSounds);
     });
   });
-  app.post("/api/sounds", function(req, res) {
-    db.Post.create(req.body).then(function(dbPost) {
-      res.json(dbPost);
-    });
-  });
+  // app.post("/api/sounds", function(req, res) {
+  //   console.log(req.body);
+  //   db.Sounds.create(req.body).then(function(dbSounds) {
+  //     res.json(dbSounds);
+  //   });
+  // });
 
 // ----------------------------------------------------------------------------------
 
@@ -167,7 +169,7 @@ module.exports = function (app) {
   // });
 
   app.post('/login', (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     req.session.userID = req.body.userID;
     req.session.loggedIn = true;
     res.redirect("/");
