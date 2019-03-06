@@ -245,6 +245,11 @@ $(document).ready(function () {
     xhr.send(file);
   }
 
+  displayS3Sound()
+  function displayS3Sound() {
+    xhr.open('GET', `/sign-s3-us-west-2.amazonaws.com/jacd-music-project/Cymatics+-+100k+Perc+5.wav`);
+  }
+
 
 
 

@@ -152,15 +152,15 @@ module.exports = function (app) {
     });
   });
 
-  app.post('/users', (req, res) => {
-    console.log("this is what I'm looking for", req, res);
-    var params = s3Params;
-    var options = { partSize: 10 * 1024 * 1024, queueSize: 1 };
-    s3.upload(params, options, function (err, data) {
-      console.log(err, data);
-    });
-    // TODO: Read POSTed form data and do something useful
-  });
+  // app.post('/users', (req, res) => {
+  //   console.log("this is what I'm looking for", req, res);
+  //   var params = s3Params;
+  //   var options = { partSize: 10 * 1024 * 1024, queueSize: 1 };
+  //   s3.upload(params, options, function (err, data) {
+  //     console.log(err, data);
+  //   });
+  //   // TODO: Read POSTed form data and do something useful
+  // });
 
 
   // User can modify their personal file
