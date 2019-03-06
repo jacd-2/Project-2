@@ -1,5 +1,6 @@
 require('dotenv').config()
 var db = require("../models");
+
 // var url = require('url');
 var AWS = require('aws-sdk');
 // AWS.config.region = 'us-west-2';

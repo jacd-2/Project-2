@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
   console.log("test");
   // Gets an optional query string from our url (i.e. ?post_id=23)
@@ -80,6 +81,7 @@ $(document).ready(function () {
   //   window.location.href = "/search";
   // }
 
+
   var searchIn = $("#search-input");
 
 
@@ -101,6 +103,7 @@ $(document).ready(function () {
     $.get("/api/search", Sounds, function (data) {
       for (var i = 0; i < data.length; i++) {
 
+
         if ((searchVal === data[i].genre) || (searchVal === data[i].name)) {
           $('#search-card').show();
           // console.log(data[i].name, data[i].genre, data[i].file);
@@ -110,6 +113,7 @@ $(document).ready(function () {
             "<td>" + data[i].file + "</td>" +
             "<td><a href='#'><img style='width:25px' src='../../assets/images/download.png'></a></td></tr>"
           console.log(displayTable);
+
           $(".th-body").append(displayTable);
           $("#words-for-card").html("These are all the sounds that match your search criteria");
           // return;

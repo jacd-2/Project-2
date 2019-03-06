@@ -1,4 +1,10 @@
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('song_info_db', 'root', '1Likeomlets', {
+  dialect: 'mysql'
+})
+
 module.exports = function(sequelize, DataTypes) {
+
   var Users = sequelize.define("Users", {
     user_name: DataTypes.STRING,
     first_name: DataTypes.STRING,
@@ -15,3 +21,5 @@ module.exports = function(sequelize, DataTypes) {
   };
   return Users;
 };
+
+
