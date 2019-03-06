@@ -189,7 +189,7 @@ $(document).ready(function () {
 
 
   var input = $("input:file");
-  $("file-up")
+  $("file-input")
     .text("For this type jQuery found " + input.length + ".")
     .css("color", "red");
   $("form").submit(function (event) {
@@ -216,7 +216,7 @@ $(document).ready(function () {
         if (xhr.status === 200) {
           var response = JSON.parse(xhr.responseText);
           uploadFile(file, response.signedRequest, response.url);
-          console.log(file, response.signedRequest, response.url);
+          console.log("trying to find this", file, response.signedRequest, response.url);
         }
         else {
           alert('Could not get signed URL.');
@@ -227,7 +227,7 @@ $(document).ready(function () {
   }
   function uploadFile(file, signedRequest, url) {
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', signedRequest);
+    xhr.open('PUT', signedRequest);
     console.log(file, signedRequest, url);
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4) {
@@ -243,6 +243,11 @@ $(document).ready(function () {
       }
     };
     xhr.send(file);
+  }
+
+  displayS3Sound()
+  function displayS3Sound() {
+    xhr.open('GET', `/sign-s3-us-west-2.amazonaws.com/jacd-music-project/Cymatics+-+100k+Perc+5.wav`);
   }
 
 
