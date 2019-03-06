@@ -7,7 +7,7 @@ $(document).ready(function () {
   var lastName = $("#user-last-name");
   var userEmail = $("#user-up-email");
   var userPassword = $("#user-up-password");
-  console.log(firstName)
+  // console.log(firstName)
   $("#sign-up-submit").on("submit", function signUpSubmit(event) {
     event.preventDefault();
     validateUser();
@@ -84,7 +84,7 @@ $(document).ready(function () {
 
     // console.log(exEM, exPass);
     $.get("/api/users", Users, function (data) {
-      console.log(data);
+      // console.log(data);
       for (var i = 0; i < data.length; i++) {
         // console.log(data[i].user_name);
         if ((exEM === data[i].email) && (exPass === data[i].password)) {
@@ -93,7 +93,7 @@ $(document).ready(function () {
           $.post("/login", {
             userID: userID
           });
-          console.log(userID)
+          console.log(userID);
           $("section").show();
           $("#modal2").hide();
           $("footer").show();
@@ -145,7 +145,7 @@ $(document).ready(function () {
       // }
 
       if (url.indexOf("?user_id=") !== -1) {
-        UserId = url.split("=")[1];
+        userID = url.split("=")[1];
       }
 
       // Wont submit the post if we are missing a body or a title
@@ -153,12 +153,12 @@ $(document).ready(function () {
       //   return console.log("Nothing to submit");
       // }
       // Constructing a newSound object to hand to the database
-      
+    
       var newSound = {
         name: soundName.val().trim().toLowerCase(),
         genre: genre1.val().trim().toLowerCase(),
         file: mp3File.val().trim(),
-        UserId: req.session.userID
+        UserId: userID
       };
 
       console.log(newSound);
@@ -250,10 +250,10 @@ $(document).ready(function () {
     xhr.send(file);
   }
 
-  displayS3Sound()
-  function displayS3Sound() {
-    xhr.open('GET', `/sign-s3-us-west-2.amazonaws.com/jacd-music-project/Cymatics+-+100k+Perc+5.wav`);
-  }
+  // displayS3Sound()
+  // function displayS3Sound() {
+  //   xhr.open('GET', `/sign-s3-us-west-2.amazonaws.com/jacd-music-project/Cymatics+-+100k+Perc+5.wav`);
+  // }
 
 
 
