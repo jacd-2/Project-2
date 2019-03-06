@@ -88,7 +88,11 @@ $(document).ready(function () {
       for (var i = 0; i < data.length; i++) {
         // console.log(data[i].user_name);
         if ((exEM === data[i].email) && (exPass === data[i].password)) {
+         
           userID = data[i].id;
+          $.post("/login", {
+            userID: userID
+          });
           console.log(userID)
           $("section").show();
           $("#modal2").hide();
@@ -149,11 +153,12 @@ $(document).ready(function () {
       //   return console.log("Nothing to submit");
       // }
       // Constructing a newSound object to hand to the database
+      
       var newSound = {
         name: soundName.val().trim().toLowerCase(),
         genre: genre1.val().trim().toLowerCase(),
         file: mp3File.val().trim(),
-        UserId: userID
+        UserId: req.session.userID
       };
 
       console.log(newSound);

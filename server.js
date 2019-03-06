@@ -5,6 +5,7 @@ var sequelize = require('sequelize');
 // var exphbs = require("express-handlebars");
 // var url = require('url');
 var db = require("./models");
+var session = require("express-session");
 
 var app = express();
 var PORT = process.env.PORT || 3002;
@@ -13,6 +14,11 @@ var PORT = process.env.PORT || 3002;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
+app.use(session({
+  secret: "secret secret secret",
+  resave: true,
+  saveUninitialized: true
+}))
 
 aws.config.region = 'us-west-2';
 
