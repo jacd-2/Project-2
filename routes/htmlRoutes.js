@@ -4,6 +4,7 @@ var path = require("path");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
+    console.log(req.session);
     res.sendFile(path.join(__dirname, "../views/index.html"));
   });
   app.get("/users", function(req, res) {
