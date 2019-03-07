@@ -143,9 +143,10 @@ $(document).ready(function () {
       for (var i = 0; i < data.length; i++) {
 
         if (userID === data[i].UserId) {
-          var displayTable = "<tr><td>" + data[i].name + "</td>" +
+          var displayTable = 
+            "<tr><td>" + data[i].name + "</td>" +
             "<td>" + data[i].genre + "</td>" +
-            "<td><a href='#'><img style='width:25px' src='../../assets/images/download.png' href='" + data[i].file + "></a></td></tr>"
+            "<td>" + data[i].file + "</td></tr>"
           console.log(displayTable);
           $("#th-body-user").append(displayTable);
         };
