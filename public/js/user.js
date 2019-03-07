@@ -88,7 +88,7 @@ $(document).ready(function () {
       for (var i = 0; i < data.length; i++) {
         // console.log(data[i].user_name);
         if ((exEM === data[i].email) && (exPass === data[i].password)) {
-         
+
           userID = data[i].id;
           $.post("/login", {
             userID: userID
@@ -97,20 +97,10 @@ $(document).ready(function () {
           $("section").show();
           $("#modal2").hide();
           $("footer").show();
-          // $("footer").css({"position": "absolute", "margin-bottom": "0"})
+
           console.log(data[i].user_name);
           $("#specific-user-name").html(data[i].user_name);
           $("#specific-user-email").html(data[i].email);
-          // $('#search-card').show();
-          // console.log(data[i].name, data[i].genre, data[i].file);
-          // displaying here specific sounds from a specific user
-          var displayTable = "<tr><td>" + data[i].name + "</td>" +
-            "<td>" + data[i].genre + "</td>" +
-            "<td>" + data[i].file + "</td>" +
-            "<td><a href='#'><img style='width:25px' src='../../assets/images/download.png'></a></td></tr>"
-          console.log(displayTable);
-          $(".th-body-user").append(displayTable);
-
           existEmail.val("")
           existPass.val("")
           $("#nav-mobile").html(
@@ -118,14 +108,52 @@ $(document).ready(function () {
             "<li><a href='/' class='modal-trigger' id='sign-out'>Hello " + data[i].user_name + "!</a></li > " +
             "<li><a href='/' class='modal-trigger' id='sign-out'>Sign Out</a></li>"
           )
-          // removeSignins();
-
+          displayUserSounds();
+          // removeSignins();x
         };
-        addSpecificUserSound()
+        addSpecificUserSound();
       };
+      // $.get("/api/sounds", function (data) {
+      //   // $('#search-card').show();
+      //   // console.log(data[i].name, data[i].genre, data[i].file);
+      //   // displaying here specific sounds from a specific user
+      //   var displayTable;
+      //   console.log(data);
+      //   for (var j = 0; j < data.length; i++) {
+  
+      //     if (data[j].UserId === userID) {
+      //       displayTable = "<tr><td>" + data[j].name + "</td>" +
+      //         "<td>" + data[j].genre + "</td>" +
+      //         "<td>" + data[j].file + "</td>" +
+      //         "<td><a href='#'><img style='width:25px' src='../../assets/images/download.png'></a></td></tr>"
+      //       console.log(displayTable);
+      //     };
+      //   };
+      //   $("#th-body-user").append(displayTable);
+      // });
     });
 
   };
+  // displayUserSounds();
+  function displayUserSounds() {
+    $.get("/api/sounds", function (data) {
+      // $('#search-card').show();
+      // console.log(data[i].name, data[i].genre, data[i].file);
+      // displaying here specific sounds from a specific user
+      for (var i = 0; i < data.length; i++) {
+
+        if (userID === data[i].UserId) {
+          var displayTable = "<tr><td>" + data[i].name + "</td>" +
+            "<td>" + data[i].genre + "</td>" +
+            "<td>" + data[i].file + "</td>" +
+            "<td><a href='#'><img style='width:25px' src='../../assets/images/download.png'></a></td></tr>"
+          console.log(displayTable);
+          $("#th-body-user").append(displayTable);
+        };
+      };
+
+    });
+  }
 
   var soundName = $("#sound-name");
   var genre1 = $("#genre");
@@ -153,7 +181,7 @@ $(document).ready(function () {
       //   return console.log("Nothing to submit");
       // }
       // Constructing a newSound object to hand to the database
-    
+
       var newSound = {
         name: soundName.val().trim().toLowerCase(),
         genre: genre1.val().trim().toLowerCase(),
@@ -176,7 +204,7 @@ $(document).ready(function () {
   // Submits a new post and brings user to blog page upon completion
   function submitSound(Sound) {
     $.post("/api/sounds", Sound, function () {
-      window.location.href = "/users";
+      // window.location.href = "/users";
     });
   }
   // function removeSignins() {

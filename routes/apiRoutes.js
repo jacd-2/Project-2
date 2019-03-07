@@ -121,7 +121,7 @@ module.exports = function (app) {
 
   // S3 API routes
   var S3_BUCKET = process.env.S3_BUCKET;
-  var s3Params = {};
+  // var s3Params = {};
   // S3 get routes
   console.log(S3_BUCKET);
   app.get('/sign-s3', (req, res) => {
@@ -172,7 +172,7 @@ module.exports = function (app) {
     // console.log(req.body);
     req.session.userID = req.body.userID;
     req.session.loggedIn = true;
-    res.redirect("/");
+    res.redirect("/users");
   });
 
 
