@@ -233,7 +233,7 @@ $(document).ready(function () {
       //   UserId = url.split("=")[1];
       //   getPostData(soundId);
       // }
-
+      var singleUser = userID;
       if (url.indexOf("?user_id=") !== -1) {
         userID = url.split("=")[1];
       }
@@ -248,7 +248,7 @@ $(document).ready(function () {
         name: soundName.val().trim().toLowerCase(),
         genre: genre1.val().trim().toLowerCase(),
         file: mp3File,
-        UserId: userID
+        UserId: singleUser
       };
 
       console.log(newSound);
