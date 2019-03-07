@@ -26,8 +26,8 @@ $(document).ready(function () {
 
           var displayTable = "<tr><td>" + data[i].name + "</td>" +
             "<td>" + data[i].genre + "</td>" +
-            // "<td>" + data[i].file + "</td>" +
-            "<td><a href='" + data[i].file + "' target='_blank'><img style='width:25px' src='../../assets/images/download.png' src='" + data[i].file + "'></a></td></tr>"
+            // "<td>" + data[i].user_name + "</td>" +
+            "<td><a class='center-align' href='" + data[i].file + "' target='_blank'><img style='width:25px' src='../../assets/images/download.png' src='" + data[i].file + "'></a></td></tr>"
           console.log(displayTable);
           $(".th-body").append(displayTable);
           $("#words-for-card").html("These are all the sounds that match your search criteria");

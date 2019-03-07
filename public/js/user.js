@@ -1,6 +1,7 @@
 
 $(document).ready(function () {
   console.log("test");
+  $("#upload-button").hide();
   // Gets an optional query string from our url (i.e. ?post_id=23)
   var userName = $("#new-user-name");
   var firstName = $("#user-first-name");
@@ -18,7 +19,7 @@ $(document).ready(function () {
   $("#sign-up-submit").on("submit", function signUpSubmit(event) {
     event.preventDefault();
     validateUser();
-
+    
   })
 
   function validateUser(Users) {
@@ -89,6 +90,7 @@ $(document).ready(function () {
             userID: userID
           });
           console.log(userID);
+          $("#upload-button").show();
           $("section").show();
           $("#modal2").hide();
           $("footer").show();
@@ -134,6 +136,7 @@ $(document).ready(function () {
   $("#sign-in-submit").on("submit", function (event) {
     event.preventDefault();
     signInExistingUser();
+    
   });
 
   function signInExistingUser(Users) {
@@ -155,6 +158,7 @@ $(document).ready(function () {
             userID: userID
           });
           console.log(userID);
+          $("#upload-button").show();
           $("section").show();
           $("#modal2").hide();
           $("footer").show();
@@ -162,12 +166,11 @@ $(document).ready(function () {
           console.log(data[i].user_name);
           $("#specific-user-name").html(data[i].user_name);
           $("#specific-user-email").html(data[i].email);
-          $("#paragragh").html(data[i].info + " <a class='btn btn-small black' id='update-paragragh'>Update</a>");
           existEmail.val("")
           existPass.val("")
           $("#nav-mobile").html(
             "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
-            "<li><a href='/' class='modal-trigger' id='sign-out'>Hello " + data[i].user_name + "!</a></li > " +
+            "<li><a>Hello " + data[i].user_name + "!</a></li > " +
             "<li><a href='/' class='modal-trigger' id='sign-out'>Sign Out</a></li>"
           )
           displayUserSounds();
@@ -208,7 +211,7 @@ $(document).ready(function () {
           var displayTable = 
             "<tr><td>" + data[i].name + "</td>" +
             "<td>" + data[i].genre + "</td>" +
-            "<td>" + data[i].file + "</td></tr>"
+            "<td class='center-align'>" + data[i].file + "</td></tr>"
           console.log(displayTable);
           $("#th-body-user").append(displayTable);
         };
