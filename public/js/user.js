@@ -145,8 +145,7 @@ $(document).ready(function () {
         if (userID === data[i].UserId) {
           var displayTable = "<tr><td>" + data[i].name + "</td>" +
             "<td>" + data[i].genre + "</td>" +
-            "<td>" + data[i].file + "</td>" +
-            "<td><a href='#'><img style='width:25px' src='../../assets/images/download.png'></a></td></tr>"
+            "<td><a href='#'><img style='width:25px' src='../../assets/images/download.png' href='" + data[i].file + "></a></td></tr>"
           console.log(displayTable);
           $("#th-body-user").append(displayTable);
         };
