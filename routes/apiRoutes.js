@@ -3,21 +3,52 @@ var db = require("../models");
 
 // var url = require('url');
 var AWS = require('aws-sdk');
-// AWS.config.region = 'us-west-2';
-// var config = new AWS.Config({
-//   accessKeyId: process.env.accessKeyId, secretAccessKey: process.env.secretAccessKey, region: 'us-west-2'
-// });
+var S3returnData;
+
 module.exports = function (app) {
-  // Get all examples
-  // app.get("/api/users/", function (req, res) {
-  //   db.Sounds.findAll({
-  //     where: {
-  //       id: users
-  //     }
-  //   }).then(function (dbSounds) {
-  //     res.json(dbSounds);
-  //   })
-  // });
+
+// ----------------------------------S3 Routes---------------------------------------
+
+  // S3 API routes
+  var S3_BUCKET = process.env.S3_BUCKET;
+  // var s3Params = {};
+  // S3 get routes
+  console.log(S3_BUCKET);
+  app.get('/sign-s3', (req, res) => {
+    console.log(req.query, "hello");
+    var s3 = new AWS.S3({
+      accessKeyId: process.env.AWSAccessKeyId, secretAccessKey: process.env.AWSSecretKey, region: 'us-east-1'
+    });
+    var fileName = req.query['file-name'];
+    var fileType = req.query['file-type'];
+    // var S3_BUCKET = 'jacd-music-project';
+    s3Params = {
+      Bucket: S3_BUCKET,
+      Key: fileName,
+      Expires: 60,
+      ContentType: fileType,
+      ACL: 'public-read'
+    };
+
+
+    s3.getSignedUrl('putObject', s3Params, (err, data) => {
+      // console.log(s3)
+      // console.log(`https://${S3_BUCKET}.s3.amazonAWS.com/${fileName}`);
+      if (err) {
+        console.log(err);
+        return res.end();
+      }
+      returnData = {
+        signedRequest: data,
+        url: `https://${S3_BUCKET}.s3.amazonAWS.com/${fileName}`
+      };
+      // console.log(returnData);
+      res.write(JSON.stringify(returnData));
+      S3returnData = returnData;
+      res.end();
+    });
+  });
+
 
 // ----------------------------Searching DB for sounds--------------------------------
 
@@ -91,6 +122,7 @@ module.exports = function (app) {
     }).then(function (dbSounds) {
       // We have access to the new todo as an argument inside of the callback function
       res.json(dbSounds);
+      res.redirect("/users");
     });
   });
 
@@ -117,46 +149,7 @@ module.exports = function (app) {
 // ----------------------------------------------------------------------------------
 
 
-// ----------------------------------S3 Routes---------------------------------------
 
-  // S3 API routes
-  var S3_BUCKET = process.env.S3_BUCKET;
-  // var s3Params = {};
-  // S3 get routes
-  console.log(S3_BUCKET);
-  app.get('/sign-s3', (req, res) => {
-    console.log(req.query, "hello");
-    var s3 = new AWS.S3({
-      accessKeyId: process.env.AWSAccessKeyId, secretAccessKey: process.env.AWSSecretKey, region: 'us-east-1'
-    });
-    var fileName = req.query['file-name'];
-    var fileType = req.query['file-type'];
-    // var S3_BUCKET = 'jacd-music-project';
-    s3Params = {
-      Bucket: S3_BUCKET,
-      Key: fileName,
-      Expires: 60,
-      ContentType: fileType,
-      ACL: 'public-read'
-    };
-
-
-    s3.getSignedUrl('putObject', s3Params, (err, data) => {
-      // console.log(s3)
-      // console.log(`https://${S3_BUCKET}.s3.amazonAWS.com/${fileName}`);
-      if (err) {
-        console.log(err);
-        return res.end();
-      }
-      var returnData = {
-        signedRequest: data,
-        url: `https://${S3_BUCKET}.s3.amazonAWS.com/${fileName}`
-      };
-      // console.log(returnData);
-      res.write(JSON.stringify(returnData));
-      res.end();
-    });
-  });
 
   // app.post('/users', (req, res) => {
   //   console.log("this is what I'm looking for", req, res);

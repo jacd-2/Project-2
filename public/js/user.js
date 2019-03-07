@@ -157,7 +157,7 @@ $(document).ready(function () {
 
   var soundName = $("#sound-name");
   var genre1 = $("#genre");
-  var mp3File = $("#file-input");
+  var mp3File;
   var formSub = $("#submit-form");
 
   function addSpecificUserSound() {
@@ -185,7 +185,7 @@ $(document).ready(function () {
       var newSound = {
         name: soundName.val().trim().toLowerCase(),
         genre: genre1.val().trim().toLowerCase(),
-        file: mp3File.val().trim(),
+        file: mp3File,
         UserId: userID
       };
 
@@ -247,8 +247,11 @@ $(document).ready(function () {
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
+          
           var response = JSON.parse(xhr.responseText);
+          console.log(response);
           uploadFile(file, response.signedRequest, response.url);
+          mp3File = response.url;
           console.log("trying to find this", file, response.signedRequest, response.url);
         }
         else {
