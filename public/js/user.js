@@ -7,6 +7,13 @@ $(document).ready(function () {
   var lastName = $("#user-last-name");
   var userEmail = $("#user-up-email");
   var userPassword = $("#user-up-password");
+  var userInfo = $("#user-info")
+
+  var url = window.location.search;
+  // Sets a flag for whether or not we're updating a post to be false initially
+  var updating = false;
+  var userID;
+
   // console.log(firstName)
   $("#sign-up-submit").on("submit", function signUpSubmit(event) {
     event.preventDefault();
@@ -20,7 +27,8 @@ $(document).ready(function () {
       first_name: firstName.val().trim().toLowerCase(),
       last_name: lastName.val().trim().toLowerCase(),
       email: userEmail.val().trim().toLowerCase(),
-      password: userPassword.val().trim().toLowerCase()
+      password: userPassword.val().trim().toLowerCase(),
+      info: userInfo.val().trim().toLowerCase()
     }
     $.get("/api/users", Users, function (data) {
       console.log(data.user_name);
@@ -55,12 +63,70 @@ $(document).ready(function () {
       //   // debugger;
       // };
       // };
+      
     });
   };
   // submit new user to db
   function submitUser(User) {
     $.post("/api/users", User, function () {
       // window.location.href = "/users/:id";
+    });
+    var existEmail = $("#user-up-email");
+    var existPass = $("#user-up-password");
+    var exEM = existEmail.val().trim();
+    var exPass = existPass.val().trim();
+
+
+    // console.log(exEM, exPass);
+    $.get("/api/users", User, function (data) {
+      // console.log(data);
+      for (var i = 0; i < data.length; i++) {
+        // console.log(data[i].user_name);
+        if ((exEM === data[i].email) && (exPass === data[i].password)) {
+
+          userID = data[i].id;
+          $.post("/login", {
+            userID: userID
+          });
+          console.log(userID);
+          $("section").show();
+          $("#modal2").hide();
+          $("footer").show();
+
+          console.log(data[i].user_name);
+          $("#specific-user-name").html(data[i].user_name);
+          $("#specific-user-email").html(data[i].email);
+          $("#paragragh").html(data[i].info + " <a class='btn btn-small black' id='update-paragragh'>Update</a>");
+          existEmail.val("")
+          existPass.val("")
+          $("#nav-mobile").html(
+            "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
+            "<li><a href='/' class='modal-trigger' id='sign-out'>Hello " + data[i].user_name + "!</a></li > " +
+            "<li><a href='/' class='modal-trigger' id='sign-out'>Sign Out</a></li>"
+          )
+          displayUserSounds();
+          // removeSignins();x
+        };
+        addSpecificUserSound();
+      };
+      // $.get("/api/sounds", function (data) {
+      //   // $('#search-card').show();
+      //   // console.log(data[i].name, data[i].genre, data[i].file);
+      //   // displaying here specific sounds from a specific user
+      //   var displayTable;
+      //   console.log(data);
+      //   for (var j = 0; j < data.length; i++) {
+  
+      //     if (data[j].UserId === userID) {
+      //       displayTable = "<tr><td>" + data[j].name + "</td>" +
+      //         "<td>" + data[j].genre + "</td>" +
+      //         "<td>" + data[j].file + "</td>" +
+      //         "<td><a href='#'><img style='width:25px' src='../../assets/images/download.png'></a></td></tr>"
+      //       console.log(displayTable);
+      //     };
+      //   };
+      //   $("#th-body-user").append(displayTable);
+      // });
     });
   };
 
@@ -69,11 +135,6 @@ $(document).ready(function () {
     event.preventDefault();
     signInExistingUser();
   });
-
-  var url = window.location.search;
-  // Sets a flag for whether or not we're updating a post to be false initially
-  var updating = false;
-  var userID;
 
   function signInExistingUser(Users) {
     var existEmail = $("#existing-email");
@@ -101,6 +162,7 @@ $(document).ready(function () {
           console.log(data[i].user_name);
           $("#specific-user-name").html(data[i].user_name);
           $("#specific-user-email").html(data[i].email);
+          $("#paragragh").html(data[i].info + " <a class='btn btn-small black' id='update-paragragh'>Update</a>");
           existEmail.val("")
           existPass.val("")
           $("#nav-mobile").html(

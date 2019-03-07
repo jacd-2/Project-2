@@ -71,7 +71,8 @@ module.exports = function (app) {
       first_name: req.body.first_name,
       last_name: req.body.last_name,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      info: req.body.info
     }).then(function (dbUsers) {
       console.log(dbUsers + "THIS IS THE DB USERS BRO");
       req.session.Users = dbUsers;
@@ -102,6 +103,21 @@ module.exports = function (app) {
       res.json(dbUsers);
     });
   });
+
+
+  // updating info
+  // app.put("/api/users/:id", function (req, res) {
+  //   console.log(req.body.id);
+    
+  //   db.Users.update({
+  //     where: {
+  //       id: req.params.id
+  //     }
+  //   }).then(function (dbUsers) {
+  //     // We have access to the new todo as an argument inside of the callback function
+  //     res.json(dbUsers);
+  //   });
+  // });
 
 
 // -----------------------------------------------------------------------------------
