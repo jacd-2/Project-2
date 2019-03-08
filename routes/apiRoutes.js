@@ -190,9 +190,11 @@ module.exports = function (app) {
     res.json({userId: req.session.userID,
     user_name: req.session.user_name,
     email: req.session.email
-    })
-  })
+    });
+  });
+  
   app.post('/logout', (req, res) => {
+    req.session = null;
     req.session.destroy();
     res.end();
   })

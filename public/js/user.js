@@ -1,7 +1,204 @@
 
 $(document).ready(function () {
-  $.get("/login", function(data){
+
+  $.get("/login", function (data) {
     console.log(data);
+    if (data.userId) {
+      var signedUserId = data.userId;
+      signInUser(signedUserId);
+      function signInUser(id) {
+        $.get("api/users/" + id, function (data) {
+
+          console.log(data)
+          userID = data.id;
+          var user_name = data.user_name;
+          var email = data.email;
+          $.post("/login", {
+            userID: userID,
+            user_name: user_name,
+            email: email
+          });
+          console.log(userID);
+          $("#upload-button").show();
+          $("section").show();
+          $("#modal2").hide();
+          $("footer").show();
+
+          $.get("/login", function (data) {
+            console.log(data);
+
+            console.log(data.user_name);
+            $("#specific-user-name").html(data.user_name);
+            $("#specific-user-email").html(data.email);
+
+            $("#nav-mobile").html(
+              "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
+              "<li><a href='/users'>Hello " + data.user_name + "!</a></li > " +
+              "<li><a class='modal-trigger' id='sign-out'>Sign Out</a></li>"
+            )
+          });
+          displayUserSounds();
+        })
+        addSpecificUserSound(id)
+      };
+
+      // displayUserSounds();
+      function displayUserSounds() {
+        $.get("/api/sounds", function (data) {
+          // $('#search-card').show();
+          // console.log(data[i].name, data[i].genre, data[i].file);
+          // displaying here specific sounds from a specific user
+          for (var i = 0; i < data.length; i++) {
+
+            if (userID === data[i].UserId) {
+              var displayTable =
+                "<tr><td>" + data[i].name + "</td>" +
+                "<td>" + data[i].genre + "</td>" +
+                "<td class='center-align'>" + data[i].file + "</td></tr>"
+              console.log(displayTable);
+              $("#th-body-user").append(displayTable);
+            };
+          };
+
+        });
+      }
+
+      var soundName = $("#sound-name");
+      var genre1 = $("#genre");
+      var mp3File;
+      var formSub = $("#submit-form");
+
+      function addSpecificUserSound(id) {
+        // Adding an event listener for when the form is submitted
+        $(formSub).on("submit", function handleFormSubmit(event) {
+          event.preventDefault();
+          // console.log(userID);
+          // If we have this section in our url, we pull out the post id from the url
+          // In localhost:8080/cms?post_id=1, soundId is 1
+          // if (url.indexOf("?user_id=") !== -1) {
+          //   UserId = url.split("=")[1];
+          //   getPostData(soundId);
+          // }
+          var singleUser = userID;
+          if (url.indexOf("?user_id=") !== -1) {
+            userID = url.split("=")[1];
+          }
+
+
+          // Constructing a newSound object to hand to the database
+
+          var newSound = {
+            name: soundName.val().trim().toLowerCase(),
+            genre: genre1.val().trim().toLowerCase(),
+            file: mp3File,
+            UserId: singleUser
+          };
+          // Wont submit the post if we are missing a body or a title
+          // if (!newSound.name || !newSound.genre || !newSound.file) {
+          //   M.toast({ html: '!!!Please enter all fields!!!', displayLength: 5000 });
+          //   return console.log("Nothing to submit");
+          // }
+          console.log(newSound);
+
+          // If we're updating a post run updatePost to update a post
+          // Otherwise run submitSound to create a whole new post
+          if (updating) {
+            newSound.id = soundId;
+            updatePost(newSound);
+          } else {
+            submitSound(newSound);
+          }
+        });
+        function submitSound(Sound) {
+          $.post("/api/sounds", Sound, function () {
+            // window.location.href = "/users";
+          });
+        }
+      };
+      // Submits a new post and brings user to blog page upon completion
+
+      // function removeSignins() {
+      //   $("#nav-mobile").html(
+      //     "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
+      //     "<li><a href='/' class='modal-trigger' id='sign-out'>Hello" + </a></li>" +
+      //     "<li><a href='/' class='modal-trigger' id='sign-out'>Sign Out</a></li>"
+      //   )
+      //   // $("#sign-out")
+      // }
+
+
+
+
+
+
+      var input = $("input:file");
+      $("file-input")
+        .text("For this type jQuery found " + input.length + ".")
+        .css("color", "red");
+      $("form").submit(function (event) {
+        event.preventDefault();
+      });
+
+
+      // handling mp3 submition
+      (() => {
+        document.getElementById("file-input").onchange = () => {
+          var files = document.getElementById('file-input').files;
+          var file = files[0];
+          if (file == null) {
+            return alert('No file selected.');
+          }
+          getSignedRequest(file);
+        };
+      })();
+      function getSignedRequest(file) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+        xhr.onreadystatechange = () => {
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+
+              var response = JSON.parse(xhr.responseText);
+              console.log(response);
+              uploadFile(file, response.signedRequest, response.url);
+              mp3File = response.url;
+              console.log("trying to find this", file, response.signedRequest, response.url);
+            }
+            else {
+              alert('Could not get signed URL.');
+            }
+          }
+        };
+        xhr.send();
+      }
+      function uploadFile(file, signedRequest, url) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('PUT', signedRequest);
+        console.log(file, signedRequest, url);
+        xhr.onreadystatechange = () => {
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+              console.log(file);
+              document.getElementById('file-input').src = url;
+
+              // document.getElementById('avatar-url').value = url;
+            }
+            else {
+              alert('Could not upload file.');
+            }
+          }
+        };
+        xhr.send(file);
+      }
+
+      // displayS3Sound()
+      // function displayS3Sound() {
+      //   xhr.open('GET', `/sign-s3-us-west-2.amazonaws.com/jacd-music-project/Cymatics+-+100k+Perc+5.wav`);
+      // }
+
+    };
+
+
   });
 
   console.log("test");
@@ -125,7 +322,7 @@ $(document).ready(function () {
         if ((exEM === data[i].email) && (exPass === data[i].password)) {
           var signedUserId = data[i].id;
           signInUser(signedUserId);
-        } 
+        }
         // else if ((exEM !== data[i].email) && (exPass !== data[i].password)) {
         //   M.toast({ html: '!!!That user does not exist please Retry or sign up!!!', displayLength: 5000 });
         // };
@@ -154,19 +351,19 @@ $(document).ready(function () {
       $("#modal2").hide();
       $("footer").show();
 
-      $.get("/login", function(data){
+      $.get("/login", function (data) {
         console.log(data);
 
-      console.log(data.user_name);
-      $("#specific-user-name").html(data.user_name);
-      $("#specific-user-email").html(data.email);
+        console.log(data.user_name);
+        $("#specific-user-name").html(data.user_name);
+        $("#specific-user-email").html(data.email);
 
-      $("#nav-mobile").html(
-        "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
-        "<li><a href='/users'>Hello " + data.user_name + "!</a></li > " +
-        "<li><a href='/' class='modal-trigger' id='sign-out'>Sign Out</a></li>"
-      )
-    });
+        $("#nav-mobile").html(
+          "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
+          "<li><a href='/users'>Hello " + data.user_name + "!</a></li > " +
+          "<li><a href='/' class='modal-trigger' id='sign-out'>Sign Out</a></li>"
+        )
+      });
       displayUserSounds();
     })
     addSpecificUserSound(id)
@@ -378,31 +575,11 @@ $(document).ready(function () {
     });
   }
 
-
-  // Gets post data for a post if we're editing
-  // function getPostData(id) {
-  //   $.get("/api/posts/" + id, function(data) {
-  //     if (data) {
-  //       // If this post exists, prefill our cms forms with its data
-  //       genre.val(data.title);
-  //       soundName.val(data.body);
-  //       postCategorySelect.val(data.category);
-  //       // If we have a post with this id, set a flag for us to know to update the post
-  //       // when we hit submit
-  //       updating = true;
-  //     }
-  //   });
-  // }
-
-  // // Update a given post, bring user to the blog page when done
-  // function updatePost(post) {
-  //   $.ajax({
-  //     method: "PUT",
-  //     url: "/api/posts",
-  //     data: post
+  // $("#sign-out").on("click", function(){
+  //   $.post("/logout", function(data){
+  //     console.log(data);
+  //     // window.location.href = "/";
   //   })
-  //     .then(function() {
-  //       window.location.href = "/blog";
-  //     });
-  // }
+  // })
+
 });

@@ -33,36 +33,36 @@
                 </li>
                 <!-- <li><a href="#" class="">Sign Up</a></li>
                 <li><a href="#">Login</a></li> -->
-                <li><a href="/users">Sign In</a></li>
-                <!-- <li><a data-target="modal2" class="modal-trigger" ref="#modal2">Sign In</a></li> -->
+                <!-- <li><a href="/users">Sign In</a></li> -->
+                <li><a data-target="modal2" class="modal-trigger" ref="#modal2">Sign In</a></li>
                 <!-- <iframe
                         src="https://developers.google.com/identity/sign-in/web/demos/signin_contextual_simple.jshtml?hl=en"
                         style="width: 200px;
                     height: 60px;"></iframe> -->
-                <!-- <li><a data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li> -->
-                <li><a href="/users">Sign Up</a></li>
+                <li><a data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
+                <!-- <li><a href="/users">Sign Up</a></li> -->
             </ul>
 
 
         </div>
         <ul id="mobile-demo" class="sidenav">
             <li>
-                <form id="search-input" action="/search" class="white">
-                    <input type="text" placeholder="Search.." name="search">
-                    <button id="search" type="submit"><i class="fa fa-search"></i></button>
-                </form>
+                <!-- <form id="search-input" action="/search" class="white"> -->
+                    <!-- <input type="text" placeholder="Search.." name="search"> -->
+                    <button href="/search" id="search" type="submit"><i class="fa fa-search"></i></button>
+                <!-- </form> -->
             </li>
             <!-- <i class="material-icons">close</i></li>
             <li><a href="#" class="">Sign Up</a></li>
             <li><a href="#">Login</a></li> -->
-            <li><a href="/users">Sign In</a></li>
-            <!-- <li><a data-target="modal2" class="modal-trigger" ref="#modal2">Sign In</a></li> -->
+            <!-- <li><a href="/users">Sign In</a></li> -->
+            <li><a data-target="modal2" class="modal-trigger" ref="#modal2">Sign In</a></li>
             <!-- <iframe
                     src="https://developers.google.com/identity/sign-in/web/demos/signin_contextual_simple.jshtml?hl=en"
                     style="width: 200px;
                 height: 60px;"></iframe> -->
-            <!-- <li><a data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li> -->
-            <li><a href="/users">Sign Up</a></li>
+            <li><a data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
+            <!-- <li><a href="/users">Sign Up</a></li> -->
         </ul>
     </nav>
     <!-- NEED TO RUN THROUGH SERVER, WILL WORK ON -->
@@ -172,40 +172,48 @@
     </section>
 
 
-    <section>
-        <!-- Sign in modal -->
-        <div id="modal2" class="modal">
-            <div class="modal-content">
-                <h4>Login</h4>
-                <form id="sign-in-submit">
-                    <input id="user-email" type="email" placeholder="email">
-                    <input id="user-password" type="password" placeholder="Password">
-            </div>
-            <div class="modal-footer">
-                <a type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-            </div>
-            </form>
-        </div>
+  <!-- Sign in modal -->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <h4>Login</h4>
+      <form id="sign-in-submit">
+        <input id="existing-email" type="email" placeholder="email">
+        <input id="existing-password" type="password" placeholder="Password">
+    </div>
+    <div class="modal-footer">
+      <button type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</button>
+    </div>
+    </form>
+  </div>
 
-        <!-- Sign up modal -->
-        <div id="modal3" class="modal">
-            <div class="modal-content">
-                <h4>Sign Up</h4>
-                <form id="sign-up-submit">
-                    <input id="user-name" type="text" placeholder="First Name">
-                    <input id="user-last" type="text" placeholder="Last Name">
-                    <input id="user-up-email" type="email" placeholder="email">
-                    <input id="user-up-password" placeholder="Password">
-            </div>
-            <div class="modal-footer">
-                <a type="submit" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-            </div>
-            </form>
-            <div class="center-align"><h5>Already have an account</h5><br>
-                <button data-target="modal2" class="modal-trigger btn black center-align" ref="#modal2">Login</button><br><br>
-            </div>
-        </div>
-    </section>
+  <!-- Sign up modal -->
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <h4>Sign Up</h4>
+      <form id="sign-up-submit">
+        <input id="new-user-name" type="text" placeholder="User Name">
+        <input id="user-first-name" type="text" placeholder="First Name">
+        <input id="user-last-name" type="text" placeholder="Last Name">
+        <input id="user-up-email" type="email" placeholder="email">
+        <input id="user-up-password" placeholder="Password">
+        <br>
+        <br>
+        <br>
+        <h6>Tell us a little about yourself</h6>
+        <input id="user-info" placeholder="Info">
+
+    </div>
+    <div class="modal-footer">
+      <!-- href="/users" -->
+      <button type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</button>
+    </div>
+    </form>
+    <div class="center-align">
+      <h5>Already have an account</h5><br>
+      <button id="hiding-modal" data-target="modal2" class="modal-trigger btn black center-align" ref="#modal2">Login</button><br><br>
+    </div>
+  </div>
+  </section>
 
 
     <footer class="page-footer">
