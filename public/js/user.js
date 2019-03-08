@@ -1,12 +1,20 @@
 
 $(document).ready(function () {
   console.log("test");
+  $("#upload-button").hide();
   // Gets an optional query string from our url (i.e. ?post_id=23)
   var userName = $("#new-user-name");
   var firstName = $("#user-first-name");
   var lastName = $("#user-last-name");
   var userEmail = $("#user-up-email");
   var userPassword = $("#user-up-password");
+  var userInfo = $("#user-info")
+
+  var url = window.location.search;
+  // Sets a flag for whether or not we're updating a post to be false initially
+  var updating = false;
+  var userID;
+
   // console.log(firstName)
   $("#sign-up-submit").on("submit", function signUpSubmit(event) {
     event.preventDefault();
@@ -20,10 +28,12 @@ $(document).ready(function () {
       first_name: firstName.val().trim().toLowerCase(),
       last_name: lastName.val().trim().toLowerCase(),
       email: userEmail.val().trim().toLowerCase(),
-      password: userPassword.val().trim().toLowerCase()
+      password: userPassword.val().trim().toLowerCase(),
+      info: userInfo.val().trim().toLowerCase()
     }
+
     $.get("/api/users", Users, function (data) {
-      console.log(data.user_name);
+      // console.log(data.user_name);
 
 
       submitUser(newUser);
@@ -42,19 +52,20 @@ $(document).ready(function () {
       //   //     submitUser(newUser);
       //   //     break;
       //   // }
-      // if (newUser.user_name === data[i].user_name) {
-      //   M.toast({ html: '!!!That User Name is already taken, please choose another!!!', displayLength: 5000 });
-      //   break; 
-      // } else if (newUser.email === data[i].email) {
-      //   M.toast({ html: '!!!We already have an account with that email, please sign in!!!', displayLength: 5000 });
-      //   break;
-      // } if ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email)) {
-      //   // ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email))
+      //   if (newUser.user_name === data[i].user_name) {
+      //     M.toast({ html: '!!!That User Name is already taken, please choose another!!!', displayLength: 5000 });
+      //     break;
+      //   } else if (newUser.email === data[i].email) {
+      //     M.toast({ html: '!!!We already have an account with that email, please sign in!!!', displayLength: 5000 });
+      //     break;
+      //   } if ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email)) {
+      //     // ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email))
 
-      //   submitUser(newUser);
-      //   // debugger;
+      //     submitUser(newUser);
+      //     // debugger;
+      //   };
       // };
-      // };
+
     });
   };
   // submit new user to db
@@ -62,18 +73,37 @@ $(document).ready(function () {
     $.post("/api/users", User, function () {
       // window.location.href = "/users/:id";
     });
+    var existEmail = $("#user-up-email");
+    var existPass = $("#user-up-password");
+    var exEM = existEmail.val().trim();
+    var exPass = existPass.val().trim();
+
+    userName.val("")
+    firstName.val("")
+    lastName.val("")
+    userEmail.val("")
+    userPassword.val("")
+    userInfo.val("")
+    // console.log(exEM, exPass);
+    $.get("/api/users", User, function (data) {
+      // console.log(data);
+      for (var i = 0; i < data.length; i++) {
+        // console.log(data[i].user_name);
+        if ((exEM === data[i].email) && (exPass === data[i].password)) {
+          var signedUserId = data[i].id;
+          signInUser(signedUserId);
+        };
+        // addSpecificUserSound();
+      };
+    });
   };
 
   // find sounds by specific user
   $("#sign-in-submit").on("submit", function (event) {
     event.preventDefault();
     signInExistingUser();
-  });
 
-  var url = window.location.search;
-  // Sets a flag for whether or not we're updating a post to be false initially
-  var updating = false;
-  var userID;
+  });
 
   function signInExistingUser(Users) {
     var existEmail = $("#existing-email");
@@ -81,37 +111,20 @@ $(document).ready(function () {
     var exEM = existEmail.val().trim();
     var exPass = existPass.val().trim();
 
-
+    existEmail.val('')
+    existPass.val('')
     // console.log(exEM, exPass);
     $.get("/api/users", Users, function (data) {
-      // console.log(data);
+      console.log(data);
       for (var i = 0; i < data.length; i++) {
         // console.log(data[i].user_name);
         if ((exEM === data[i].email) && (exPass === data[i].password)) {
-
-          userID = data[i].id;
-          $.post("/login", {
-            userID: userID
-          });
-          console.log(userID);
-          $("section").show();
-          $("#modal2").hide();
-          $("footer").show();
-
-          console.log(data[i].user_name);
-          $("#specific-user-name").html(data[i].user_name);
-          $("#specific-user-email").html(data[i].email);
-          existEmail.val("")
-          existPass.val("")
-          $("#nav-mobile").html(
-            "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
-            "<li><a href='/' class='modal-trigger' id='sign-out'>Hello " + data[i].user_name + "!</a></li > " +
-            "<li><a href='/' class='modal-trigger' id='sign-out'>Sign Out</a></li>"
-          )
-          displayUserSounds();
-          // removeSignins();x
-        };
-        addSpecificUserSound();
+          var signedUserId = data[i].id;
+          signInUser(signedUserId);
+        } 
+        // else if ((exEM !== data[i].email) && (exPass !== data[i].password)) {
+        //   M.toast({ html: '!!!That user does not exist please Retry or sign up!!!', displayLength: 5000 });
+        // };
       };
       // $.get("/api/sounds", function (data) {
       //   // $('#search-card').show();
@@ -120,7 +133,7 @@ $(document).ready(function () {
       //   var displayTable;
       //   console.log(data);
       //   for (var j = 0; j < data.length; i++) {
-  
+
       //     if (data[j].UserId === userID) {
       //       displayTable = "<tr><td>" + data[j].name + "</td>" +
       //         "<td>" + data[j].genre + "</td>" +
@@ -131,9 +144,41 @@ $(document).ready(function () {
       //   };
       //   $("#th-body-user").append(displayTable);
       // });
+      existEmail.val("")
+      existPass.val("")
     });
 
   };
+
+  function signInUser(id) {
+    $.get("api/users/" + id, function (data) {
+
+      console.log(data)
+      userID = data.id;
+      $.post("/login", {
+        userID: userID
+      });
+      console.log(userID);
+      $("#upload-button").show();
+      $("section").show();
+      $("#modal2").hide();
+      $("footer").show();
+
+      console.log(data.user_name);
+      $("#specific-user-name").html(data.user_name);
+      $("#specific-user-email").html(data.email);
+
+      $("#nav-mobile").html(
+        "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
+        "<li><a>Hello " + data.user_name + "!</a></li > " +
+        "<li><a href='/' class='modal-trigger' id='sign-out'>Sign Out</a></li>"
+      )
+      displayUserSounds();
+    })
+    addSpecificUserSound(id)
+
+  }
+
   // displayUserSounds();
   function displayUserSounds() {
     $.get("/api/sounds", function (data) {
@@ -143,10 +188,10 @@ $(document).ready(function () {
       for (var i = 0; i < data.length; i++) {
 
         if (userID === data[i].UserId) {
-          var displayTable = 
+          var displayTable =
             "<tr><td>" + data[i].name + "</td>" +
             "<td>" + data[i].genre + "</td>" +
-            "<td>" + data[i].file + "</td></tr>"
+            "<td class='center-align'>" + data[i].file + "</td></tr>"
           console.log(displayTable);
           $("#th-body-user").append(displayTable);
         };
@@ -160,7 +205,7 @@ $(document).ready(function () {
   var mp3File;
   var formSub = $("#submit-form");
 
-  function addSpecificUserSound() {
+  function addSpecificUserSound(id) {
     // Adding an event listener for when the form is submitted
     $(formSub).on("submit", function handleFormSubmit(event) {
       event.preventDefault();
@@ -171,7 +216,7 @@ $(document).ready(function () {
       //   UserId = url.split("=")[1];
       //   getPostData(soundId);
       // }
-
+      var singleUser = userID;
       if (url.indexOf("?user_id=") !== -1) {
         userID = url.split("=")[1];
       }
@@ -186,7 +231,7 @@ $(document).ready(function () {
         name: soundName.val().trim().toLowerCase(),
         genre: genre1.val().trim().toLowerCase(),
         file: mp3File,
-        UserId: userID
+        UserId: singleUser
       };
 
       console.log(newSound);
@@ -200,13 +245,14 @@ $(document).ready(function () {
         submitSound(newSound);
       }
     });
+    function submitSound(Sound) {
+      $.post("/api/sounds", Sound, function () {
+        // window.location.href = "/users";
+      });
+    }
   };
   // Submits a new post and brings user to blog page upon completion
-  function submitSound(Sound) {
-    $.post("/api/sounds", Sound, function () {
-      // window.location.href = "/users";
-    });
-  }
+
   // function removeSignins() {
   //   $("#nav-mobile").html(
   //     "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
@@ -247,7 +293,7 @@ $(document).ready(function () {
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
-          
+
           var response = JSON.parse(xhr.responseText);
           console.log(response);
           uploadFile(file, response.signedRequest, response.url);

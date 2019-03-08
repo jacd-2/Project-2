@@ -73,9 +73,9 @@
               <h6 id="specific-user-email" class="col s6"></h6>
               <a class="right col s6">  
                   <!-- Modal Trigger -->
-                <a class="black btn modal-trigger" href="#modal1">Upload Sound</a></a><br><br>
-              <p>I am a very simple card. I am good at containing small bits of information.
-                I am convenient because I require little markup to use effectively.</p>
+                <a id="upload-button" class="black btn modal-trigger" href="#modal1">Upload Sound</a></a><br><br>
+              <p>Here you can upload any sound you want. Press upload to get started!</p>
+              
             </div>
             <div class="card-action" id="user-website">
               <a href="#">This is a link</a>
@@ -85,7 +85,7 @@
                   <tr>
                     <th id="bank-name">Sounds</th>
                     <th>Genre</th>
-                    <th>Link</th>
+                    <th class="center-align">Link</th>
                   </tr>
                 </thead>
 
@@ -149,9 +149,7 @@
           <div class="row">
             <!-- <input type="file"> -->
             <input id="file-input" type="file"> <a>Upload MP3</a><br>
-            <p><label for="file">File progress:</label>
-              <progress id="file-load" max="100" value=""> 70% </progress>
-            </p>
+
             <!-- possibly use to login while uploading -->
             <!-- <img id="preview" src="/images/default.png">
 
@@ -166,8 +164,16 @@
           <div class="modal-footer">
             <button type="submit" id="upload-song" class="modal-close waves-effect waves-green btn-flat">Agree</button>
           </div>
+          <div>
+              By clicking agree you agree that you own all rights to distribute the sound you are uploading and also give
+              rights to the people who download them to use and distribute themselves! You also agree to be fully legally 
+              responsible for any copyright violations or litigation brought forth in response to the distribution of this
+              sound. Enjoy 
+            </div>
         </form>
+
       </div>
+
   </section>
 
 
@@ -195,6 +201,12 @@
         <input id="user-last-name" type="text" placeholder="Last Name">
         <input id="user-up-email" type="email" placeholder="email">
         <input id="user-up-password" placeholder="Password">
+        <br>
+        <br>
+        <br>
+        <h6>Tell us a little about yourself</h6>
+        <input id="user-info" placeholder="Info">
+
     </div>
     <div class="modal-footer">
       <!-- href="/users" -->
@@ -203,7 +215,7 @@
     </form>
     <div class="center-align">
       <h5>Already have an account</h5><br>
-      <button data-target="modal2" class="modal-trigger btn black center-align" ref="#modal2">Login</button><br><br>
+      <button id="hiding-modal" data-target="modal2" class="modal-trigger btn black center-align" ref="#modal2">Login</button><br><br>
     </div>
   </div>
   </section>
@@ -237,10 +249,10 @@
         <div class="col l4 offset-l2 s12">
           <h5 class="white-text">Links</h5>
           <ul>
-            <li><a class="grey-text text-lighten-3" href="#!">Contact Us</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Login</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Sign Up</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Blog</a></li>
+              <li><a class="grey-text text-lighten-3" href="action=mailto:josh.jenkin@live.com" method="post">Contact Us</a></li>
+              <li><a class="grey-text text-lighten-3" href="/users">Login</a></li>
+              <li><a class="grey-text text-lighten-3" href="/users">Sign Up</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Blog (Coming!)</a></li>
           </ul>
         </div>
       </div>
@@ -273,6 +285,9 @@
       });
       $('.dropdown-trigger').dropdown();
 
+      $("#hiding-modal").on("click", function(){
+        $("#modal3").hide();
+      });
     });
   </script>
 </body>

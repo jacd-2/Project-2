@@ -10,7 +10,8 @@ module.exports = function(sequelize, DataTypes) {
     first_name: DataTypes.STRING,
     last_name: DataTypes.STRING,
     email: DataTypes.STRING,
-    password: DataTypes.STRING
+    password: DataTypes.STRING,
+    info: DataTypes.STRING
   });
   Users.associate = function(models) {
   //   // Associating Author with Posts
