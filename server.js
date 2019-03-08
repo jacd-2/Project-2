@@ -8,7 +8,7 @@ var db = require("./models");
 var session = require("express-session");
 
 var app = express();
-var PORT = process.env.PORT || 3002;
+var PORT = process.env.PORT || 8080;
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
