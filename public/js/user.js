@@ -121,9 +121,10 @@ $(document).ready(function () {
         if ((exEM === data[i].email) && (exPass === data[i].password)) {
           var signedUserId = data[i].id;
           signInUser(signedUserId);
-        } else if ((exEM !== data[i].email) && (exPass !== data[i].password)) {
-          M.toast({ html: '!!!That user does not exist please Retry or sign up!!!', displayLength: 5000 });
-        };
+        } 
+        // else if ((exEM !== data[i].email) && (exPass !== data[i].password)) {
+        //   M.toast({ html: '!!!That user does not exist please Retry or sign up!!!', displayLength: 5000 });
+        // };
       };
       // $.get("/api/sounds", function (data) {
       //   // $('#search-card').show();
