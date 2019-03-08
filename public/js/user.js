@@ -1,5 +1,9 @@
 
 $(document).ready(function () {
+  $.get("/login", function(data){
+    console.log(data);
+  });
+
   console.log("test");
   $("#upload-button").hide();
   // Gets an optional query string from our url (i.e. ?post_id=23)
@@ -126,24 +130,6 @@ $(document).ready(function () {
         //   M.toast({ html: '!!!That user does not exist please Retry or sign up!!!', displayLength: 5000 });
         // };
       };
-      // $.get("/api/sounds", function (data) {
-      //   // $('#search-card').show();
-      //   // console.log(data[i].name, data[i].genre, data[i].file);
-      //   // displaying here specific sounds from a specific user
-      //   var displayTable;
-      //   console.log(data);
-      //   for (var j = 0; j < data.length; i++) {
-
-      //     if (data[j].UserId === userID) {
-      //       displayTable = "<tr><td>" + data[j].name + "</td>" +
-      //         "<td>" + data[j].genre + "</td>" +
-      //         "<td>" + data[j].file + "</td>" +
-      //         "<td><a href='#'><img style='width:25px' src='../../assets/images/download.png'></a></td></tr>"
-      //       console.log(displayTable);
-      //     };
-      //   };
-      //   $("#th-body-user").append(displayTable);
-      // });
       existEmail.val("")
       existPass.val("")
     });
@@ -155,8 +141,12 @@ $(document).ready(function () {
 
       console.log(data)
       userID = data.id;
+      var user_name = data.user_name;
+      var email = data.email;
       $.post("/login", {
-        userID: userID
+        userID: userID,
+        user_name: user_name,
+        email: email
       });
       console.log(userID);
       $("#upload-button").show();
@@ -164,19 +154,22 @@ $(document).ready(function () {
       $("#modal2").hide();
       $("footer").show();
 
+      $.get("/login", function(data){
+        console.log(data);
+
       console.log(data.user_name);
       $("#specific-user-name").html(data.user_name);
       $("#specific-user-email").html(data.email);
 
       $("#nav-mobile").html(
         "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
-        "<li><a>Hello " + data.user_name + "!</a></li > " +
+        "<li><a href='/users'>Hello " + data.user_name + "!</a></li > " +
         "<li><a href='/' class='modal-trigger' id='sign-out'>Sign Out</a></li>"
       )
+    });
       displayUserSounds();
     })
     addSpecificUserSound(id)
-
   }
 
   // displayUserSounds();
@@ -221,10 +214,7 @@ $(document).ready(function () {
         userID = url.split("=")[1];
       }
 
-      // Wont submit the post if we are missing a body or a title
-      // if (!genre.val().trim() || !soundName.val().trim()) {
-      //   return console.log("Nothing to submit");
-      // }
+
       // Constructing a newSound object to hand to the database
 
       var newSound = {
@@ -233,7 +223,11 @@ $(document).ready(function () {
         file: mp3File,
         UserId: singleUser
       };
-
+      // Wont submit the post if we are missing a body or a title
+      // if (!newSound.name || !newSound.genre || !newSound.file) {
+      //   M.toast({ html: '!!!Please enter all fields!!!', displayLength: 5000 });
+      //   return console.log("Nothing to submit");
+      // }
       console.log(newSound);
 
       // If we're updating a post run updatePost to update a post

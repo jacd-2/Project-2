@@ -180,9 +180,22 @@ module.exports = function (app) {
   app.post('/login', (req, res) => {
     // console.log(req.body);
     req.session.userID = req.body.userID;
+    req.session.user_name = req.body.user_name;
+    req.session.email = req.body.email;
     req.session.loggedIn = true;
     res.redirect("/users");
   });
+
+  app.get('/login', (req, res) => {
+    res.json({userId: req.session.userID,
+    user_name: req.session.user_name,
+    email: req.session.email
+    })
+  })
+  app.post('/logout', (req, res) => {
+    req.session.destroy();
+    res.end();
+  })
 
 
   // User can modify their personal file
