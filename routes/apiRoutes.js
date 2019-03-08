@@ -92,7 +92,7 @@ module.exports = function (app) {
   });
 
   app.get("/api/users/:id", function (req, res) {
-    console.log(req.body.id);
+    console.log("!!!!!!!!!!!!!!!!LLLLLLLLLoookkk", req.params.id);
     
     db.Users.findOne({
       where: {
@@ -138,7 +138,7 @@ module.exports = function (app) {
     }).then(function (dbSounds) {
       // We have access to the new todo as an argument inside of the callback function
       res.json(dbSounds);
-      res.redirect("/users");
+      // res.redirect("/users");
     });
   });
 

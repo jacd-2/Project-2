@@ -148,35 +148,13 @@ $(document).ready(function () {
 
     // console.log(exEM, exPass);
     $.get("/api/users", Users, function (data) {
-      // console.log(data);
+      console.log(data);
       for (var i = 0; i < data.length; i++) {
         // console.log(data[i].user_name);
         if ((exEM === data[i].email) && (exPass === data[i].password)) {
-
-          userID = data[i].id;
-          $.post("/login", {
-            userID: userID
-          });
-          console.log(userID);
-          $("#upload-button").show();
-          $("section").show();
-          $("#modal2").hide();
-          $("footer").show();
-
-          console.log(data[i].user_name);
-          $("#specific-user-name").html(data[i].user_name);
-          $("#specific-user-email").html(data[i].email);
-          existEmail.val("")
-          existPass.val("")
-          $("#nav-mobile").html(
-            "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
-            "<li><a>Hello " + data[i].user_name + "!</a></li > " +
-            "<li><a href='/' class='modal-trigger' id='sign-out'>Sign Out</a></li>"
-          )
-          displayUserSounds();
-          // removeSignins();x
+          var signedUserId = data[i].id;
+          signInUser(signedUserId);
         };
-        addSpecificUserSound();
       };
       // $.get("/api/sounds", function (data) {
       //   // $('#search-card').show();
@@ -196,9 +174,39 @@ $(document).ready(function () {
       //   };
       //   $("#th-body-user").append(displayTable);
       // });
+      existEmail.val("")
+      existPass.val("")
     });
 
   };
+
+  function signInUser(id) {
+    $.get("api/users/" + id, function(data){
+      console.log(data)
+      userID = data.id;
+      $.post("/login", {
+        userID: userID
+      });
+      console.log(userID);
+      $("#upload-button").show();
+      $("section").show();
+      $("#modal2").hide();
+      $("footer").show();
+  
+      console.log(data.user_name);
+      $("#specific-user-name").html(data.user_name);
+      $("#specific-user-email").html(data.email);
+
+      $("#nav-mobile").html(
+        "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
+        "<li><a>Hello " + data.user_name + "!</a></li > " +
+        "<li><a href='/' class='modal-trigger' id='sign-out'>Sign Out</a></li>"
+      )
+      displayUserSounds();
+    })
+    addSpecificUserSound()
+  }
+
   // displayUserSounds();
   function displayUserSounds() {
     $.get("/api/sounds", function (data) {
