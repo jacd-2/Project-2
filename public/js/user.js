@@ -121,6 +121,8 @@ $(document).ready(function () {
         if ((exEM === data[i].email) && (exPass === data[i].password)) {
           var signedUserId = data[i].id;
           signInUser(signedUserId);
+        } else if ((exEM !== data[i].email) && (exPass !== data[i].password)) {
+          M.toast({ html: '!!!That user does not exist please Retry or sign up!!!', displayLength: 5000 });
         };
       };
       // $.get("/api/sounds", function (data) {
@@ -149,6 +151,7 @@ $(document).ready(function () {
 
   function signInUser(id) {
     $.get("api/users/" + id, function (data) {
+
       console.log(data)
       userID = data.id;
       $.post("/login", {
@@ -171,7 +174,8 @@ $(document).ready(function () {
       )
       displayUserSounds();
     })
-    addSpecificUserSound()
+    addSpecificUserSound(id)
+
   }
 
   // displayUserSounds();
@@ -200,7 +204,7 @@ $(document).ready(function () {
   var mp3File;
   var formSub = $("#submit-form");
 
-  function addSpecificUserSound() {
+  function addSpecificUserSound(id) {
     // Adding an event listener for when the form is submitted
     $(formSub).on("submit", function handleFormSubmit(event) {
       event.preventDefault();
@@ -240,13 +244,14 @@ $(document).ready(function () {
         submitSound(newSound);
       }
     });
+    function submitSound(Sound) {
+      $.post("/api/sounds", Sound, function () {
+        // window.location.href = "/users";
+      });
+    }
   };
   // Submits a new post and brings user to blog page upon completion
-  function submitSound(Sound) {
-    $.post("/api/sounds", Sound, function () {
-      // window.location.href = "/users";
-    });
-  }
+
   // function removeSignins() {
   //   $("#nav-mobile").html(
   //     "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
