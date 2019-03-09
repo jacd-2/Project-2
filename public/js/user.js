@@ -79,9 +79,10 @@ $(document).ready(function () {
 
             if (userID === data[i].UserId) {
               var displayTable =
-                "<tr><td>" + data[i].name + "</td>" +
-                "<td>" + data[i].genre + "</td>" +
-                "<td class='center-align'>" + data[i].file + "</td></tr>"
+              "<tr><td>" + data[i].name + "</td>" +
+              "<td>" + data[i].genre + "</td>" +
+              "<td class='center-align'>" + data[i].file + "</td>" +
+              "<td><a class='btn btn-small black white-text' type='button' id='delete-btn'>Delete</a></td></tr>"
               console.log(displayTable);
               $("#th-body-user").append(displayTable);
             };
@@ -89,6 +90,25 @@ $(document).ready(function () {
 
         });
       }
+
+      $("#delete-btn").on("click", function(){
+        console.log("clicked");
+        // var confirm = confirm("Are you sure you want to delete this sound?");
+        // if (confirm) {
+        //   console.log("Delete?");
+        //   deleteSound(id);
+        // }
+      });
+  
+      function deleteSound(id) {
+        $.ajax({
+          method: "DELETE",
+          url: "/api/sounds/" + id
+        })
+          .then(function() {
+          });
+      }
+  
 
       var soundName = $("#sound-name");
       var genre1 = $("#genre");
@@ -212,7 +232,6 @@ $(document).ready(function () {
       // }
 
     };
-
 
   });
 
@@ -422,9 +441,10 @@ $(document).ready(function () {
 
         if (userID === data[i].UserId) {
           var displayTable =
-            "<tr><td>" + data[i].name + "</td>" +
-            "<td>" + data[i].genre + "</td>" +
-            "<td class='center-align'>" + data[i].file + "</td></tr>"
+          "<tr><td>" + data[i].name + "</td>" +
+          "<td>" + data[i].genre + "</td>" +
+          "<td class='center-align'>" + data[i].file + "</td>" +
+          "<td><a href='' id='" + data[i].id + "'>Delete</a></td></tr>"
           console.log(displayTable);
           $("#th-body-user").append(displayTable);
         };
@@ -559,63 +579,6 @@ $(document).ready(function () {
       }
     };
     xhr.send(file);
-  }
-
-  // displayS3Sound()
-  // function displayS3Sound() {
-  //   xhr.open('GET', `/sign-s3-us-west-2.amazonaws.com/jacd-music-project/Cymatics+-+100k+Perc+5.wav`);
-  // }
-
-
-
-
-
-  // search form, in search js also
-  var searchIn = $("#search-input");
-
-
-  $("#search-form").on("submit", function () {
-    event.preventDefault();
-    $(".th-body").empty();
-    // $('#search-card').show();
-    displaySounds();
-  });
-
-
-  function displaySounds(Sounds) {
-    var searchVal = searchIn.val().trim().toLowerCase();
-    console.log(searchVal);
-    if (!searchVal) {
-      M.toast({ html: 'Please enter something in the search bar, searching by Genre will give you the best results!' });
-      return;
-    }
-    $.get("/api/search", Sounds, function (data) {
-      for (var i = 0; i < data.length; i++) {
-
-
-        if ((searchVal === data[i].genre) || (searchVal === data[i].name)) {
-          $('#search-card').show();
-          // console.log(data[i].name, data[i].genre, data[i].file);
-
-          var displayTable = "<tr><td>" + data[i].name + "</td>" +
-            "<td>" + data[i].genre + "</td>" +
-            "<td>" + data[i].file + "</td>" +
-            "<td><a href='#'><img style='width:25px' src='../../assets/images/download.png'></a></td></tr>"
-          console.log(displayTable);
-
-          $(".th-body").append(displayTable);
-          $("#words-for-card").html("These are all the sounds that match your search criteria");
-          // return;
-        }
-        // else {
-        //   console.log("We don't have any Sounds that match that search")
-        //   $("#words-for-card").text("We don't have any Sounds that match that search");
-        //   $('#search-card').hide();
-
-        // };
-        searchIn.val("");
-      };
-    });
   }
 
 });

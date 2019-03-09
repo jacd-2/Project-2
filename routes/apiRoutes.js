@@ -155,12 +155,16 @@ module.exports = function (app) {
       res.json(dbSounds);
     });
   });
-  // app.post("/api/sounds", function(req, res) {
-  //   console.log(req.body);
-  //   db.Sounds.create(req.body).then(function(dbSounds) {
-  //     res.json(dbSounds);
-  //   });
-  // });
+  app.delete("/api/sounds/:id", function(req, res) {
+    console.log(req.body);
+    db.Sounds.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbSounds) {
+      res.json(dbSounds);
+    });
+  });
 
 // ----------------------------------------------------------------------------------
 
