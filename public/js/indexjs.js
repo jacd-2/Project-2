@@ -16,6 +16,11 @@ $(document).ready(function () {
                 "<li><a href='/users'>Hello " + data.user_name + "!</a></li > " +
                 "<li><a id='sign-out'>Sign Out</a></li>"
             )
+            $("#index-script-1").html(
+                "<p id='index-script-1' class='back-1-body'>Contribute to our library of high quality<br>" +
+                "sounds!</p>");
+            $("#index-btn-1").html(
+                "<a href='/users'>Check out your profile!</a>");
             $('#sign-out').on("click", function () {
                 console.log("clicked");
                 $.post("/logout", function (data) {
@@ -190,8 +195,10 @@ $(document).ready(function () {
                     "<li><a id='sign-out'>Sign Out</a></li>"
                 )
                 $("#index-script-1").html(
-                    "<p class='back-1-body href='/users'>Checkout your profile!</p>");
-
+                    "<p id='index-script-1' class='back-1-body'>Contribute to our library of high quality<br>" +
+                    "sounds!</p>");
+                $("#index-btn-1").html(
+                    "<a href='/users'>Check out your profile!</a>");
                 $('#sign-out').on("click", function () {
                     console.log("clicked");
                     $.post("/logout", function (data) {
