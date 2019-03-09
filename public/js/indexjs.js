@@ -21,13 +21,29 @@ $(document).ready(function () {
                 "sounds!</p>");
             $("#index-btn-1").html(
                 "<a href='/users'>Check out your profile!</a>");
+            $("#index-btn-2").html(
+                "<a href='/users'>Check out your profile!</a>");
+            $("#footer-links").html(
+                "<h5 class='white-text'>Links</h5>" +
+                "<ul><li><a class='grey-text text-lighten-3' href='action=mailto:josh.jenkin@live.com'" +
+                "method='post'>Contact Us</a></li>" +
+                "<li><a href='/' class='modal-trigger' id='sign-out-2'>Sign Out</a></li>" +
+                "<li><a class='grey-text text-lighten-3' href='#!'>Blog (Coming!)</a></li></ul>"
+            )
             $('#sign-out').on("click", function () {
                 console.log("clicked");
                 $.post("/logout", function (data) {
                     console.log(data);
                     window.location.href = "/";
-                })
-            })
+                });
+            });
+            $('#sign-out-2').on("click", function () {
+                console.log("clicked");
+                $.post("/logout", function (data) {
+                    console.log(data);
+                    window.location.href = "/";
+                });
+            });
         };
     })
 
@@ -118,14 +134,16 @@ $(document).ready(function () {
         // console.log(exEM, exPass);
         $.get("/api/users", User, function (data) {
             // console.log(data);
+            var signedUserId;
             for (var i = 0; i < data.length; i++) {
                 // console.log(data[i].user_name);
                 if ((exEM === data[i].email) && (exPass === data[i].password)) {
-                    var signedUserId = data[i].id;
+                    signedUserId = data[i].id;
                     signInUser(signedUserId);
                 };
                 // addSpecificUserSound();
             };
+            signInUser(signedUserId);
         });
     };
 

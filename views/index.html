@@ -25,69 +25,46 @@
     <nav>
 
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo logo"><img style="height:30px" src="../assets/images/download.png"> Logo</a>
+            <a href="/" class="brand-logo logo"><img style="height:30px" src="../assets/images/download.png"> Logo</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li>
                     <link for="search" type="submit"><a href="/search"><i class="fa fa-search"></i></a></link>
                 </li>
-                <!-- <li><a href="#" class="">Sign Up</a></li>
-                <li><a href="#">Login</a></li> -->
-                <!-- <li><a href="/users">Sign In</a></li> -->
                 <li><a data-target="modal2" class="modal-trigger" ref="#modal2">Sign In</a></li>
-                <!-- <iframe
-                        src="https://developers.google.com/identity/sign-in/web/demos/signin_contextual_simple.jshtml?hl=en"
-                        style="width: 200px;
-                    height: 60px;"></iframe> -->
                 <li><a data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
-                <!-- <li><a href="/users">Sign Up</a></li> -->
             </ul>
-
-
         </div>
-        <ul id="mobile-demo" class="sidenav">
+
+        <ul id="mobile-demo" class="sidenav"><br>
+            <li><a href="/" class="brand-logo logo"><img style="height:30px" src="../assets/images/download.png">
+                    Logo</a></li><br>
             <li>
-                <!-- <form id="search-input" action="/search" class="white"> -->
-                    <!-- <input type="text" placeholder="Search.." name="search"> -->
-                    <link for="search" type="submit"><a href="/search"><i class="fa fa-search"></i></a></link>
-                <!-- </form> -->
+                <link for="search" type="submit"><a href="/search"><i class="fa fa-search"></i></a></link>
             </li>
-            <!-- <i class="material-icons">close</i></li>
-            <li><a href="#" class="">Sign Up</a></li>
-            <li><a href="#">Login</a></li> -->
-            <!-- <li><a href="/users">Sign In</a></li> -->
             <li><a data-target="modal2" class="modal-trigger" ref="#modal2">Sign In</a></li>
-            <!-- <iframe
-                    src="https://developers.google.com/identity/sign-in/web/demos/signin_contextual_simple.jshtml?hl=en"
-                    style="width: 200px;
-                height: 60px;"></iframe> -->
             <li><a data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
-            <!-- <li><a href="/users">Sign Up</a></li> -->
         </ul>
     </nav>
-    <!-- NEED TO RUN THROUGH SERVER, WILL WORK ON -->
-    <script>
 
-    </script>
+
     <section>
         <div>
             <div class="caption center-align">
                 <img class="back-1" src="../assets/images/back-1.jpg">
                 <div class="back-1-text white-text left-align">
                     <h1 class="one-header">Find<br>your<br>sound</h1>
-                    <p id="index-script-1"  class="back-1-body">Join our growing group of producers<br>
+                    <p id="index-script-1" class="back-1-body">Join our growing group of producers<br>
                         and contribute to our library of high quality<br>
                         sounds!</p>
-                    <!-- <div><a data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></div>     -->
-                    <div id="index-btn-1"><a href="" data-target="modal3" class="modal-trigger center-align p-5" ref="#modal3">Sign Up</a></div>
-
+                    <div id="index-btn-1"><a href="" data-target="modal3" class="modal-trigger center-align p-5"
+                            ref="#modal3">Sign Up</a></div>
                 </div>
-
             </div>
-
         </div>
-
     </section>
+
+
     <section>
         <div class="parallax-container center valign-wrapper">
             <div class="parallax"><img
@@ -112,13 +89,13 @@
                     <p class="">Join our growing group of producers<br>
                         and contribute to our library of high quality<br>
                         sounds!</p>
-                    <p><a href="" data-target="modal2" class="modal-trigger center-align" ref="#modal2">Login</a></p>
-                </div>
+                    <p>
+                        <div id="index-btn-2"><a href="" data-target="modal2" class="modal-trigger center-align" ref="#modal2">Login</a></p>
+                            </div>
 
+                    </div>
             </div>
-
         </div>
-
     </section>
 
     <section>
@@ -162,7 +139,7 @@
                             <div class="input-field inline">
                                 <input id="email_text" type="text">
                                 <label for="email_text">Brain Contents</label>
-                          
+
                                 <button class="btn black" type="submit" href="#">Submit</button>
                             </div>
                         </div>
@@ -173,48 +150,49 @@
     </section>
 
 
-  <!-- Sign in modal -->
-  <div id="modal2" class="modal">
-    <div class="modal-content">
-      <h4>Login</h4>
-      <form id="sign-in-submit">
-        <input id="existing-email" type="email" placeholder="email">
-        <input id="existing-password" type="password" placeholder="Password">
+    <!-- Sign in modal -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <h4>Login</h4>
+            <form id="sign-in-submit">
+                <input id="existing-email" type="email" placeholder="email">
+                <input id="existing-password" type="password" placeholder="Password">
+        </div>
+        <div class="modal-footer">
+            <button type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</button>
+        </div>
+        </form>
     </div>
-    <div class="modal-footer">
-      <button type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</button>
-    </div>
-    </form>
-  </div>
 
-  <!-- Sign up modal -->
-  <div id="modal3" class="modal">
-    <div class="modal-content">
-      <h4>Sign Up</h4>
-      <form id="sign-up-submit">
-        <input id="new-user-name" type="text" placeholder="User Name">
-        <input id="user-first-name" type="text" placeholder="First Name">
-        <input id="user-last-name" type="text" placeholder="Last Name">
-        <input id="user-up-email" type="email" placeholder="email">
-        <input id="user-up-password" placeholder="Password">
-        <br>
-        <br>
-        <br>
-        <h6>Tell us a little about yourself</h6>
-        <input id="user-info" placeholder="Info">
+    <!-- Sign up modal -->
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <h4>Sign Up</h4>
+            <form id="sign-up-submit">
+                <input id="new-user-name" type="text" placeholder="User Name">
+                <input id="user-first-name" type="text" placeholder="First Name">
+                <input id="user-last-name" type="text" placeholder="Last Name">
+                <input id="user-up-email" type="email" placeholder="email">
+                <input id="user-up-password" placeholder="Password">
+                <br>
+                <br>
+                <br>
+                <h6>Tell us a little about yourself</h6>
+                <input id="user-info" placeholder="Info">
 
+        </div>
+        <div class="modal-footer">
+            <!-- href="/users" -->
+            <button type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</button>
+        </div>
+        </form>
+        <div class="center-align">
+            <h5>Already have an account</h5><br>
+            <button id="hiding-modal" data-target="modal2" class="modal-trigger btn black center-align"
+                ref="#modal2">Login</button><br><br>
+        </div>
     </div>
-    <div class="modal-footer">
-      <!-- href="/users" -->
-      <button type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</button>
-    </div>
-    </form>
-    <div class="center-align">
-      <h5>Already have an account</h5><br>
-      <button id="hiding-modal" data-target="modal2" class="modal-trigger btn black center-align" ref="#modal2">Login</button><br><br>
-    </div>
-  </div>
-  </section>
+    </section>
 
 
     <footer class="page-footer">
@@ -225,13 +203,14 @@
                     <p class="grey-text text-lighten-4">We are all about sharing our sounds, click the links to get
                         starter!</p>
                 </div>
-                <div class="col l4 offset-l2 s12">
+                <div id="footer-links" class="col l4 offset-l2 s12">
                     <h5 class="white-text">Links</h5>
                     <ul>
-                        <li><a class="grey-text text-lighten-3" href="action=mailto:josh.jenkin@live.com" method="post">Contact Us</a></li>
-                        <li><a data-target="modal2" class="modal-trigger" ref="#modal2">Login</a></li>
-                        <li><a data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Blog (Coming!)</a></li>
+                        <li><a href="" class="grey-text text-lighten-3" href="action=mailto:josh.jenkin@live.com"
+                                method="post">Contact Us</a></li>
+                        <li><a href="" data-target="modal2" class="modal-trigger" ref="#modal2">Login</a></li>
+                        <li><a href="" data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
+                        <li><a href="" class="grey-text text-lighten-3" href="#!">Blog (Coming!)</a></li>
                     </ul>
                 </div>
             </div>

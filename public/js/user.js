@@ -42,17 +42,31 @@ $(document).ready(function () {
               "<li><a href='/users'>Hello " + data.user_name + "!</a></li > " +
               "<li><a id='sign-out'>Sign Out</a></li>"
             )
-        $('#sign-out').on("click", function(){
-          console.log("clicked");
-          $.post("/logout", function(data){
-            console.log(data);
-            window.location.href = "/";
-          })
-        });
+            $("#footer-links").html(
+              "<h5 class='white-text'>Links</h5>" +
+              "<ul><li><a class='grey-text text-lighten-3' href='action=mailto:josh.jenkin@live.com'" +
+              "method='post'>Contact Us</a></li>" +
+              "<li><a href='/' class='modal-trigger' id='sign-out-2'>Sign Out</a></li>" +
+              "<li><a class='grey-text text-lighten-3' href='#!'>Blog (Coming!)</a></li></ul>"
+            )
+            $('#sign-out').on("click", function () {
+              console.log("clicked");
+              $.post("/logout", function (data) {
+                console.log(data);
+                window.location.href = "/";
+              });
+            });
+            $('#sign-out-2').on("click", function () {
+              console.log("clicked");
+              $.post("/logout", function (data) {
+                console.log(data);
+                window.location.href = "/";
+              });
+            });
           });
           displayUserSounds();
         })
-        
+
       };
 
       // displayUserSounds();
@@ -289,14 +303,16 @@ $(document).ready(function () {
     // console.log(exEM, exPass);
     $.get("/api/users", User, function (data) {
       // console.log(data);
+      var signedUserId;
       for (var i = 0; i < data.length; i++) {
-        // console.log(data[i].user_name);
-        if ((exEM === data[i].email) && (exPass === data[i].password)) {
-          var signedUserId = data[i].id;
-          signInUser(signedUserId);
-        };
-        // addSpecificUserSound();
+          // console.log(data[i].user_name);
+          if ((exEM === data[i].email) && (exPass === data[i].password)) {
+              signedUserId = data[i].id;
+              signInUser(signedUserId);
+          };
+          // addSpecificUserSound();
       };
+      signInUser(signedUserId);
     });
   };
 
@@ -367,15 +383,29 @@ $(document).ready(function () {
         $("#mobile-demo").html(
           "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
           "<li><a href='/users'>Hello " + data.user_name + "!</a></li > " +
-          "<li><a id='sign-out'>Sign Out</a></li>"
+          "<li><a id='sign-out-2'>Sign Out</a></li>"
         )
-        $('#sign-out').on("click", function(){
+        $("#footer-links").html(
+          "<h5 class='white-text'>Links</h5>" +
+          "<ul><li><a class='grey-text text-lighten-3' href='action=mailto:josh.jenkin@live.com'" +
+          "method='post'>Contact Us</a></li>" +
+          "<li><a href='/' class='modal-trigger' id='sign-out-2'>Sign Out</a></li>" +
+          "<li><a class='grey-text text-lighten-3' href='#!'>Blog (Coming!)</a></li></ul>"
+        )
+        $('#sign-out').on("click", function () {
           console.log("clicked");
-          $.post("/logout", function(data){
+          $.post("/logout", function (data) {
             console.log(data);
             window.location.href = "/";
-          })
-        })
+          });
+        });
+        $('#sign-out-2').on("click", function () {
+          console.log("clicked");
+          $.post("/logout", function (data) {
+            console.log(data);
+            window.location.href = "/";
+          });
+        });
       });
       displayUserSounds();
     })

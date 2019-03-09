@@ -30,30 +30,20 @@
                 <li>
                     <link for="search" type="submit"><a href="/search"><i class="fa fa-search"></i></a></link>
                 </li>
-                <!-- <li><a href="/users">Sign In</a></li> -->
                 <li><a data-target="modal2" class="modal-trigger" ref="#modal2">Sign In</a></li>
-                <!-- <iframe
-                        src="https://developers.google.com/identity/sign-in/web/demos/signin_contextual_simple.jshtml?hl=en"
-                        style="width: 200px;
-                    height: 60px;"></iframe> -->
                 <li><a data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
-                <!-- <li><a href="/users">Sign Up</a></li> -->
             </ul>
-
-
         </div>
     </nav>
-    <ul id="mobile-demo" class="sidenav">
-        <li> <input id="search" type="search" required></li>
-        <li><link for="search" type="submit"><a href="/search"><i class="fa fa-search"></i></a></link></li>
-        <!-- <li><a href="/users">Sign In</a></li> -->
+
+    <ul id="mobile-demo" class="sidenav"><br>
+        <li><a href="/" class="brand-logo logo"><img style="height:30px" src="../assets/images/download.png"> Logo</a>
+        </li><br>
+        <li>
+            <link for="search" type="submit"><a href="/search"><i class="fa fa-search"></i></a></link>
+        </li>
         <li><a data-target="modal2" class="modal-trigger" ref="#modal2">Sign In</a></li>
-        <!-- <iframe
-                    src="https://developers.google.com/identity/sign-in/web/demos/signin_contextual_simple.jshtml?hl=en"
-                    style="width: 200px;
-                height: 60px;"></iframe> -->
         <li><a data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
-        <!-- <li><a href="/users">Sign Up</a></li> -->
     </ul>
     <br>
     <br>
@@ -170,12 +160,12 @@
     <div id="modal2" class="modal">
         <div class="modal-content">
             <h4>Login</h4>
-            <form>
-                <input type="email" placeholder="email">
-                <input type="password" placeholder="Password">
+            <form id="sign-in-submit">
+                <input id="existing-email" type="email" placeholder="email">
+                <input id="existing-password" type="password" placeholder="Password">
         </div>
         <div class="modal-footer">
-            <a type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            <button type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</button>
         </div>
         </form>
     </div>
@@ -184,19 +174,27 @@
     <div id="modal3" class="modal">
         <div class="modal-content">
             <h4>Sign Up</h4>
-            <form>
-                <input type="text" placeholder="First Name">
-                <input type="text" placeholder="Last Name">
-                <input type="email" placeholder="email">
-                <input type="password" placeholder="Password">
+            <form id="sign-up-submit">
+                <input id="new-user-name" type="text" placeholder="User Name">
+                <input id="user-first-name" type="text" placeholder="First Name">
+                <input id="user-last-name" type="text" placeholder="Last Name">
+                <input id="user-up-email" type="email" placeholder="email">
+                <input id="user-up-password" placeholder="Password">
+                <br>
+                <br>
+                <br>
+                <h6>Tell us a little about yourself</h6>
+                <input id="user-info" placeholder="Info">
+
         </div>
         <div class="modal-footer">
-            <a type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            <!-- href="/users" -->
+            <button type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</button>
         </div>
         </form>
         <div class="center-align">
             <h5>Already have an account</h5><br>
-            <button data-target="modal2" class="modal-trigger btn black center-align"
+            <button id="hiding-modal" data-target="modal2" class="modal-trigger btn black center-align"
                 ref="#modal2">Login</button><br><br>
         </div>
     </div>
@@ -210,14 +208,14 @@
                     <p class="grey-text text-lighten-4">We are all about sharing our sounds, click the links to get
                         starter!</p>
                 </div>
-                <div class="col l4 offset-l2 s12">
+                <div id="footer-links" class="col l4 offset-l2 s12">
                     <h5 class="white-text">Links</h5>
                     <ul>
-                        <li><a class="grey-text text-lighten-3" href="action=mailto:josh.jenkin@live.com"
+                        <li><a href="" class="grey-text text-lighten-3" href="action=mailto:josh.jenkin@live.com"
                                 method="post">Contact Us</a></li>
-                        <li><a data-target="modal2" class="modal-trigger" ref="#modal2">Login</a></li>
-                        <li><a data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Blog (Coming!)</a></li>
+                        <li><a href="" data-target="modal2" class="modal-trigger" ref="#modal2">Login</a></li>
+                        <li><a href="" data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
+                        <li><a href="" class="grey-text text-lighten-3" href="#!">Blog (Coming!)</a></li>
                     </ul>
                 </div>
             </div>

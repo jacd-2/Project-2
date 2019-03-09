@@ -34,25 +34,20 @@
           <link for="search" type="submit"><a href="/search"><i class="fa fa-search"></i></a></link>
         </li>
         <li><a data-target="modal2" class="modal-trigger" ref="#modal2">Sign In</a></li>
-        <!-- <iframe
-                src="https://developers.google.com/identity/sign-in/web/demos/signin_contextual_simple.jshtml?hl=en"
-                style="width: 200px;
-            height: 60px;"></iframe> -->
         <li><a data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
       </ul>
 
 
     </div>
   </nav>
-  <ul id="mobile-demo" class="sidenav">
-    <a href="/" class="brand-logo logo"><img style="height:30px" src="../assets/images/download.png"> Logo</a>
-    <!-- <li> <input id="search" type="search" required></li> -->
-    <li><link for="search" type="submit"><a href="/search"><i class="fa fa-search"></i></a></link></li>
+
+  <ul id="mobile-demo" class="sidenav"><br>
+    <li><a href="/" class="brand-logo logo"><img style="height:30px" src="../assets/images/download.png"> Logo</a></li>
+    <br>
+    <li>
+      <link for="search" type="submit"><a href="/search"><i class="fa fa-search"></i></a></link>
+    </li>
     <li><a data-target="modal2" class="modal-trigger" ref="#modal2">Sign In</a></li>
-    <!-- <iframe
-              src="https://developers.google.com/identity/sign-in/web/demos/signin_contextual_simple.jshtml?hl=en"
-              style="width: 200px;
-          height: 60px;"></iframe> -->
     <li><a data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
   </ul>
 
@@ -68,11 +63,11 @@
             <div class="card-content">
               <!-- <span class="card-title" id="user-name">User Name</span> -->
               <h6 id="specific-user-email" class="col s6"></h6>
-              <a class="right col s6">  
-                  <!-- Modal Trigger -->
+              <a class="right col s6">
+                <!-- Modal Trigger -->
                 <a id="upload-button" class="black btn modal-trigger" href="#modal1">Upload Sound</a></a><br><br>
               <p>Here you can upload any sound you want. Press upload to get started!</p>
-              
+
             </div>
             <div class="card-action" id="user-website">
               <a href="#">This is a link</a>
@@ -88,7 +83,7 @@
 
 
                 <tbody id="th-body-user">
-                    
+
                 </tbody>
               </table>
               <br><br>
@@ -162,11 +157,11 @@
             <button type="submit" id="upload-song" class="modal-close waves-effect waves-green btn-flat">Agree</button>
           </div>
           <div>
-              By clicking agree you agree that you own all rights to distribute the sound you are uploading and also give
-              rights to the people who download them to use and distribute themselves! You also agree to be fully legally 
-              responsible for any copyright violations or litigation brought forth in response to the distribution of this
-              sound. Enjoy 
-            </div>
+            By clicking agree you agree that you own all rights to distribute the sound you are uploading and also give
+            rights to the people who download them to use and distribute themselves! You also agree to be fully legally
+            responsible for any copyright violations or litigation brought forth in response to the distribution of this
+            sound. Enjoy
+          </div>
         </form>
 
       </div>
@@ -212,7 +207,8 @@
     </form>
     <div class="center-align">
       <h5>Already have an account</h5><br>
-      <button id="hiding-modal" data-target="modal2" class="modal-trigger btn black center-align" ref="#modal2">Login</button><br><br>
+      <button id="hiding-modal" data-target="modal2" class="modal-trigger btn black center-align"
+        ref="#modal2">Login</button><br><br>
     </div>
   </div>
   </section>
@@ -241,15 +237,17 @@
       <div class="row">
         <div class="col l6 s12">
           <h5 class="white-text">Logo</h5>
-          <p class="grey-text text-lighten-4">We are all about sharing our sounds, click the links to get starter!</p>
+          <p class="grey-text text-lighten-4">We are all about sharing our sounds, click the links to get
+            starter!</p>
         </div>
-        <div class="col l4 offset-l2 s12">
+        <div id="footer-links" class="col l4 offset-l2 s12">
           <h5 class="white-text">Links</h5>
           <ul>
-              <li><a class="grey-text text-lighten-3" href="action=mailto:josh.jenkin@live.com" method="post">Contact Us</a></li>
-              <li><a data-target="modal2" class="modal-trigger" ref="#modal2">Login</a></li>
-              <li><a data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Blog (Coming!)</a></li>
+            <li><a href="" class="grey-text text-lighten-3" href="action=mailto:josh.jenkin@live.com"
+                method="post">Contact Us</a></li>
+            <li><a href="" data-target="modal2" class="modal-trigger" ref="#modal2">Login</a></li>
+            <li><a href="" data-target="modal3" class="modal-trigger" ref="#modal3">Sign Up</a></li>
+            <li><a href="" class="grey-text text-lighten-3" href="#!">Blog (Coming!)</a></li>
           </ul>
         </div>
       </div>
@@ -261,6 +259,7 @@
       </div>
     </div>
   </footer>
+
   <!--JavaScript at end of body for optimized loading-->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -282,7 +281,7 @@
       });
       $('.dropdown-trigger').dropdown();
 
-      $("#hiding-modal").on("click", function(){
+      $("#hiding-modal").on("click", function () {
         $("#modal3").hide();
       });
     });
