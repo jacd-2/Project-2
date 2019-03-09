@@ -11,6 +11,11 @@ $(document).ready(function () {
                 "<li><a href='/users'>Hello " + data.user_name + "!</a></li > " +
                 "<li><a href='/' class='modal-trigger' id='sign-out'>Sign Out</a></li>"
             )
+            $("#mobile-demo").html(
+                "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
+                "<li><a href='/users'>Hello " + data.user_name + "!</a></li > " +
+                "<li><a id='sign-out'>Sign Out</a></li>"
+              )
             $('#sign-out').on("click", function () {
                 console.log("clicked");
                 $.post("/logout", function (data) {
@@ -179,6 +184,11 @@ $(document).ready(function () {
                     "<li><a href='/users'>Hello " + data.user_name + "!</a></li > " +
                     "<li><a href='/' class='modal-trigger' id='sign-out'>Sign Out</a></li>"
                 )
+                $("#mobile-demo").html(
+                    "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
+                    "<li><a href='/users'>Hello " + data.user_name + "!</a></li > " +
+                    "<li><a id='sign-out'>Sign Out</a></li>"
+                  )
                 $('#sign-out').on("click", function () {
                     console.log("clicked");
                     $.post("/logout", function (data) {
