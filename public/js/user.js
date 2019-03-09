@@ -36,13 +36,13 @@ $(document).ready(function () {
               "<li><a href='/users'>Hello " + data.user_name + "!</a></li > " +
               "<li><a id='sign-out'>Sign Out</a></li>"
             )
-            $('#sign-out').on("click", function(){
-              console.log("clicked");
-              // $.post("/logout", function(data){
-              //   console.log(data);
-              //   // window.location.href = "/";
-              // })
-            })
+        $('#sign-out').on("click", function(){
+          console.log("clicked");
+          $.post("/logout", function(data){
+            console.log(data);
+            window.location.href = "/";
+          })
+        });
           });
           displayUserSounds();
         })

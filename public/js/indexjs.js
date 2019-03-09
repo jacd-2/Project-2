@@ -11,6 +11,13 @@ $(document).ready(function () {
                 "<li><a href='/users'>Hello " + data.user_name + "!</a></li > " +
                 "<li><a href='/' class='modal-trigger' id='sign-out'>Sign Out</a></li>"
             )
+            $('#sign-out').on("click", function () {
+                console.log("clicked");
+                $.post("/logout", function (data) {
+                    console.log(data);
+                    window.location.href = "/";
+                })
+            })
         };
     })
 
@@ -161,7 +168,7 @@ $(document).ready(function () {
             console.log(userID);
 
             $("#modal2").hide();
-
+            window.location.href = "/users";
             $.get("/login", function (data) {
                 console.log(data);
 
@@ -172,6 +179,13 @@ $(document).ready(function () {
                     "<li><a href='/users'>Hello " + data.user_name + "!</a></li > " +
                     "<li><a href='/' class='modal-trigger' id='sign-out'>Sign Out</a></li>"
                 )
+                $('#sign-out').on("click", function () {
+                    console.log("clicked");
+                    $.post("/logout", function (data) {
+                        console.log(data);
+                        window.location.href = "/";
+                    })
+                })
             });
         });
     };
