@@ -34,8 +34,15 @@ $(document).ready(function () {
             $("#nav-mobile").html(
               "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
               "<li><a href='/users'>Hello " + data.user_name + "!</a></li > " +
-              "<li><a class='modal-trigger' id='sign-out'>Sign Out</a></li>"
+              "<li><a id='sign-out'>Sign Out</a></li>"
             )
+            $('#sign-out').on("click", function(){
+              console.log("clicked");
+              // $.post("/logout", function(data){
+              //   console.log(data);
+              //   // window.location.href = "/";
+              // })
+            })
           });
           displayUserSounds();
         })
@@ -361,8 +368,15 @@ $(document).ready(function () {
         $("#nav-mobile").html(
           "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
           "<li><a href='/users'>Hello " + data.user_name + "!</a></li > " +
-          "<li><a href='/' class='modal-trigger' id='sign-out'>Sign Out</a></li>"
+          "<li><a id='sign-out'>Sign Out</a></li>"
         )
+        $('#sign-out').on("click", function(){
+          console.log("clicked");
+          $.post("/logout", function(data){
+            console.log(data);
+            window.location.href = "/";
+          })
+        })
       });
       displayUserSounds();
     })
@@ -574,12 +588,5 @@ $(document).ready(function () {
       };
     });
   }
-
-  // $("#sign-out").on("click", function(){
-  //   $.post("/logout", function(data){
-  //     console.log(data);
-  //     // window.location.href = "/";
-  //   })
-  // })
 
 });

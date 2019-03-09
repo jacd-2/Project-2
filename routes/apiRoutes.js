@@ -192,9 +192,9 @@ module.exports = function (app) {
     email: req.session.email
     });
   });
-  
+
   app.post('/logout', (req, res) => {
-    req.session = null;
+    req.session.loggedIn = false;
     req.session.destroy();
     res.end();
   })
