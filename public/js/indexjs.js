@@ -185,7 +185,7 @@ $(document).ready(function () {
         $.get("api/users/" + id, function (data) {
 
             console.log(data)
-            userID = data.id;
+            userID = id;
             var user_name = data.user_name;
             var email = data.email;
             $.post("/login", {
