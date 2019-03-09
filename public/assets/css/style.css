@@ -35,6 +35,7 @@ section {
 @media only screen and (max-width: 1000px) {
     .back-1 {
         width: 100%;
+        height: 500px;
         margin: auto;
         z-index: -1;
     }
