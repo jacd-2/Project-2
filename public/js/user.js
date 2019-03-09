@@ -5,6 +5,7 @@ $(document).ready(function () {
     console.log(data);
     if (data.userId) {
       var signedUserId = data.userId;
+      console.log(signedUserId);
       signInUser(signedUserId);
       function signInUser(id) {
         $.get("api/users/" + id, function (data) {
@@ -46,7 +47,7 @@ $(document).ready(function () {
           });
           displayUserSounds();
         })
-        addSpecificUserSound(id)
+        
       };
 
       // displayUserSounds();
@@ -74,19 +75,19 @@ $(document).ready(function () {
       var genre1 = $("#genre");
       var mp3File;
       var formSub = $("#submit-form");
-
-      function addSpecificUserSound(id) {
+      addSpecificUserSound();
+      function addSpecificUserSound() {
         // Adding an event listener for when the form is submitted
         $(formSub).on("submit", function handleFormSubmit(event) {
           event.preventDefault();
-          // console.log(userID);
+          console.log("I'm submitting");
           // If we have this section in our url, we pull out the post id from the url
           // In localhost:8080/cms?post_id=1, soundId is 1
           // if (url.indexOf("?user_id=") !== -1) {
           //   UserId = url.split("=")[1];
           //   getPostData(soundId);
           // }
-          var singleUser = userID;
+          var singleUser = data.userId;
           if (url.indexOf("?user_id=") !== -1) {
             userID = url.split("=")[1];
           }
@@ -118,22 +119,10 @@ $(document).ready(function () {
         });
         function submitSound(Sound) {
           $.post("/api/sounds", Sound, function () {
-            // window.location.href = "/users";
+            window.location.href = "/users";
           });
         }
       };
-      // Submits a new post and brings user to blog page upon completion
-
-      // function removeSignins() {
-      //   $("#nav-mobile").html(
-      //     "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
-      //     "<li><a href='/' class='modal-trigger' id='sign-out'>Hello" + </a></li>" +
-      //     "<li><a href='/' class='modal-trigger' id='sign-out'>Sign Out</a></li>"
-      //   )
-      //   // $("#sign-out")
-      // }
-
-
 
 
 
