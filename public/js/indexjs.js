@@ -14,7 +14,7 @@ $(document).ready(function () {
             $("#mobile-demo").html(
                 "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
                 "<li><a href='/users'>Hello " + data.user_name + "!</a></li > " +
-                "<li><a id='sign-out'>Sign Out</a></li>"
+                "<li><a id='sign-out-2'>Sign Out</a></li>"
             )
             $("#index-script-1").html(
                 "<p id='index-script-1' class='back-1-body'>Contribute to our library of high quality<br>" +
@@ -210,7 +210,7 @@ $(document).ready(function () {
                 $("#mobile-demo").html(
                     "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
                     "<li><a href='/users'>Hello " + data.user_name + "!</a></li > " +
-                    "<li><a id='sign-out'>Sign Out</a></li>"
+                    "<li><a id='sign-out-2'>Sign Out</a></li>"
                 )
                 $("#index-script-1").html(
                     "<p id='index-script-1' class='back-1-body'>Contribute to our library of high quality<br>" +
@@ -224,6 +224,13 @@ $(document).ready(function () {
                         window.location.href = "/";
                     })
                 })
+                $('#sign-out-2').on("click", function () {
+                    console.log("clicked");
+                    $.post("/logout", function (data) {
+                        console.log(data);
+                        window.location.href = "/";
+                    });
+                });
             });
         });
     };

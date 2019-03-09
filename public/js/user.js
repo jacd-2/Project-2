@@ -40,7 +40,7 @@ $(document).ready(function () {
             $("#mobile-demo").html(
               "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
               "<li><a href='/users'>Hello " + data.user_name + "!</a></li > " +
-              "<li><a id='sign-out'>Sign Out</a></li>"
+              "<li><a id='sign-out-2'>Sign Out</a></li>"
             )
             $("#footer-links").html(
               "<h5 class='white-text'>Links</h5>" +

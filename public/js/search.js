@@ -10,7 +10,7 @@ $(document).ready(function () {
       $("#mobile-demo").html(
         "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
         "<li><a href='/users'>Hello " + data.user_name + "!</a></li > " +
-        "<li><a id='sign-out'>Sign Out</a></li>"
+        "<li><a id='sign-out-2'>Sign Out</a></li>"
       )
       $("#footer-links").html(
         "<h5 class='white-text'>Links</h5>" +
@@ -169,12 +169,12 @@ $(document).ready(function () {
       // console.log(data);
       var signedUserId;
       for (var i = 0; i < data.length; i++) {
-          // console.log(data[i].user_name);
-          if ((exEM === data[i].email) && (exPass === data[i].password)) {
-              signedUserId = data[i].id;
-              signInUser(signedUserId);
-          };
-          // addSpecificUserSound();
+        // console.log(data[i].user_name);
+        if ((exEM === data[i].email) && (exPass === data[i].password)) {
+          signedUserId = data[i].id;
+          signInUser(signedUserId);
+        };
+        // addSpecificUserSound();
       };
       signInUser(signedUserId);
     });
@@ -243,13 +243,20 @@ $(document).ready(function () {
         $("#mobile-demo").html(
           "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
           "<li><a href='/users'>Hello " + data.user_name + "!</a></li > " +
-          "<li><a id='sign-out'>Sign Out</a></li>"
+          "<li><a id='sign-out-2'>Sign Out</a></li>"
         )
         $("#index-script-1").html(
           "<p id='index-script-1' class='back-1-body'>Contribute to our library of high quality<br>" +
           "sounds!</p>");
         $("#index-btn-1").html(
           "<a href='/users'>Check out your profile!</a>");
+        $('#sign-out').on("click", function () {
+          console.log("clicked");
+          $.post("/logout", function (data) {
+            console.log(data);
+            window.location.href = "/";
+          })
+        })
         $('#sign-out').on("click", function () {
           console.log("clicked");
           $.post("/logout", function (data) {
