@@ -203,34 +203,6 @@ module.exports = function (app) {
     res.end();
   })
 
-
-  // User can modify their personal file
-
-  // app.put("/api/users/:id", function (req, res) {
-  //   db.Sounds.update({
-  //     userName: req.body.name,
-  //     category: req.body.genre,
-  //     price: req.body.price
-  //   }, {
-  //       where: {
-  //         id: req.body.id
-  //       }
-  //     }).then(function (dbSounds) {
-  //       console.log(dbSounds);
-  //       res.json(dbSounds);
-  //     });
-  //   // Use the sequelize update method to update a todo to be equal to the value of req.body
-  //   // req.body will contain the id of the todo we need to update
-  // });
-
-  // // Delete an example by id
-  // app.delete("/api/users/:id", function (req, res) {
-  //   db.Sounds.destroy({ where: { id: req.params.id } }).then(function (
-  //     dbSounds
-  //   ) {
-  //     res.json(dbSounds);
-  //   });
-  // });
 };
 
 
