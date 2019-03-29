@@ -104,22 +104,6 @@ module.exports = function (app) {
     });
   });
 
-
-  // updating info
-  // app.put("/api/users/:id", function (req, res) {
-  //   console.log(req.body.id);
-    
-  //   db.Users.update({
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   }).then(function (dbUsers) {
-  //     // We have access to the new todo as an argument inside of the callback function
-  //     res.json(dbUsers);
-  //   });
-  // });
-
-
 // -----------------------------------------------------------------------------------
 
 
@@ -167,19 +151,6 @@ module.exports = function (app) {
   });
 
 // ----------------------------------------------------------------------------------
-
-
-
-
-  // app.post('/users', (req, res) => {
-  //   console.log("this is what I'm looking for", req, res);
-  //   var params = s3Params;
-  //   var options = { partSize: 10 * 1024 * 1024, queueSize: 1 };
-  //   s3.upload(params, options, function (err, data) {
-  //     console.log(err, data);
-  //   });
-  //   // TODO: Read POSTed form data and do something useful
-  // });
 
   app.post('/login', (req, res) => {
     // console.log(req.body);
