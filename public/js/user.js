@@ -81,8 +81,8 @@ $(document).ready(function () {
               var displayTable =
               "<tr><td>" + data[i].name + "</td>" +
               "<td>" + data[i].genre + "</td>" +
-              "<td class='center-align'>" + data[i].file + "</td>" +
-              "<td><a class='btn btn-small black white-text' type='button' id='delete-btn'>Delete</a></td></tr>"
+              "<td class='center-align'>" + data[i].file + "</td></tr>" +
+              // "<td><a class='btn btn-small black white-text' type='button' id='delete-btn'>Delete</a></td></tr>"
               console.log(displayTable);
               $("#th-body-user").append(displayTable);
             };
@@ -443,8 +443,8 @@ $(document).ready(function () {
           var displayTable =
           "<tr><td>" + data[i].name + "</td>" +
           "<td>" + data[i].genre + "</td>" +
-          "<td class='center-align'>" + data[i].file + "</td>" +
-          "<td><a href='' id='" + data[i].id + "'>Delete</a></td></tr>"
+          "<td class='center-align'>" + data[i].file + "</td></tr>" +
+          // "<td><a href='' id='" + data[i].id + "'>Delete</a></td></tr>"
           console.log(displayTable);
           $("#th-body-user").append(displayTable);
         };
