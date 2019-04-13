@@ -19,14 +19,14 @@
     "url": "https://github.com/jacd-2/Project-2/issues"
   },
   "dependencies": {
-    "aws-sdk": "^2.416.0",
+    "aws-sdk": "^2.437.0",
     "bcryptjs": "^2.4.3",
     "chai": "^4.2.0",
     "dotenv": "^6.2.0",
     "ejs": "2.x",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2",
-    "express-session": "^1.15.6",
+    "express-session": "^1.16.1",
     "mysql": "^2.16.0",
     "mysql2": "^1.6.5",
     "sequelize": "^4.43.1"
@@ -39,7 +39,7 @@
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.2",
     "mocha": "^5.2.0",
-    "prettier": "^1.13.7"
+    "prettier": "^1.17.0"
   },
   "homepage": "https://github.com/jacd-2/Project-2#readme"
 }
