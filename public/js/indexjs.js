@@ -111,13 +111,7 @@ $(document).ready(function () {
         var existPass = $("#user-up-password");
         var exEM = existEmail.val().trim();
         var exPass = existPass.val().trim();
-
-        // userName.val("")
-        // firstName.val("")
-        // lastName.val("")
-        // userEmail.val("")
-        // userPassword.val("")
-        // userInfo.val("")
+        
         // console.log(exEM, exPass);
         $.get("/api/users", User, function (data) {
             // console.log(data);

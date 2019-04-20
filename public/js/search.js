@@ -54,6 +54,7 @@ $(document).ready(function () {
       return;
     }
     $.get("/api/search", Sounds, function (data) {
+
       for (var i = 0; i < data.length; i++) {
 
         if ((searchVal === data[i].genre) || (searchVal === data[i].name)) {
@@ -68,13 +69,10 @@ $(document).ready(function () {
           $(".th-body").append(displayTable);
           $("#words-for-card").html("These are all the sounds that match your search criteria");
           // return;
-        }
-        // else {
-        //   console.log("We don't have any Sounds that match that search")
-        //   $("#words-for-card").text("We don't have any Sounds that match that search");
-        //   $('#search-card').hide();
-
-        // };
+        } else {
+          $('#search-card').hide();
+         return M.toast({ html: 'Sorry, we don' + "'" + 't have any sounds that match, searching by Genre will give you the best results!' });
+        };
         searchIn.val("");
       };
     });
