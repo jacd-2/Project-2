@@ -82,6 +82,7 @@ $(document).ready(function () {
               "<tr><td>" + data[i].name + "</td>" +
               "<td>" + data[i].genre + "</td>" +
               "<td class='center-align'>" + data[i].file + "</td>" +
+              '<td class="center-align"><audio width="300" height="48" controls="controls"><source src="' + data[i].file + '" type="audio/mpeg"/>Your browser does not support HTML5 audio. Please update your browser to view this media content.</audio></td>' +
               // "</tr>" +
               "<td><a class='btn btn-small black white-text' type='button' id='delete-btn' data-id=" + data[i].id + ">Delete</a></td></tr>"
               console.log(displayTable);

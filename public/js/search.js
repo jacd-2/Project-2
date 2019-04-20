@@ -70,7 +70,8 @@ $(document).ready(function () {
           var displayTable = "<tr><td>" + nameVal + "</td>" +
             "<td>" + genreVal + "</td>" +
             // "<td>" + data[i].user_name + "</td>" +
-            "<td><a class='center-align' href='" + data[i].file + "' target='_blank'><img style='width:25px' src='../../assets/images/download.png' src='" + data[i].file + "'></a></td></tr>"
+            '<td class="center-align"><audio width="300" height="48" controls="controls"><source src="' + data[i].file + '" type="audio/mpeg"/>Your browser does not support HTML5 audio. Please update your browser to view this media content.</audio></td>' +
+            // "<td><a class='center-align' href='" + data[i].file + "' target='_blank'><img style='width:25px' src='../../assets/images/download.png' src='" + data[i].file + "'></a></td></tr>"
           console.log(displayTable);
           $(".th-body").append(displayTable);
           $("#words-for-card").html("These are all the sounds that match your search criteria");
