@@ -76,29 +76,31 @@ $(document).ready(function () {
           // console.log(data[i].name, data[i].genre, data[i].file);
           // displaying here specific sounds from a specific user
           for (var i = 0; i < data.length; i++) {
-
+            console.log(data[i].id);
             if (userID === data[i].UserId) {
               var displayTable =
               "<tr><td>" + data[i].name + "</td>" +
               "<td>" + data[i].genre + "</td>" +
-              "<td class='center-align'>" + data[i].file + "</td></tr>" +
-              // "<td><a class='btn btn-small black white-text' type='button' id='delete-btn'>Delete</a></td></tr>"
+              "<td class='center-align'>" + data[i].file + "</td>" +
+              // "</tr>" +
+              "<td><a class='btn btn-small black white-text' type='button' id='delete-btn' data-id=" + data[i].id + ">Delete</a></td></tr>"
               console.log(displayTable);
               $("#th-body-user").append(displayTable);
+
+              $("#delete-btn").click(function(){
+                var thisID = $(this).attr("data-id");
+                console.log("clicked");
+                console.log(thisID);
+                // var confirm = confirm("Are you sure you want to delete this sound?");
+                if (confirm("Are you sure you want to delete this sound?")) {
+                  deleteSound(thisID);
+                }
+              });
             };
           };
 
         });
       }
-
-      $("#delete-btn").on("click", function(){
-        console.log("clicked");
-        // var confirm = confirm("Are you sure you want to delete this sound?");
-        // if (confirm) {
-        //   console.log("Delete?");
-        //   deleteSound(id);
-        // }
-      });
   
       function deleteSound(id) {
         $.ajax({
@@ -106,6 +108,7 @@ $(document).ready(function () {
           url: "/api/sounds/" + id
         })
           .then(function() {
+            window.location.href = "/users";
           });
       }
   
@@ -274,7 +277,7 @@ $(document).ready(function () {
       submitUser(newUser);
       // debugger;
       // };
-      for (var i = 0; i < data.length; i++) {
+      // for (var i = 0; i < data.length; i++) {
 
       //   // switch (data[i]) {
       //   //   case (newUser.user_name === data[i].user_name):
@@ -291,16 +294,16 @@ $(document).ready(function () {
         //   M.toast({ html: '!!!That User Name is already taken, please choose another!!!', displayLength: 5000 });
         //   break;
         // } else
-         if (newUser.email === data[i].email) {
-          M.toast({ html: '!!!We already have an account with that email, please sign in!!!', displayLength: 5000 });
-          break;
-        } else {
-          // ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email))
+        //  if (newUser.email === data[i].email) {
+        //   M.toast({ html: '!!!We already have an account with that email, please sign in!!!', displayLength: 5000 });
+        //   break;
+        // } else {
+        //   // ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email))
 
-          submitUser(newUser);
+        //   submitUser(newUser);
           // debugger;
-        };
-      };
+        // };
+      // };
 
     });
   };
@@ -445,7 +448,7 @@ $(document).ready(function () {
           "<tr><td>" + data[i].name + "</td>" +
           "<td>" + data[i].genre + "</td>" +
           "<td class='center-align'>" + data[i].file + "</td></tr>" +
-          // "<td><a href='' id='" + data[i].id + "'>Delete</a></td></tr>"
+          "<td><a href='' id='" + data[i].id + "'>Delete</a></td></tr>"
           console.log(displayTable);
           $("#th-body-user").append(displayTable);
         };
