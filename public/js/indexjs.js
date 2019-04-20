@@ -83,35 +83,34 @@ $(document).ready(function () {
             // console.log(data.user_name);
 
 
-            submitUser(newUser);
+            // submitUser(newUser);
             // debugger;
             // };
-            // for (var i = 0; i < data.length; i++) {
+            for (var i = 0; i < data.length; i++) {
 
-            //   // switch (data[i]) {
-            //   //   case (newUser.user_name === data[i].user_name):
-            //   //     M.toast({ html: 'That User Name is already taken, please choose another' });
-            //   //     break;
-            //   //   case (newUser.email === data[i].email):
-            //   //     M.toast({ html: 'We already have an account with that email, please sign in!' });
-            //   //     break;
-            //   //   case ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email)):
-            //   //     submitUser(newUser);
-            //   //     break;
-            //   // }
+              // switch (data[i]) {
+              //   case (newUser.user_name === data[i].user_name):
+              //     M.toast({ html: 'That User Name is already taken, please choose another' });
+              //     break;
+              //   case (newUser.email === data[i].email):
+              //     M.toast({ html: 'We already have an account with that email, please sign in!' });
+              //     break;
+              //   case ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email)):
+              //     submitUser(newUser);
+              //     break;
+              // }
             //   if (newUser.user_name === data[i].user_name) {
             //     M.toast({ html: '!!!That User Name is already taken, please choose another!!!', displayLength: 5000 });
             //     break;
-            //   } else if (newUser.email === data[i].email) {
-            //     M.toast({ html: '!!!We already have an account with that email, please sign in!!!', displayLength: 5000 });
-            //     break;
-            //   } if ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email)) {
-            //     // ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email))
-
-            //     submitUser(newUser);
-            //     // debugger;
-            //   };
-            // };
+            //   } else
+              if (newUser.email === data[i].email) {
+               return M.toast({ html: '!!!We already have an account with that email, please sign in!!!', displayLength: 5000 });
+              } else {
+                // ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email))
+                submitUser(newUser);
+                // debugger;
+              };
+            };
 
         });
     };
