@@ -231,6 +231,8 @@ $(document).ready(function () {
       //   xhr.open('GET', `/sign-s3-us-west-2.amazonaws.com/jacd-music-project/Cymatics+-+100k+Perc+5.wav`);
       // }
 
+    } else {
+      window.location.href = "/";
     };
 
   });
