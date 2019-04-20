@@ -113,39 +113,26 @@ $(document).ready(function () {
     }
 
     $.get("/api/users", Users, function (data) {
-      // console.log(data.user_name);
 
+      var userVal;
 
-      submitUser(newUser);
-      // debugger;
-      // };
-      // for (var i = 0; i < data.length; i++) {
-
-      //   // switch (data[i]) {
-      //   //   case (newUser.user_name === data[i].user_name):
-      //   //     M.toast({ html: 'That User Name is already taken, please choose another' });
-      //   //     break;
-      //   //   case (newUser.email === data[i].email):
-      //   //     M.toast({ html: 'We already have an account with that email, please sign in!' });
-      //   //     break;
-      //   //   case ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email)):
-      //   //     submitUser(newUser);
-      //   //     break;
-      //   // }
-      //   if (newUser.user_name === data[i].user_name) {
-      //     M.toast({ html: '!!!That User Name is already taken, please choose another!!!', displayLength: 5000 });
-      //     break;
-      //   } else if (newUser.email === data[i].email) {
-      //     M.toast({ html: '!!!We already have an account with that email, please sign in!!!', displayLength: 5000 });
-      //     break;
-      //   } if ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email)) {
-      //     // ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email))
-
-      //     submitUser(newUser);
-      //     // debugger;
-      //   };
-      // };
-
+      for (var i = 0; i < data.length; i++) {
+        userVal = data[i].email
+      };
+      if (newUser.email === userVal) {
+        userName.val("")
+        firstName.val("")
+        lastName.val("")
+        userEmail.val("")
+        userPassword.val("")
+        userInfo.val("")
+        return M.toast({ html: '!!!We already have an account with that email, please sign in!!!', displayLength: 5000 });  
+      } else {
+        // ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email))
+        submitUser(newUser);
+        // debugger;
+      };
+      console.log(userVal);
     });
   };
   // submit new user to db
@@ -158,12 +145,12 @@ $(document).ready(function () {
     var exEM = existEmail.val().trim();
     var exPass = existPass.val().trim();
 
-    userName.val("")
-    firstName.val("")
-    lastName.val("")
-    userEmail.val("")
-    userPassword.val("")
-    userInfo.val("")
+    // userName.val("")
+    // firstName.val("")
+    // lastName.val("")
+    // userEmail.val("")
+    // userPassword.val("")
+    // userInfo.val("")
     // console.log(exEM, exPass);
     $.get("/api/users", User, function (data) {
       // console.log(data);
@@ -215,10 +202,11 @@ $(document).ready(function () {
   };
 
   function signInUser(id) {
+    console.log(id);
     $.get("api/users/" + id, function (data) {
 
       console.log(data)
-      userID = data.id;
+      userID = id;
       var user_name = data.user_name;
       var email = data.email;
       $.post("/login", {
@@ -257,13 +245,13 @@ $(document).ready(function () {
             window.location.href = "/";
           })
         })
-        $('#sign-out').on("click", function () {
+        $('#sign-out-2').on("click", function () {
           console.log("clicked");
           $.post("/logout", function (data) {
             console.log(data);
             window.location.href = "/";
-          })
-        })
+          });
+        });
       });
     });
   };
