@@ -31,6 +31,9 @@ section {
         top: 30%;
         transform: translate(-40%, -50%);
     }
+    .user-container {
+        width: 100%!important;
+    }
   }
 @media only screen and (max-width: 1000px) {
     .back-1 {

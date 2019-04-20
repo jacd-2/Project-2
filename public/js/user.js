@@ -79,18 +79,18 @@ $(document).ready(function () {
             console.log(data[i].id);
             if (userID === data[i].UserId) {
               var displayTable =
-              "<tr><td>" + data[i].name + "</td>" +
-              "<td>" + data[i].genre + "</td>" +
-              "<td class='center-align'>" + data[i].file + "</td>" +
-              '<td class="center-align"><audio width="300" height="48" controls="controls"><source src="' + data[i].file + '" type="audio/mpeg"/>Your browser does not support HTML5 audio. Please update your browser to view this media content.</audio></td>' +
-              // "</tr>" +
-              "<td><a class='btn btn-small black white-text' type='button' id='delete-btn' data-id=" + data[i].id + ">Delete</a></td></tr>"
+                "<tr><td>" + data[i].name + "</td>" +
+                "<td id='hide-on'>" + data[i].genre + "</td>" +
+                "<td class='center-align'>" + data[i].file + "</td>" +
+                '<td id="hide-on" class="center-align"><audio width="300" height="48" controls="controls"><source src="' + data[i].file + '" type="audio/mpeg"/>Your browser does not support HTML5 audio. Please update your browser to view this media content.</audio></td>' +
+                // "</tr>" +
+                "<td><a class='btn btn-small black white-text' type='button' id='delete-btn' data-id=" + data[i].id + ">Delete</a></td></tr>"
               console.log(displayTable);
               $("#th-body-user").append(displayTable);
 
             };
           };
-          $("#delete-btn").click(function(){
+          $("#delete-btn").click(function () {
             var thisID = $(this).attr("data-id");
             console.log("clicked");
             console.log(thisID);
@@ -99,6 +99,24 @@ $(document).ready(function () {
               deleteSound(thisID);
             }
           });
+          // $(window).resize(function () {
+
+            // if ($(window).width() <= 320) {
+
+            //   // is mobile device
+            //   $("#hide-on").hide();
+            // }
+
+          // });
+          // $(window).resize(function () {
+
+          //   if ($('header').width() === 1000) {
+
+          //     // is mobile device
+          //     $("#hide-on").hide();
+          //   }
+
+          // });
         });
       }
       function deleteSound(id) {
@@ -106,10 +124,10 @@ $(document).ready(function () {
           method: "DELETE",
           url: "/api/sounds/" + id
         })
-          .then(function() {
+          .then(function () {
             window.location.href = "/users";
           });
-      }  
+      }
 
       var soundName = $("#sound-name");
       var genre1 = $("#genre");
@@ -290,19 +308,19 @@ $(document).ready(function () {
       //   //     submitUser(newUser);
       //   //     break;
       //   // }
-        // if (newUser.user_name === data[i].user_name) {
-        //   M.toast({ html: '!!!That User Name is already taken, please choose another!!!', displayLength: 5000 });
-        //   break;
-        // } else
-        //  if (newUser.email === data[i].email) {
-        //   M.toast({ html: '!!!We already have an account with that email, please sign in!!!', displayLength: 5000 });
-        //   break;
-        // } else {
-        //   // ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email))
+      // if (newUser.user_name === data[i].user_name) {
+      //   M.toast({ html: '!!!That User Name is already taken, please choose another!!!', displayLength: 5000 });
+      //   break;
+      // } else
+      //  if (newUser.email === data[i].email) {
+      //   M.toast({ html: '!!!We already have an account with that email, please sign in!!!', displayLength: 5000 });
+      //   break;
+      // } else {
+      //   // ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email))
 
-        //   submitUser(newUser);
-          // debugger;
-        // };
+      //   submitUser(newUser);
+      // debugger;
+      // };
       // };
 
     });
@@ -328,12 +346,12 @@ $(document).ready(function () {
       // console.log(data);
       var signedUserId;
       for (var i = 0; i < data.length; i++) {
-          // console.log(data[i].user_name);
-          if ((exEM === data[i].email) && (exPass === data[i].password)) {
-              signedUserId = data[i].id;
-              signInUser(signedUserId);
-          };
-          // addSpecificUserSound();
+        // console.log(data[i].user_name);
+        if ((exEM === data[i].email) && (exPass === data[i].password)) {
+          signedUserId = data[i].id;
+          signInUser(signedUserId);
+        };
+        // addSpecificUserSound();
       };
       signInUser(signedUserId);
     });
@@ -445,10 +463,10 @@ $(document).ready(function () {
 
         if (userID === data[i].UserId) {
           var displayTable =
-          "<tr><td>" + data[i].name + "</td>" +
-          "<td>" + data[i].genre + "</td>" +
-          "<td class='center-align'>" + data[i].file + "</td></tr>" +
-          "<td><a href='' id='" + data[i].id + "'>Delete</a></td></tr>"
+            "<tr><td>" + data[i].name + "</td>" +
+            "<td>" + data[i].genre + "</td>" +
+            "<td class='center-align'>" + data[i].file + "</td></tr>" +
+            "<td><a href='' id='" + data[i].id + "'>Delete</a></td></tr>"
           console.log(displayTable);
           $("#th-body-user").append(displayTable);
         };
