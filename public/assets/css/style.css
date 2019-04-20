@@ -28,7 +28,7 @@ section {
 @media only screen and (max-width: 1400px) {
     .back-1-text {
         position: absolute;
-        top: 40%;
+        top: 30%;
         transform: translate(-40%, -50%);
     }
   }
