@@ -87,21 +87,19 @@ $(document).ready(function () {
               console.log(displayTable);
               $("#th-body-user").append(displayTable);
 
-              $("#delete-btn").click(function(){
-                var thisID = $(this).attr("data-id");
-                console.log("clicked");
-                console.log(thisID);
-                // var confirm = confirm("Are you sure you want to delete this sound?");
-                if (confirm("Are you sure you want to delete this sound?")) {
-                  deleteSound(thisID);
-                }
-              });
             };
           };
-
+          $("#delete-btn").click(function(){
+            var thisID = $(this).attr("data-id");
+            console.log("clicked");
+            console.log(thisID);
+            // var confirm = confirm("Are you sure you want to delete this sound?");
+            if (confirm("Are you sure you want to delete this sound?")) {
+              deleteSound(thisID);
+            }
+          });
         });
       }
-  
       function deleteSound(id) {
         $.ajax({
           method: "DELETE",
@@ -110,8 +108,7 @@ $(document).ready(function () {
           .then(function() {
             window.location.href = "/users";
           });
-      }
-  
+      }  
 
       var soundName = $("#sound-name");
       var genre1 = $("#genre");
