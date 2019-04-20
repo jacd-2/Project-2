@@ -93,11 +93,11 @@ $(document).ready(function () {
                 userEmail.val("")
                 userPassword.val("")
                 userInfo.val("")
-            return M.toast({ html: '!!!We already have an account with that email, please sign in!!!', displayLength: 5000 });
+                return M.toast({ html: '!!!We already have an account with that email, please sign in!!!', displayLength: 5000 });
             } else {
-            // ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email))
-            submitUser(newUser);
-            // debugger;
+                // ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email))
+                submitUser(newUser);
+                // debugger;
             };
             console.log(userVal);
         });
@@ -111,7 +111,7 @@ $(document).ready(function () {
         var existPass = $("#user-up-password");
         var exEM = existEmail.val().trim();
         var exPass = existPass.val().trim();
-        
+
         // console.log(exEM, exPass);
         $.get("/api/users", User, function (data) {
             // console.log(data);
@@ -150,11 +150,11 @@ $(document).ready(function () {
                 // console.log(data[i].user_name);
                 if ((exEM === data[i].email) && (exPass === data[i].password)) {
                     var signedUserId = data[i].id;
-                    signInUser(signedUserId);
+                    return signInUser(signedUserId);
                 }
-                // else if ((exEM !== data[i].email) && (exPass !== data[i].password)) {
-                //   M.toast({ html: '!!!That user does not exist please Retry or sign up!!!', displayLength: 5000 });
-                // };
+                else {
+                    return M.toast({ html: '!!!Something went wrong that email or password is incorrect please try again or sign up!!!', displayLength: 5000 });
+                };
             };
             existEmail.val("")
             existPass.val("")

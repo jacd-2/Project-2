@@ -50,33 +50,43 @@ $(document).ready(function () {
     var searchVal = searchIn.val().trim().toLowerCase();
     console.log(searchVal);
     if (!searchVal) {
+      $('#search-card').hide();
       M.toast({ html: 'Please enter something in the search bar, searching by Genre will give you the best results!' });
       return;
     }
+
     $.get("/api/search", Sounds, function (data) {
+      var genreVal;
+      var nameVal;
 
       for (var i = 0; i < data.length; i++) {
-
-        if ((searchVal === data[i].genre) || (searchVal === data[i].name)) {
+       genreVal = data[i].genre;
+       nameVal = data[i].name;
+        console.log(genreVal);
+        if ((searchVal === nameVal) || (searchVal === genreVal)) {
           $('#search-card').show();
           // console.log(data[i].name, data[i].genre, data[i].file);
-
-          var displayTable = "<tr><td>" + data[i].name + "</td>" +
-            "<td>" + data[i].genre + "</td>" +
+  
+          var displayTable = "<tr><td>" + nameVal + "</td>" +
+            "<td>" + genreVal + "</td>" +
             // "<td>" + data[i].user_name + "</td>" +
             "<td><a class='center-align' href='" + data[i].file + "' target='_blank'><img style='width:25px' src='../../assets/images/download.png' src='" + data[i].file + "'></a></td></tr>"
           console.log(displayTable);
           $(".th-body").append(displayTable);
           $("#words-for-card").html("These are all the sounds that match your search criteria");
           // return;
-        } else {
-          $('#search-card').hide();
-         return M.toast({ html: 'Sorry, we don' + "'" + 't have any sounds that match, searching by Genre will give you the best results!' });
-        };
-        searchIn.val("");
+        } 
+        // else {
+        
+        // // if ((!genreVal) || (!nameVal)) {
+        //   $('#search-card').hide();
+        //  return M.toast({ html: 'Sorry, we don' + "'" + 't have any sounds that match, searching by Genre will give you the best results!' });
+        // };
       };
+
     });
-  }
+    searchIn.val("");
+  };
 
   console.log("test");
   $("#upload-button").hide();
@@ -143,12 +153,6 @@ $(document).ready(function () {
     var exEM = existEmail.val().trim();
     var exPass = existPass.val().trim();
 
-    // userName.val("")
-    // firstName.val("")
-    // lastName.val("")
-    // userEmail.val("")
-    // userPassword.val("")
-    // userInfo.val("")
     // console.log(exEM, exPass);
     $.get("/api/users", User, function (data) {
       // console.log(data);
@@ -187,11 +191,11 @@ $(document).ready(function () {
         // console.log(data[i].user_name);
         if ((exEM === data[i].email) && (exPass === data[i].password)) {
           var signedUserId = data[i].id;
-          signInUser(signedUserId);
+          return signInUser(signedUserId);
         }
-        // else if ((exEM !== data[i].email) && (exPass !== data[i].password)) {
-        //   M.toast({ html: '!!!That user does not exist please Retry or sign up!!!', displayLength: 5000 });
-        // };
+        else {
+          return M.toast({ html: '!!!Something went wrong that email or password is incorrect please try again or sign up!!!', displayLength: 5000 });
+        };
       };
       existEmail.val("")
       existPass.val("")
@@ -212,45 +216,7 @@ $(document).ready(function () {
         user_name: user_name,
         email: email
       });
-      console.log(userID);
-
-      $("#modal2").hide();
       window.location.href = "/users";
-      $.get("/login", function (data) {
-        console.log(data);
-
-        console.log(data.user_name);
-
-        $("#nav-mobile").html(
-          "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
-          "<li><a href='/users'>Hello " + data.user_name + "!</a></li > " +
-          "<li><a href='/' class='modal-trigger' id='sign-out'>Sign Out</a></li>"
-        )
-        $("#mobile-demo").html(
-          "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
-          "<li><a href='/users'>Hello " + data.user_name + "!</a></li > " +
-          "<li><a id='sign-out-2'>Sign Out</a></li>"
-        )
-        $("#index-script-1").html(
-          "<p id='index-script-1' class='back-1-body'>Contribute to our library of high quality<br>" +
-          "sounds!</p>");
-        $("#index-btn-1").html(
-          "<a href='/users'>Check out your profile!</a>");
-        $('#sign-out').on("click", function () {
-          console.log("clicked");
-          $.post("/logout", function (data) {
-            console.log(data);
-            window.location.href = "/";
-          })
-        })
-        $('#sign-out-2').on("click", function () {
-          console.log("clicked");
-          $.post("/logout", function (data) {
-            console.log(data);
-            window.location.href = "/";
-          });
-        });
-      });
     });
   };
 });
