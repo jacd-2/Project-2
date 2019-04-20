@@ -81,16 +81,19 @@ $(document).ready(function () {
 
         $.get("/api/users", Users, function (data) {
 
-            for (var i = 0; i < data.length; i++) {
-              if (newUser.email === data[i].email) {
-               return M.toast({ html: '!!!We already have an account with that email, please sign in!!!', displayLength: 5000 });
-              } else {
-                // ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email))
-                submitUser(newUser);
-                // debugger;
-              };
-            };
+            var userVal;
 
+            for (var i = 0; i < data.length; i++) {
+                userVal = data[i].email
+            };
+            if (newUser.email === userVal) {
+            return M.toast({ html: '!!!We already have an account with that email, please sign in!!!', displayLength: 5000 });
+            } else {
+            // ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email))
+            submitUser(newUser);
+            // debugger;
+            };
+            console.log(userVal);
         });
     };
     // submit new user to db
@@ -103,12 +106,12 @@ $(document).ready(function () {
         var exEM = existEmail.val().trim();
         var exPass = existPass.val().trim();
 
-        userName.val("")
-        firstName.val("")
-        lastName.val("")
-        userEmail.val("")
-        userPassword.val("")
-        userInfo.val("")
+        // userName.val("")
+        // firstName.val("")
+        // lastName.val("")
+        // userEmail.val("")
+        // userPassword.val("")
+        // userInfo.val("")
         // console.log(exEM, exPass);
         $.get("/api/users", User, function (data) {
             // console.log(data);
@@ -160,6 +163,7 @@ $(document).ready(function () {
     };
 
     function signInUser(id) {
+        console.log(id);
         $.get("api/users/" + id, function (data) {
 
             console.log(data)
