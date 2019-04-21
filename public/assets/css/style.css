@@ -29,7 +29,7 @@ section {
     .back-1-text {
         position: absolute;
         top: 30%;
-        transform: translate(-40%, -50%);
+        transform: translate(-30%, -50%);
     }
     .user-container {
         width: 100%!important;
@@ -50,8 +50,17 @@ section {
     }
     .back-1-text {
         position: absolute;
+        top: 60%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-60%, -50%);
+    }
+  }
+  @media only screen and (max-width: 700px) {
+    .back-1-text {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-40%, -50%);
     }
   }
   .parallax-container {
