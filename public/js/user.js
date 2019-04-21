@@ -44,8 +44,7 @@ $(document).ready(function () {
             )
             $("#footer-links").html(
               "<h5 class='white-text'>Links</h5>" +
-              "<ul><li><a class='grey-text text-lighten-3' href='action=mailto:josh.jenkin@live.com'" +
-              "method='post'>Contact Us</a></li>" +
+              "<ul><li><a class='grey-text text-lighten-3' href='mailto:josh.jenkin@live.com'>Contact Us</a></li>" +
               "<li><a href='/' class='modal-trigger' id='sign-out-2'>Sign Out</a></li>" +
               "<li><a class='grey-text text-lighten-3' href='#!'>Blog (Coming!)</a></li></ul>"
             )

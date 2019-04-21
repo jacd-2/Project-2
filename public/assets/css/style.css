@@ -81,3 +81,7 @@ section {
 /* .search-button-bank {
     button: focus {outline:0;}
 } */
+.audio-player {
+    background-color: black;
+    color: black;
+}

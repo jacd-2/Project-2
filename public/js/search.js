@@ -14,8 +14,7 @@ $(document).ready(function () {
       )
       $("#footer-links").html(
         "<h5 class='white-text'>Links</h5>" +
-        "<ul><li><a class='grey-text text-lighten-3' href='action=mailto:josh.jenkin@live.com'" +
-        "method='post'>Contact Us</a></li>" +
+        "<ul><li><a class='grey-text text-lighten-3' href='mailto:josh.jenkin@live.com'>Contact Us</a></li>" +
         "<li><a href='/' class='modal-trigger' id='sign-out-2'>Sign Out</a></li>" +
         "<li><a class='grey-text text-lighten-3' href='#!'>Blog (Coming!)</a></li></ul>"
       )
@@ -70,7 +69,7 @@ $(document).ready(function () {
           var displayTable = "<tr><td>" + nameVal + "</td>" +
             "<td>" + genreVal + "</td>" +
             // "<td>" + data[i].user_name + "</td>" +
-            '<td class="center-align"><audio width="300" height="48" controls="controls"><source src="' + data[i].file + '" type="audio/mpeg"/>Your browser does not support HTML5 audio. Please update your browser to view this media content.</audio></td>' +
+            '<td class="center-align"><audio controls="controls"><source src="' + data[i].file + '" type="audio/mpeg"/>Your browser does not support HTML5 audio. Please update your browser to view this media content.</audio></td>' +
             // "<td><a class='center-align' href='" + data[i].file + "' target='_blank'><img style='width:25px' src='../../assets/images/download.png' src='" + data[i].file + "'></a></td></tr>"
           console.log(displayTable);
           $(".th-body").append(displayTable);
