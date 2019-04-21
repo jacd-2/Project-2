@@ -224,9 +224,9 @@ $(document).ready(function () {
                     var signedUserId = data[i].id;
                     return signInUser(signedUserId);
                 }
-                else {
-                    return M.toast({ html: '!!!Something went wrong that email or password is incorrect please try again or sign up!!!', displayLength: 5000 });
-                };
+                // else {
+                //     return M.toast({ html: '!!!Something went wrong that email or password is incorrect please try again or sign up!!!', displayLength: 5000 });
+                // };
             };
             existEmail.val("")
             existPass.val("")
