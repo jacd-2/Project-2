@@ -46,6 +46,26 @@ $(document).ready(function () {
         };
     })
 
+    var forgotPass = $("#forgot-pass");
+
+    $("#forgot-pass-form").on("submit", function(event){
+        event.preventDefault();
+        forgotPassFunction();
+    });
+
+    function forgotPassFunction(){
+        $.get("/api/users", function(data){
+            forgotPass2 = forgotPass.val().trim().toLowerCase();
+            // console.log(forgotPass2, data);
+            for (var i = 0; i < data.length; i++){
+                var userEmails = data[i].email
+                console.log(userEmails);
+                if (forgotPass2 === userEmails) {
+                    alert("Your password is " + data[i].password);
+                }
+            }
+        });
+    };
     console.log("test");
     $("#upload-button").hide();
     // Gets an optional query string from our url (i.e. ?post_id=23)
