@@ -19,6 +19,7 @@
     "url": "https://github.com/jacd-2/Project-2/issues"
   },
   "dependencies": {
+    "ajax": "0.0.4",
     "aws-sdk": "^2.437.0",
     "bcryptjs": "^2.4.3",
     "chai": "^4.2.0",
