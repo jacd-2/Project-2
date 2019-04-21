@@ -160,17 +160,38 @@
 
     <!-- Sign in modal -->
     <div id="modal2" class="modal">
-        <div class="modal-content">
-            <h4>Login</h4>
-            <form id="sign-in-submit">
-                <input id="existing-email" type="email" placeholder="email">
-                <input id="existing-password" type="password" placeholder="Password">
+            <div class="modal-content">
+                <h4>Login</h4>
+                <form id="sign-in-submit">
+                    <input id="existing-email" type="email" placeholder="email">
+                    <input id="existing-password" type="password" placeholder="Password">
+            </div>
+            <div class="modal-footer">
+                <button type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</button>
+            </div>
+            </form>
+            <div class="center-align m-b-5">
+                <button id="hiding-modal" data-target="modal4" class="modal-trigger btn black center-align"
+                    ref="#modal4">Forgot Password</button>
+            </div>
         </div>
-        <div class="modal-footer">
-            <button type="submit" href="/users" class="modal-close waves-effect waves-green btn-flat">Agree</button>
+    
+        <!-- forgot pass modal -->
+        <div id="modal4" class="modal">
+            <div class="modal-content">
+                <h4>Forgot Password</h4>
+                <form id="forgot-pass-form" action="https://formspree.io/josh.jenkin@live.com" method="POST">
+                    <input id="forgot-pass" name="email" type="email" placeholder="email">
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="modal-close waves-effect waves-green btn-flat">Agree</button>
+            </div>
+            </form>
+            <div class="center-align m-b-5">
+            <button id="hiding-modal" data-target="modal2" class="modal-trigger btn black center-align"
+                ref="#modal2">Login</button>
+                </div>
         </div>
-        </form>
-    </div>
 
     <!-- Sign up modal -->
     <div id="modal3" class="modal">

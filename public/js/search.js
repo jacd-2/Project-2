@@ -242,3 +242,76 @@ $(document).ready(function () {
     });
   };
 });
+var forgotPass = $("#forgot-pass");
+// $("#forgot-pass-form").validate();
+
+$("#forgot-pass-form").on("submit", function (event) {
+    event.preventDefault();
+    forgotPassFunction();
+});
+
+function forgotPassFunction() {
+    var password;
+    var user;
+    var email;
+    
+    $.get("/api/users", function (data) {
+        forgotPass2 = forgotPass.val().trim().toLowerCase();
+        // console.log(forgotPass2, data);
+        for (var i = 0; i < data.length; i++) {
+            var userEmails = data[i].email
+            console.log(userEmails);
+            if (forgotPass2 === userEmails) {
+                alert("Your password has been sent to your email");
+                password = data[i].password;
+                user = data[i].user_name;
+                email = data[i].email;
+
+                ajaxEmail(password, email, user);
+            }
+        }
+    });
+    function ajaxEmail(password, email, user) {
+        console.log(password, user, email);
+        console.log("Hello " + user + ", \nYour password is '" + password + "'. \nThank you for using our services!");
+        var messageBody = "Hello " + user + ", \nYour password is '" + password + "'. \nThank you for using our services!";
+        var dataInfo = "{ 'body':'" + messageBody + "'," +
+                    "'to': '" + email + "'," +
+                    "'from':josh.jenkin@live.com," +
+                    "'subject':Lost Password'" +
+                    "}";
+        // var serial = dataInfo.serialize();
+        // console.log(serial);
+        // $.ajax({
+        //     type: "POST",
+        //     url: "https://josh.jenkin@live.com",
+        //     cache: false,
+        //     contentType: "application/json; charset=utf-8",
+        //     data: dataInfo,
+        //     dataType: "json",
+        //     complete: function (transport) { if (transport.status == 200) alert("Success"); else alert("Please try again later"); }
+        // });
+        $.ajax({
+            type: "POST",
+            url: "https://mandrillapp.com/api/1.0/messages/send.json",
+            data: {
+              "key": "CiHhl5z6FMVrxWoEvPPj8A",
+              "message": {
+                "from_email": "josh.jenkin@live.com",
+                "to": [
+                    {
+                      "email": email,
+                      "name": user,
+                      "type": "to"
+                    },
+                  ],
+                "autotext": "true",
+                "subject": "Lost Password",
+                "html": "Hello " + user + ", \nYour password is '" + password + "'. \nThank you for using our services!"
+              }
+            }
+           }).done(function(response) {
+             console.log(response); // if you're into that sorta thing
+           });
+    }
+};
