@@ -1,8 +1,8 @@
 $(document).ready(function () {
     $.get("/login", function (data) {
-        console.log(data);
+        // console.log(data);
         if (data.userId) {
-            console.log(data.userId)
+            // console.log(data.userId)
             $("#specific-user-name").html(data.user_name);
             $("#specific-user-email").html(data.email);
 
@@ -30,16 +30,16 @@ $(document).ready(function () {
                 "<li><a class='grey-text text-lighten-3' href='#!'>Blog (Coming!)</a></li></ul>"
             )
             $('#sign-out').on("click", function () {
-                console.log("clicked");
+                // console.log("clicked");
                 $.post("/logout", function (data) {
-                    console.log(data);
+                    // console.log(data);
                     window.location.href = "/";
                 });
             });
             $('#sign-out-2').on("click", function () {
-                console.log("clicked");
+                // console.log("clicked");
                 $.post("/logout", function (data) {
-                    console.log(data);
+                    // console.log(data);
                     window.location.href = "/";
                 });
             });
@@ -64,7 +64,7 @@ $(document).ready(function () {
             // console.log(forgotPass2, data);
             for (var i = 0; i < data.length; i++) {
                 var userEmails = data[i].email
-                console.log(userEmails);
+                // console.log(userEmails);
                 if (forgotPass2 === userEmails) {
                     alert("Your password has been sent to your email");
                     password = data[i].password;
@@ -76,8 +76,8 @@ $(document).ready(function () {
             }
         });
         function ajaxEmail(password, email, user) {
-            console.log(password, user, email);
-            console.log("Hello " + user + ", \nYour password is '" + password + "'. \nThank you for using our services!");
+            // console.log(password, user, email);
+            // console.log("Hello " + user + ", \nYour password is '" + password + "'. \nThank you for using our services!");
             var messageBody = "Hello " + user + ", \nYour password is '" + password + "'. \nThank you for using our services!";
             var dataInfo = "{ 'body':'" + messageBody + "'," +
                         "'to': '" + email + "'," +
@@ -115,11 +115,11 @@ $(document).ready(function () {
                   }
                 }
                }).done(function(response) {
-                 console.log(response); // if you're into that sorta thing
+                //  console.log(response); // if you're into that sorta thing
                });
         }
     };
-    console.log("test");
+    // console.log("test");
     $("#upload-button").hide();
     // Gets an optional query string from our url (i.e. ?post_id=23)
     var userName = $("#new-user-name");
@@ -171,7 +171,7 @@ $(document).ready(function () {
                 submitUser(newUser);
                 // debugger;
             };
-            console.log(userVal);
+            // console.log(userVal);
         });
     };
     // submit new user to db
@@ -235,10 +235,10 @@ $(document).ready(function () {
     };
 
     function signInUser(id) {
-        console.log(id);
+        // console.log(id);
         $.get("api/users/" + id, function (data) {
 
-            console.log(data)
+            // console.log(data)
             userID = id;
             var user_name = data.user_name;
             var email = data.email;
@@ -247,14 +247,14 @@ $(document).ready(function () {
                 user_name: user_name,
                 email: email
             });
-            console.log(userID);
+            // console.log(userID);
 
             $("#modal2").hide();
             window.location.href = "/users";
             $.get("/login", function (data) {
-                console.log(data);
+                // console.log(data);
 
-                console.log(data.user_name);
+                // console.log(data.user_name);
 
                 $("#nav-mobile").html(
                     "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
@@ -272,16 +272,16 @@ $(document).ready(function () {
                 $("#index-btn-1").html(
                     "<a href='/users'>Check out your profile!</a>");
                 $('#sign-out').on("click", function () {
-                    console.log("clicked");
+                    // console.log("clicked");
                     $.post("/logout", function (data) {
-                        console.log(data);
+                        // console.log(data);
                         window.location.href = "/";
                     })
                 })
                 $('#sign-out-2').on("click", function () {
-                    console.log("clicked");
+                    // console.log("clicked");
                     $.post("/logout", function (data) {
-                        console.log(data);
+                        // console.log(data);
                         window.location.href = "/";
                     });
                 });

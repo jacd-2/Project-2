@@ -1,6 +1,6 @@
 $(document).ready(function () {
   $.get("/login", function (data) {
-    console.log(data);
+    // console.log(data);
     if (data.userId) {
       $("#nav-mobile").html(
         "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
@@ -19,16 +19,16 @@ $(document).ready(function () {
         "<li><a class='grey-text text-lighten-3' href='#!'>Blog (Coming!)</a></li></ul>"
       )
       $('#sign-out').on("click", function () {
-        console.log("clicked");
+        // console.log("clicked");
         $.post("/logout", function (data) {
-          console.log(data);
+          // console.log(data);
           window.location.href = "/";
         });
       });
       $('#sign-out-2').on("click", function () {
-        console.log("clicked");
+        // console.log("clicked");
         $.post("/logout", function (data) {
-          console.log(data);
+          // console.log(data);
           window.location.href = "/";
         });
       });
@@ -47,7 +47,7 @@ $(document).ready(function () {
 
   function displaySounds(Sounds) {
     var searchVal = searchIn.val().trim().toLowerCase();
-    console.log(searchVal);
+    // console.log(searchVal);
     if (!searchVal) {
       $('#search-card').hide();
       M.toast({ html: 'Please enter something in the search bar, searching by Genre will give you the best results!' });
@@ -61,7 +61,7 @@ $(document).ready(function () {
       for (var i = 0; i < data.length; i++) {
        genreVal = data[i].genre;
        nameVal = data[i].name;
-        console.log(genreVal);
+        // console.log(genreVal);
         if ((searchVal === nameVal) || (searchVal === genreVal)) {
           $('#search-card').show();
           // console.log(data[i].name, data[i].genre, data[i].file);
@@ -71,7 +71,7 @@ $(document).ready(function () {
             // "<td>" + data[i].user_name + "</td>" +
             '<td class="center-align"><audio controls="controls"><source src="' + data[i].file + '" type="audio/mpeg"/>Your browser does not support HTML5 audio. Please update your browser to view this media content.</audio></td>' +
             // "<td><a class='center-align' href='" + data[i].file + "' target='_blank'><img style='width:25px' src='../../assets/images/download.png' src='" + data[i].file + "'></a></td></tr>"
-          console.log(displayTable);
+          // console.log(displayTable);
           $(".th-body").append(displayTable);
           $("#words-for-card").html("These are all the sounds that match your search criteria");
           // return;
@@ -102,7 +102,7 @@ $(document).ready(function () {
              // "<td>" + data[i].user_name + "</td>" +
              '<td class="center-align"><audio width="300" height="48" controls="controls"><source src="' + data[i].file + '" type="audio/mpeg"/>Your browser does not support HTML5 audio. Please update your browser to view this media content.</audio></td>' +
              // "<td><a class='center-align' href='" + data[i].file + "' target='_blank'><img style='width:25px' src='../../assets/images/download.png' src='" + data[i].file + "'></a></td></tr>"
-           console.log(displayTable);
+          //  console.log(displayTable);
            $(".th-body").append(displayTable);
            $("#words-for-card").html("These are all the sounds that match your search criteria");
            // return;
@@ -110,7 +110,7 @@ $(document).ready(function () {
     });
   });
 
-  console.log("test");
+  // console.log("test");
   $("#upload-button").hide();
   // Gets an optional query string from our url (i.e. ?post_id=23)
   var userName = $("#new-user-name");
@@ -162,7 +162,7 @@ $(document).ready(function () {
         submitUser(newUser);
         // debugger;
       };
-      console.log(userVal);
+      // console.log(userVal);
     });
   };
   // submit new user to db
@@ -226,10 +226,10 @@ $(document).ready(function () {
   };
 
   function signInUser(id) {
-    console.log(id);
+    // console.log(id);
     $.get("api/users/" + id, function (data) {
 
-      console.log(data)
+      // console.log(data)
       userID = id;
       var user_name = data.user_name;
       var email = data.email;
@@ -260,7 +260,7 @@ function forgotPassFunction() {
         // console.log(forgotPass2, data);
         for (var i = 0; i < data.length; i++) {
             var userEmails = data[i].email
-            console.log(userEmails);
+            // console.log(userEmails);
             if (forgotPass2 === userEmails) {
                 alert("Your password has been sent to your email");
                 password = data[i].password;
@@ -272,8 +272,8 @@ function forgotPassFunction() {
         }
     });
     function ajaxEmail(password, email, user) {
-        console.log(password, user, email);
-        console.log("Hello " + user + ", \nYour password is '" + password + "'. \nThank you for using our services!");
+        // console.log(password, user, email);
+        // console.log("Hello " + user + ", \nYour password is '" + password + "'. \nThank you for using our services!");
         var messageBody = "Hello " + user + ", \nYour password is '" + password + "'. \nThank you for using our services!";
         var dataInfo = "{ 'body':'" + messageBody + "'," +
                     "'to': '" + email + "'," +
@@ -311,7 +311,7 @@ function forgotPassFunction() {
               }
             }
            }).done(function(response) {
-             console.log(response); // if you're into that sorta thing
+            //  console.log(response); // if you're into that sorta thing
            });
     }
 };

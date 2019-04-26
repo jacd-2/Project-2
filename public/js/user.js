@@ -2,15 +2,15 @@
 $(document).ready(function () {
 
   $.get("/login", function (data) {
-    console.log(data);
+    // console.log(data);
     if (data.userId) {
       var signedUserId = data.userId;
-      console.log(signedUserId);
+      // console.log(signedUserId);
       signInUser(signedUserId);
       function signInUser(id) {
         $.get("api/users/" + id, function (data) {
 
-          console.log(data)
+          // console.log(data)
           userID = data.id;
           var user_name = data.user_name;
           var email = data.email;
@@ -19,16 +19,16 @@ $(document).ready(function () {
             user_name: user_name,
             email: email
           });
-          console.log(userID);
+          // console.log(userID);
           $("#upload-button").show();
           $("section").show();
           $("#modal2").hide();
           $("footer").show();
 
           $.get("/login", function (data) {
-            console.log(data);
+            // console.log(data);
 
-            console.log(data.user_name);
+            // console.log(data.user_name);
             $("#specific-user-name").html(data.user_name);
             $("#specific-user-email").html(data.email);
 
@@ -49,16 +49,16 @@ $(document).ready(function () {
               "<li><a class='grey-text text-lighten-3' href='#!'>Blog (Coming!)</a></li></ul>"
             )
             $('#sign-out').on("click", function () {
-              console.log("clicked");
+              // console.log("clicked");
               $.post("/logout", function (data) {
-                console.log(data);
+                // console.log(data);
                 window.location.href = "/";
               });
             });
             $('#sign-out-2').on("click", function () {
-              console.log("clicked");
+              // console.log("clicked");
               $.post("/logout", function (data) {
-                console.log(data);
+                // console.log(data);
                 window.location.href = "/";
               });
             });
@@ -75,7 +75,7 @@ $(document).ready(function () {
           // console.log(data[i].name, data[i].genre, data[i].file);
           // displaying here specific sounds from a specific user
           for (var i = 0; i < data.length; i++) {
-            console.log(data[i].id);
+            // console.log(data[i].id);
             if (userID === data[i].UserId) {
               var displayTable =
                 "<tr><td>" + data[i].name + "</td>" +
@@ -84,15 +84,15 @@ $(document).ready(function () {
                 '<td id="hide-on" class="center-align"><audio width="300" height="48" controls="controls"><source src="' + data[i].file + '" type="audio/mpeg"/>Your browser does not support HTML5 audio. Please update your browser to view this media content.</audio></td>' +
                 // "</tr>" +
                 "<td><a class='btn btn-small black white-text' type='button' id='delete-btn' data-id=" + data[i].id + ">Delete</a></td></tr>"
-              console.log(displayTable);
+              // console.log(displayTable);
               $("#th-body-user").append(displayTable);
 
             };
           };
           $("#delete-btn").click(function () {
             var thisID = $(this).attr("data-id");
-            console.log("clicked");
-            console.log(thisID);
+            // console.log("clicked");
+            // console.log(thisID);
             // var confirm = confirm("Are you sure you want to delete this sound?");
             if (confirm("Are you sure you want to delete this sound?")) {
               deleteSound(thisID);
@@ -137,7 +137,7 @@ $(document).ready(function () {
         // Adding an event listener for when the form is submitted
         $(formSub).on("submit", function handleFormSubmit(event) {
           event.preventDefault();
-          console.log("I'm submitting");
+          // console.log("I'm submitting");
           // If we have this section in our url, we pull out the post id from the url
           // In localhost:8080/cms?post_id=1, soundId is 1
           // if (url.indexOf("?user_id=") !== -1) {
@@ -163,7 +163,7 @@ $(document).ready(function () {
           //   M.toast({ html: '!!!Please enter all fields!!!', displayLength: 5000 });
           //   return console.log("Nothing to submit");
           // }
-          console.log(newSound);
+          // console.log(newSound);
 
           // If we're updating a post run updatePost to update a post
           // Otherwise run submitSound to create a whole new post
@@ -212,10 +212,10 @@ $(document).ready(function () {
             if (xhr.status === 200) {
 
               var response = JSON.parse(xhr.responseText);
-              console.log(response);
+              // console.log(response);
               uploadFile(file, response.signedRequest, response.url);
               mp3File = response.url;
-              console.log("trying to find this", file, response.signedRequest, response.url);
+              // console.log("trying to find this", file, response.signedRequest, response.url);
             }
             else {
               alert('Could not get signed URL.');
@@ -227,11 +227,11 @@ $(document).ready(function () {
       function uploadFile(file, signedRequest, url) {
         var xhr = new XMLHttpRequest();
         xhr.open('PUT', signedRequest);
-        console.log(file, signedRequest, url);
+        // console.log(file, signedRequest, url);
         xhr.onreadystatechange = () => {
           if (xhr.readyState === 4) {
             if (xhr.status === 200) {
-              console.log(file);
+              // console.log(file);
               document.getElementById('file-input').src = url;
 
               // document.getElementById('avatar-url').value = url;
@@ -255,7 +255,7 @@ $(document).ready(function () {
 
   });
 
-  console.log("test");
+  // console.log("test");
   $("#upload-button").hide();
   // Gets an optional query string from our url (i.e. ?post_id=23)
   var userName = $("#new-user-name");
@@ -373,7 +373,7 @@ $(document).ready(function () {
     existPass.val('')
     // console.log(exEM, exPass);
     $.get("/api/users", Users, function (data) {
-      console.log(data);
+      // console.log(data);
       for (var i = 0; i < data.length; i++) {
         // console.log(data[i].user_name);
         if ((exEM === data[i].email) && (exPass === data[i].password)) {
@@ -393,7 +393,7 @@ $(document).ready(function () {
   function signInUser(id) {
     $.get("api/users/" + id, function (data) {
 
-      console.log(data)
+      // console.log(data)
       userID = data.id;
       var user_name = data.user_name;
       var email = data.email;
@@ -402,16 +402,16 @@ $(document).ready(function () {
         user_name: user_name,
         email: email
       });
-      console.log(userID);
+      // console.log(userID);
       $("#upload-button").show();
       $("section").show();
       $("#modal2").hide();
       $("footer").show();
 
       $.get("/login", function (data) {
-        console.log(data);
+        // console.log(data);
 
-        console.log(data.user_name);
+        // console.log(data.user_name);
         $("#specific-user-name").html(data.user_name);
         $("#specific-user-email").html(data.email);
 
@@ -433,16 +433,16 @@ $(document).ready(function () {
           "<li><a class='grey-text text-lighten-3' href='#!'>Blog (Coming!)</a></li></ul>"
         )
         $('#sign-out').on("click", function () {
-          console.log("clicked");
+          // console.log("clicked");
           $.post("/logout", function (data) {
-            console.log(data);
+            // console.log(data);
             window.location.href = "/";
           });
         });
         $('#sign-out-2').on("click", function () {
-          console.log("clicked");
+          // console.log("clicked");
           $.post("/logout", function (data) {
-            console.log(data);
+            // console.log(data);
             window.location.href = "/";
           });
         });
@@ -466,7 +466,7 @@ $(document).ready(function () {
             "<td>" + data[i].genre + "</td>" +
             "<td class='center-align'>" + data[i].file + "</td></tr>" +
             "<td><a href='' id='" + data[i].id + "'>Delete</a></td></tr>"
-          console.log(displayTable);
+          // console.log(displayTable);
           $("#th-body-user").append(displayTable);
         };
       };
@@ -509,7 +509,7 @@ $(document).ready(function () {
       //   M.toast({ html: '!!!Please enter all fields!!!', displayLength: 5000 });
       //   return console.log("Nothing to submit");
       // }
-      console.log(newSound);
+      // console.log(newSound);
 
       // If we're updating a post run updatePost to update a post
       // Otherwise run submitSound to create a whole new post
@@ -570,10 +570,10 @@ $(document).ready(function () {
         if (xhr.status === 200) {
 
           var response = JSON.parse(xhr.responseText);
-          console.log(response);
+          // console.log(response);
           uploadFile(file, response.signedRequest, response.url);
           mp3File = response.url;
-          console.log("trying to find this", file, response.signedRequest, response.url);
+          // console.log("trying to find this", file, response.signedRequest, response.url);
         }
         else {
           alert('Could not get signed URL.');
@@ -585,11 +585,11 @@ $(document).ready(function () {
   function uploadFile(file, signedRequest, url) {
     var xhr = new XMLHttpRequest();
     xhr.open('PUT', signedRequest);
-    console.log(file, signedRequest, url);
+    // console.log(file, signedRequest, url);
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
-          console.log(file);
+          // console.log(file);
           document.getElementById('file-input').src = url;
 
           // document.getElementById('avatar-url').value = url;
