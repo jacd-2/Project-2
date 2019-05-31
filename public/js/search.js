@@ -74,7 +74,7 @@ $(document).ready(function () {
           // console.log(data[i].name, data[i].genre, data[i].file);
 
           var displayTable = "<tr><td>" + nameVal + "</td>" +
-            "<td>" + genreVal + "</td>" +
+            "<td id='hide-on'>" + genreVal + "</td>" +
             // "<td>" + data[i].user_name + "</td>" +
             '<td class="center-align"><audio controls="controls"><source src="' + data[i].file + '" type="audio/mpeg"/>Your browser does not support HTML5 audio. Please update your browser to view this media content.</audio></td>' +
             // "<td><a class='center-align' href='" + data[i].file + "' target='_blank'><img style='width:25px' src='../../assets/images/download.png' src='" + data[i].file + "'></a></td></tr>"
@@ -105,7 +105,7 @@ $(document).ready(function () {
         // console.log(data[i].name, data[i].genre, data[i].file);
 
         var displayTable = "<tr><td>" + nameVal + "</td>" +
-          "<td>" + genreVal + "</td>" +
+          "<td id='hide-on'>" + genreVal + "</td>" +
           // "<td>" + data[i].user_name + "</td>" +
           '<td class="center-align"><audio width="300" height="48" controls="controls"><source src="' + data[i].file + '" type="audio/mpeg"/>Your browser does not support HTML5 audio. Please update your browser to view this media content.</audio></td>' +
           // "<td><a class='center-align' href='" + data[i].file + "' target='_blank'><img style='width:25px' src='../../assets/images/download.png' src='" + data[i].file + "'></a></td></tr>"
