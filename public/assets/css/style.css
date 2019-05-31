@@ -62,6 +62,12 @@ section {
         left: 50%;
         transform: translate(-40%, -50%);
     }
+    #hide-on {
+        display: none;
+    }
+    audio {
+         width: 225px;
+         }
   }
   .parallax-container {
     height: 400px;

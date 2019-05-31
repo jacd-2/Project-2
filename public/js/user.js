@@ -85,12 +85,12 @@ $(document).ready(function () {
             // console.log(data[i].id);
             if (userID === data[i].UserId) {
               var displayTable =
-                "<tr><td>" + data[i].name + "</td>" +
+                "<tr><td id='hide-on'>" + data[i].name + "</td>" +
                 "<td id='hide-on'>" + data[i].genre + "</td>" +
-                "<td class='center-align'>" + data[i].file + "</td>" +
-                '<td id="hide-on" class="center-align"><audio width="300" height="48" controls="controls"><source src="' + data[i].file + '" type="audio/mpeg"/>Your browser does not support HTML5 audio. Please update your browser to view this media content.</audio></td>' +
+                "<td id='hide-on' class='center-align'>" + data[i].file + "</td>" +
+                '<td class="center-align"><audio width="300" height="48" controls="controls"><source src="' + data[i].file + '" type="audio/mpeg"/>Your browser does not support HTML5 audio. Please update your browser to view this media content.</audio></td>' +
                 // "</tr>" +
-                "<td><a class='btn btn-small black white-text' type='button' id='delete-btn' data-id=" + data[i].id + ">Delete</a></td></tr>"
+                "<td><a id='hide-on' class='btn btn-small black white-text' type='button' id='delete-btn' data-id=" + data[i].id + ">Delete</a></td></tr>"
               // console.log(displayTable);
               $("#th-body-user").append(displayTable);
 
