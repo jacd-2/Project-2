@@ -15,7 +15,7 @@ $(document).ready(function () {
       $("#footer-links").html(
         "<h5 class='white-text'>Links</h5>" +
         "<ul><li><a class='grey-text text-lighten-3' href='mailto:josh.jenkin@live.com'>Contact Us</a></li>" +
-        "<li><a href='/' class='modal-trigger' id='sign-out-2'>Sign Out</a></li>" +
+        "<li><a href='/' id='sign-out-3'>Sign Out</a></li>" +
         "<li><a class='grey-text text-lighten-3' href='#!'>Blog (Coming!)</a></li></ul>"
       )
       $('#sign-out').on("click", function () {
@@ -26,6 +26,13 @@ $(document).ready(function () {
         });
       });
       $('#sign-out-2').on("click", function () {
+        // console.log("clicked");
+        $.post("/logout", function (data) {
+          // console.log(data);
+          window.location.href = "/";
+        });
+      });
+      $('#sign-out-3').on("click", function () {
         // console.log("clicked");
         $.post("/logout", function (data) {
           // console.log(data);
@@ -59,25 +66,25 @@ $(document).ready(function () {
       var nameVal;
 
       for (var i = 0; i < data.length; i++) {
-       genreVal = data[i].genre;
-       nameVal = data[i].name;
+        genreVal = data[i].genre;
+        nameVal = data[i].name;
         // console.log(genreVal);
         if ((searchVal === nameVal) || (searchVal === genreVal)) {
           $('#search-card').show();
           // console.log(data[i].name, data[i].genre, data[i].file);
-  
+
           var displayTable = "<tr><td>" + nameVal + "</td>" +
             "<td>" + genreVal + "</td>" +
             // "<td>" + data[i].user_name + "</td>" +
             '<td class="center-align"><audio controls="controls"><source src="' + data[i].file + '" type="audio/mpeg"/>Your browser does not support HTML5 audio. Please update your browser to view this media content.</audio></td>' +
             // "<td><a class='center-align' href='" + data[i].file + "' target='_blank'><img style='width:25px' src='../../assets/images/download.png' src='" + data[i].file + "'></a></td></tr>"
-          // console.log(displayTable);
-          $(".th-body").append(displayTable);
+            // console.log(displayTable);
+            $(".th-body").append(displayTable);
           $("#words-for-card").html("These are all the sounds that match your search criteria");
           // return;
-        } 
+        }
         // else {
-        
+
         // // if ((!genreVal) || (!nameVal)) {
         //   $('#search-card').hide();
         //  return M.toast({ html: 'Sorry, we don' + "'" + 't have any sounds that match, searching by Genre will give you the best results!' });
@@ -88,25 +95,25 @@ $(document).ready(function () {
     searchIn.val("");
   };
 
-  $("#browse-all").click(function(){
+  $("#browse-all").click(function () {
     $.get("/api/search", function (data) {
       for (var i = 0; i < data.length; i++) {
         genreVal = data[i].genre;
         nameVal = data[i].name;
 
-           $('#search-card').show();
-           // console.log(data[i].name, data[i].genre, data[i].file);
-   
-           var displayTable = "<tr><td>" + nameVal + "</td>" +
-             "<td>" + genreVal + "</td>" +
-             // "<td>" + data[i].user_name + "</td>" +
-             '<td class="center-align"><audio width="300" height="48" controls="controls"><source src="' + data[i].file + '" type="audio/mpeg"/>Your browser does not support HTML5 audio. Please update your browser to view this media content.</audio></td>' +
-             // "<td><a class='center-align' href='" + data[i].file + "' target='_blank'><img style='width:25px' src='../../assets/images/download.png' src='" + data[i].file + "'></a></td></tr>"
+        $('#search-card').show();
+        // console.log(data[i].name, data[i].genre, data[i].file);
+
+        var displayTable = "<tr><td>" + nameVal + "</td>" +
+          "<td>" + genreVal + "</td>" +
+          // "<td>" + data[i].user_name + "</td>" +
+          '<td class="center-align"><audio width="300" height="48" controls="controls"><source src="' + data[i].file + '" type="audio/mpeg"/>Your browser does not support HTML5 audio. Please update your browser to view this media content.</audio></td>' +
+          // "<td><a class='center-align' href='" + data[i].file + "' target='_blank'><img style='width:25px' src='../../assets/images/download.png' src='" + data[i].file + "'></a></td></tr>"
           //  console.log(displayTable);
-           $(".th-body").append(displayTable);
-           $("#words-for-card").html("These are all the sounds that match your search criteria");
-           // return;
-       };
+          $(".th-body").append(displayTable);
+        $("#words-for-card").html("These are all the sounds that match your search criteria");
+        // return;
+      };
     });
   });
 
@@ -147,23 +154,23 @@ $(document).ready(function () {
       var userVal;
 
       for (var i = 0; i < data.length; i++) {
-        userVal = data[i].email
-      };
-      if (newUser.email === userVal) {
-        userName.val("")
-        firstName.val("")
-        lastName.val("")
-        userEmail.val("")
-        userPassword.val("")
-        userInfo.val("")
-        return M.toast({ html: '!!!We already have an account with that email, please sign in!!!', displayLength: 5000 });  
-      } else {
-        // ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email))
-        submitUser(newUser);
-        // debugger;
+          userVal = data[i].email
+          if (newUser.email === userVal) {
+              userName.val("")
+              firstName.val("")
+              lastName.val("")
+              userEmail.val("")
+              userPassword.val("")
+              userInfo.val("")
+              return M.toast({ html: '!!!We already have an account with that email, please sign in!!!', displayLength: 5000 });
+          } else {
+              // ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email))
+              submitUser(newUser);
+              // debugger;
+          };
       };
       // console.log(userVal);
-    });
+  });
   };
   // submit new user to db
   function submitUser(User) {
@@ -246,72 +253,72 @@ var forgotPass = $("#forgot-pass");
 // $("#forgot-pass-form").validate();
 
 $("#forgot-pass-form").on("submit", function (event) {
-    event.preventDefault();
-    forgotPassFunction();
+  event.preventDefault();
+  forgotPassFunction();
 });
 
 function forgotPassFunction() {
-    var password;
-    var user;
-    var email;
-    
-    $.get("/api/users", function (data) {
-        forgotPass2 = forgotPass.val().trim().toLowerCase();
-        // console.log(forgotPass2, data);
-        for (var i = 0; i < data.length; i++) {
-            var userEmails = data[i].email
-            // console.log(userEmails);
-            if (forgotPass2 === userEmails) {
-                alert("Your password has been sent to your email");
-                password = data[i].password;
-                user = data[i].user_name;
-                email = data[i].email;
+  var password;
+  var user;
+  var email;
 
-                ajaxEmail(password, email, user);
-            }
-        }
-    });
-    function ajaxEmail(password, email, user) {
-        // console.log(password, user, email);
-        // console.log("Hello " + user + ", \nYour password is '" + password + "'. \nThank you for using our services!");
-        var messageBody = "Hello " + user + ", \nYour password is '" + password + "'. \nThank you for using our services!";
-        var dataInfo = "{ 'body':'" + messageBody + "'," +
-                    "'to': '" + email + "'," +
-                    "'from':josh.jenkin@live.com," +
-                    "'subject':Lost Password'" +
-                    "}";
-        // var serial = dataInfo.serialize();
-        // console.log(serial);
-        // $.ajax({
-        //     type: "POST",
-        //     url: "https://josh.jenkin@live.com",
-        //     cache: false,
-        //     contentType: "application/json; charset=utf-8",
-        //     data: dataInfo,
-        //     dataType: "json",
-        //     complete: function (transport) { if (transport.status == 200) alert("Success"); else alert("Please try again later"); }
-        // });
-        $.ajax({
-            type: "POST",
-            url: "https://mandrillapp.com/api/1.0/messages/send.json",
-            data: {
-              "key": "CiHhl5z6FMVrxWoEvPPj8A",
-              "message": {
-                "from_email": "josh.jenkin@live.com",
-                "to": [
-                    {
-                      "email": email,
-                      "name": user,
-                      "type": "to"
-                    },
-                  ],
-                "autotext": "true",
-                "subject": "Lost Password",
-                "html": "Hello " + user + ", \nYour password is '" + password + "'. \nThank you for using our services!"
-              }
-            }
-           }).done(function(response) {
-            //  console.log(response); // if you're into that sorta thing
-           });
+  $.get("/api/users", function (data) {
+    forgotPass2 = forgotPass.val().trim().toLowerCase();
+    // console.log(forgotPass2, data);
+    for (var i = 0; i < data.length; i++) {
+      var userEmails = data[i].email
+      // console.log(userEmails);
+      if (forgotPass2 === userEmails) {
+        alert("Your password has been sent to your email");
+        password = data[i].password;
+        user = data[i].user_name;
+        email = data[i].email;
+
+        ajaxEmail(password, email, user);
+      }
     }
+  });
+  function ajaxEmail(password, email, user) {
+    // console.log(password, user, email);
+    // console.log("Hello " + user + ", \nYour password is '" + password + "'. \nThank you for using our services!");
+    var messageBody = "Hello " + user + ", \nYour password is '" + password + "'. \nThank you for using our services!";
+    var dataInfo = "{ 'body':'" + messageBody + "'," +
+      "'to': '" + email + "'," +
+      "'from':josh.jenkin@live.com," +
+      "'subject':Lost Password'" +
+      "}";
+    // var serial = dataInfo.serialize();
+    // console.log(serial);
+    // $.ajax({
+    //     type: "POST",
+    //     url: "https://josh.jenkin@live.com",
+    //     cache: false,
+    //     contentType: "application/json; charset=utf-8",
+    //     data: dataInfo,
+    //     dataType: "json",
+    //     complete: function (transport) { if (transport.status == 200) alert("Success"); else alert("Please try again later"); }
+    // });
+    $.ajax({
+      type: "POST",
+      url: "https://mandrillapp.com/api/1.0/messages/send.json",
+      data: {
+        "key": "CiHhl5z6FMVrxWoEvPPj8A",
+        "message": {
+          "from_email": "josh.jenkin@live.com",
+          "to": [
+            {
+              "email": email,
+              "name": user,
+              "type": "to"
+            },
+          ],
+          "autotext": "true",
+          "subject": "Lost Password",
+          "html": "Hello " + user + ", \nYour password is '" + password + "'. \nThank you for using our services!"
+        }
+      }
+    }).done(function (response) {
+      //  console.log(response); // if you're into that sorta thing
+    });
+  }
 };

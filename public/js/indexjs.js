@@ -26,9 +26,9 @@ $(document).ready(function () {
             $("#footer-links").html(
                 "<h5 class='white-text'>Links</h5>" +
                 "<ul><li><a class='grey-text text-lighten-3' href='mailto:josh.jenkin@live.com'>Contact Us</a></li>" +
-                "<li><a href='/' class='modal-trigger' id='sign-out-2'>Sign Out</a></li>" +
+                "<li><a href='#!' id='sign-out-3'>Sign Out</a></li>" +
                 "<li><a class='grey-text text-lighten-3' href='#!'>Blog (Coming!)</a></li></ul>"
-            )
+            );
             $('#sign-out').on("click", function () {
                 // console.log("clicked");
                 $.post("/logout", function (data) {
@@ -37,6 +37,13 @@ $(document).ready(function () {
                 });
             });
             $('#sign-out-2').on("click", function () {
+                // console.log("clicked");
+                $.post("/logout", function (data) {
+                    // console.log(data);
+                    window.location.href = "/";
+                });
+            });
+            $('#sign-out-3').on("click", function () {
                 // console.log("clicked");
                 $.post("/logout", function (data) {
                     // console.log(data);
@@ -226,15 +233,17 @@ $(document).ready(function () {
                 // console.log(data[i].user_name);
 
                 for (var i = 0; i < data.length; i++) {
+                    console.log(data[i].password);
                     exEVal = data[i].email;
                     exEPass = data[i].password;
+
                     if ((exEM === exEVal) && (exPass === exEPass)) {
                         var signedUserId = data[i].id;
                         return signInUser(signedUserId);
                     }
-                    else {
-                        return M.toast({ html: '!!!Something went wrong that email or password is incorrect please try again or sign up!!!', displayLength: 5000 });
-                    };
+                    // else {
+                        // return M.toast({ html: '!!!Something went wrong that email or password is incorrect please try again or sign up!!!', displayLength: 5000 });
+                    // };
 
                 };
             };
@@ -270,12 +279,18 @@ $(document).ready(function () {
                     "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
                     "<li><a href='/users'>Hello " + data.user_name + "!</a></li > " +
                     "<li><a href='/' class='modal-trigger' id='sign-out'>Sign Out</a></li>"
-                )
+                );
                 $("#mobile-demo").html(
                     "<li><link for='search' type='submit'><a href='/search'><i class='fa fa-search'></i></a></link></li>" +
                     "<li><a href='/users'>Hello " + data.user_name + "!</a></li > " +
                     "<li><a id='sign-out-2'>Sign Out</a></li>"
-                )
+                );
+                $("#footer-links").html(
+                    "<h5 class='white-text'>Links</h5>" +
+                    "<ul><li><a class='grey-text text-lighten-3' href='mailto:josh.jenkin@live.com'>Contact Us</a></li>" +
+                    "<li><a href='#!' id='sign-out-3'>Sign Out</a></li>" +
+                    "<li><a class='grey-text text-lighten-3' href='#!'>Blog (Coming!)</a></li></ul>"
+                );
                 $("#index-script-1").html(
                     "<p id='index-script-1' class='back-1-body'>Contribute to our library of high quality<br>" +
                     "sounds!</p>");
@@ -287,8 +302,15 @@ $(document).ready(function () {
                         // console.log(data);
                         window.location.href = "/";
                     })
-                })
+                });
                 $('#sign-out-2').on("click", function () {
+                    // console.log("clicked");
+                    $.post("/logout", function (data) {
+                        // console.log(data);
+                        window.location.href = "/";
+                    });
+                });
+                $('#sign-out-3').on("click", function () {
                     // console.log("clicked");
                     $.post("/logout", function (data) {
                         // console.log(data);

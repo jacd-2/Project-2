@@ -45,7 +45,7 @@ $(document).ready(function () {
             $("#footer-links").html(
               "<h5 class='white-text'>Links</h5>" +
               "<ul><li><a class='grey-text text-lighten-3' href='mailto:josh.jenkin@live.com'>Contact Us</a></li>" +
-              "<li><a href='/' class='modal-trigger' id='sign-out-2'>Sign Out</a></li>" +
+              "<li><a href='#!' id='sign-out-3'>Sign Out</a></li>" +
               "<li><a class='grey-text text-lighten-3' href='#!'>Blog (Coming!)</a></li></ul>"
             )
             $('#sign-out').on("click", function () {
@@ -56,7 +56,14 @@ $(document).ready(function () {
               });
             });
             $('#sign-out-2').on("click", function () {
-              // console.log("clicked");
+              console.log("clicked");
+              $.post("/logout", function (data) {
+                // console.log(data);
+                window.location.href = "/";
+              });
+            });
+            $('#sign-out-3').on("click", function () {
+              console.log("clicked");
               $.post("/logout", function (data) {
                 // console.log(data);
                 window.location.href = "/";
