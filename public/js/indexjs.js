@@ -157,22 +157,23 @@ $(document).ready(function () {
 
             for (var i = 0; i < data.length; i++) {
                 userVal = data[i].email
-            };
-            if (newUser.email === userVal) {
-                userName.val("")
-                firstName.val("")
-                lastName.val("")
-                userEmail.val("")
-                userPassword.val("")
-                userInfo.val("")
-                return M.toast({ html: '!!!We already have an account with that email, please sign in!!!', displayLength: 5000 });
-            } else {
-                // ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email))
-                submitUser(newUser);
-                // debugger;
+                if (newUser.email === userVal) {
+                    userName.val("")
+                    firstName.val("")
+                    lastName.val("")
+                    userEmail.val("")
+                    userPassword.val("")
+                    userInfo.val("")
+                    return M.toast({ html: '!!!We already have an account with that email, please sign in!!!', displayLength: 5000 });
+                } else {
+                    // ((newUser.user_name != data[i].user_name) && (newUser.email != data[i].email))
+                    submitUser(newUser);
+                    // debugger;
+                };
             };
             // console.log(userVal);
         });
+        // submitUser(newUser);
     };
     // submit new user to db
     function submitUser(User) {
