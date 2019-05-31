@@ -34,6 +34,9 @@ section {
     .user-container {
         width: 100%!important;
     }
+    #hide-on {
+        display: none;
+    }
   }
 @media only screen and (max-width: 1000px) {
     .back-1 {
