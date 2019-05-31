@@ -219,15 +219,24 @@ $(document).ready(function () {
         // console.log(exEM, exPass);
         $.get("/api/users", Users, function (data) {
             // console.log(data);
+            var exEVal;
+            var exEPass;
+
             for (var i = 0; i < data.length; i++) {
                 // console.log(data[i].user_name);
-                if ((exEM === data[i].email) && (exPass === data[i].password)) {
-                    var signedUserId = data[i].id;
-                    return signInUser(signedUserId);
-                }
-                // else {
-                //     return M.toast({ html: '!!!Something went wrong that email or password is incorrect please try again or sign up!!!', displayLength: 5000 });
-                // };
+
+                for (var i = 0; i < data.length; i++) {
+                    exEVal = data[i].email;
+                    exEPass = data[i].password;
+                    if ((exEM === exEVal) && (exPass === exEPass)) {
+                        var signedUserId = data[i].id;
+                        return signInUser(signedUserId);
+                    }
+                    else {
+                        return M.toast({ html: '!!!Something went wrong that email or password is incorrect please try again or sign up!!!', displayLength: 5000 });
+                    };
+
+                };
             };
             existEmail.val("")
             existPass.val("")
