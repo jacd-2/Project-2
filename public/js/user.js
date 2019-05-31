@@ -85,7 +85,7 @@ $(document).ready(function () {
             // console.log(data[i].id);
             if (userID === data[i].UserId) {
               var displayTable =
-                "<tr><td id='hide-on'>" + data[i].name + "</td>" +
+                "<tr><td>" + data[i].name + "</td>" +
                 "<td id='hide-on'>" + data[i].genre + "</td>" +
                 "<td id='hide-on' class='center-align'>" + data[i].file + "</td>" +
                 '<td class="center-align"><audio width="300" height="48" controls="controls"><source src="' + data[i].file + '" type="audio/mpeg"/>Your browser does not support HTML5 audio. Please update your browser to view this media content.</audio></td>' +
