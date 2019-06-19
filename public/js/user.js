@@ -96,7 +96,9 @@ $(document).ready(function () {
 
             };
           };
+          // click function to add data variable and confirm delete
           $("#delete-btn").click(function () {
+            // Variable to hold data-id
             var thisID = $(this).attr("data-id");
             console.log("clicked");
             // console.log(thisID);
@@ -105,26 +107,9 @@ $(document).ready(function () {
               deleteSound(thisID);
             }
           });
-          // $(window).resize(function () {
-
-            // if ($(window).width() <= 320) {
-
-            //   // is mobile device
-            //   $("#hide-on").hide();
-            // }
-
-          // });
-          // $(window).resize(function () {
-
-          //   if ($('header').width() === 1000) {
-
-          //     // is mobile device
-          //     $("#hide-on").hide();
-          //   }
-
-          // });
         });
       }
+      // deleting sound after id attribute added
       function deleteSound(id) {
         $.ajax({
           method: "DELETE",
@@ -189,12 +174,13 @@ $(document).ready(function () {
       };
 
 
-
+      $("#loader").hide();
 
       var input = $("input:file");
-      $("file-input")
+      $("#file-input")
         .text("For this type jQuery found " + input.length + ".")
         .css("color", "red");
+      // $("file-input")
       $("form").submit(function (event) {
         event.preventDefault();
       });
@@ -203,9 +189,11 @@ $(document).ready(function () {
       // handling mp3 submition
       (() => {
         document.getElementById("file-input").onchange = () => {
+          $("#loader").show();
           var files = document.getElementById('file-input').files;
           var file = files[0];
           if (file == null) {
+            $("#loader").hide();
             return alert('No file selected.');
           }
           getSignedRequest(file);
@@ -225,6 +213,7 @@ $(document).ready(function () {
               // console.log("trying to find this", file, response.signedRequest, response.url);
             }
             else {
+              // $("#loader").hide();
               alert('Could not get signed URL.');
             }
           }
@@ -240,10 +229,11 @@ $(document).ready(function () {
             if (xhr.status === 200) {
               // console.log(file);
               document.getElementById('file-input').src = url;
-
+              $("#loader").hide();
               // document.getElementById('avatar-url').value = url;
             }
             else {
+              $("#loader").hide();
               alert('Could not upload file.');
             }
           }

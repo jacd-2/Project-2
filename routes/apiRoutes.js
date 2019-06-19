@@ -135,7 +135,6 @@ module.exports = function (app) {
       file: req.body.file,
       UserId: req.session.userID
     }).then(function (dbSounds) {
-      // We have access to the new todo as an argument inside of the callback function
       res.json(dbSounds);
     });
   });

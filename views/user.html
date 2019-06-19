@@ -145,7 +145,52 @@
           </div>
           <div class="row">
             <!-- <input type="file"> -->
-            <input id="file-input" type="file"> <a>Upload MP3</a><br>
+            <div class="col s6">
+            <input id="file-input" type="file">
+          </div>
+          <div class="col s6" id="loader">
+            <div class="preloader-wrapper small active">
+              <div class="spinner-layer spinner-blue">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+        
+              <div class="spinner-layer spinner-red">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+        
+              <div class="spinner-layer spinner-yellow">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+        
+              <div class="spinner-layer spinner-green">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+            </div>
+          </div>
 
             <!-- possibly use to login while uploading -->
             <!-- <img id="preview" src="/images/default.png">
@@ -158,6 +203,8 @@
             </form> -->
 
           </div>
+
+          
           <div class="modal-footer">
             <button type="submit" id="upload-song" class="modal-close waves-effect waves-green btn-flat">Agree</button>
           </div>
