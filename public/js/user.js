@@ -179,7 +179,7 @@ $(document).ready(function () {
       var input = $("input:file");
       $("#file-input")
         .text("For this type jQuery found " + input.length + ".")
-        .css("color", "red");
+        .css("color", "black");
       // $("file-input")
       $("form").submit(function (event) {
         event.preventDefault();
