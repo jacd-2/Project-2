@@ -37,8 +37,12 @@ section {
     #hide-on {
         display: none;
     }
-    #delete-btn {
-        display: none;
+    /* #delete-btn {
+        width: 20px;
+        color: white;
+    } */
+    audio {
+        width: 250px;
     }
   }
 @media only screen and (max-width: 1000px) {
@@ -72,8 +76,13 @@ section {
         display: none;
     }
     audio {
-         width: 225px;
+         width: 100px;
          }
+  }
+  @media only screen and (max-width: 350px) {
+    #delete-btn {
+        display: none;
+    }
   }
   .parallax-container {
     height: 400px;
