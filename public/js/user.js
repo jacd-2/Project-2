@@ -104,7 +104,7 @@ $(document).ready(function () {
           $(".delete-btn").click(function () {
             // Variable to hold data-id
             var thisID = $(this).attr("data-id");
-            console.log("clicked", thisID);
+            // console.log("clicked", thisID);
             // console.log(thisID);
             // var confirm = confirm("Are you sure you want to delete this sound?");
             if (confirm("Are you sure you want to delete this sound?")) {
