@@ -94,17 +94,17 @@ $(document).ready(function () {
                 "<td id='hide-on' class='center-align'>" + data[i].file + "</td>" +
                 '<td class="center-align"><audio width="300" height="48" controls="controls"><source src="' + data[i].file + '" type="audio/mpeg"/>Your browser does not support HTML5 audio. Please update your browser to view this media content.</audio></td>' +
                 // "</tr>" +
-                "<td><a id='delete-btn' class='btn btn-small black white-text' type='button' id='delete-btn' data-id=" + data[i].id + ">Delete</a></td></tr>"
+                "<td><a id='delete-btn' class='btn btn-small black white-text delete-btn' type='button' data-id=" + data[i].id + ">Delete</a></td></tr>"
               // console.log(displayTable);
               $("#th-body-user").prepend(displayTable);
 
             };
           };
           // click function to add data variable and confirm delete
-          $("#delete-btn").click(function () {
+          $(".delete-btn").click(function () {
             // Variable to hold data-id
             var thisID = $(this).attr("data-id");
-            console.log("clicked");
+            console.log("clicked", thisID);
             // console.log(thisID);
             // var confirm = confirm("Are you sure you want to delete this sound?");
             if (confirm("Are you sure you want to delete this sound?")) {

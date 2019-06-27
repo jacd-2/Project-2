@@ -37,6 +37,9 @@ section {
     #hide-on {
         display: none;
     }
+    #delete-btn {
+        display: none;
+    }
   }
 @media only screen and (max-width: 1000px) {
     .back-1 {
