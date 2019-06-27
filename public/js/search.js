@@ -77,7 +77,9 @@ $(document).ready(function () {
             "<td id='hide-on'>" + genreVal + "</td>" +
             // "<td>" + data[i].user_name + "</td>" +
             '<td class="center-align"><audio controls="controls"><source src="' + data[i].file + '" type="audio/mpeg"/>Your browser does not support HTML5 audio. Please update your browser to view this media content.</audio></td>' +
-            // "<td><a class='center-align' href='" + data[i].file + "' target='_blank'><img style='width:25px' src='../../assets/images/download.png' src='" + data[i].file + "'></a></td></tr>"
+            // "<td><a class='center-align' href='" + data[i].file + "' target='_blank'><img style='width:25px' src='../../assets/images/download.png' src='" + data[i].file + "'></a></td>
+            "<td><a id='delete-btn' class='btn btn-small black white-text delete-btn' type='button' data-id=" + data[i].id + ">Delete</a></td></tr>"
+            "</tr>"
             // console.log(displayTable);
             $(".th-body").append(displayTable);
           $("#words-for-card").html("These are all the sounds that match your search criteria");
@@ -109,13 +111,41 @@ $(document).ready(function () {
           // "<td>" + data[i].user_name + "</td>" +
           '<td class="center-align"><audio width="300" height="48" controls="controls"><source src="' + data[i].file + '" type="audio/mpeg"/>Your browser does not support HTML5 audio. Please update your browser to view this media content.</audio></td>' +
           // "<td><a class='center-align' href='" + data[i].file + "' target='_blank'><img style='width:25px' src='../../assets/images/download.png' src='" + data[i].file + "'></a></td></tr>"
+          "<td><a id='delete-btn' class='btn btn-small black white-text delete-btn' type='button' data-id=" + data[i].id + ">Delete</a></td></tr>"
+            "</tr>"
           //  console.log(displayTable);
           $(".th-body").append(displayTable);
         $("#words-for-card").html("These are all the sounds that match your search criteria");
         // return;
+        console.log(data[i].id)
       };
+                      // click function to add data variable and confirm delete
+                      $(".delete-btn").click(function () {
+                        // Variable to hold data-id
+                        var thisID = $(this).attr("data-id");
+                        console.log("clicked", thisID);
+                        // console.log(thisID);
+                        // var confirm = confirm("Are you sure you want to delete this sound?");
+                        if (confirm("Are you sure you want to delete this sound?")) {
+                          deleteSound(thisID);
+                        }
+                      });
+                    
+                  
+                  // deleting sound after id attribute added
+                  function deleteSound(id) {
+                    $.ajax({
+                      method: "DELETE",
+                      url: "/api/sounds/" + id
+                    })
+                      .then(function () {
+                        window.location.href = "/search";
+                      });
+                  }
     });
+
   });
+
 
   // console.log("test");
   $("#upload-button").hide();
