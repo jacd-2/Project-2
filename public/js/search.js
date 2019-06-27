@@ -81,13 +81,13 @@ $(document).ready(function () {
             // console.log(displayTable);
             $(".th-body").append(displayTable);
           $("#words-for-card").html("These are all the sounds that match your search criteria");
+          
           // return;
-        }
+        } 
         // else {
-
-        // // if ((!genreVal) || (!nameVal)) {
         //   $('#search-card').hide();
         //  return M.toast({ html: 'Sorry, we don' + "'" + 't have any sounds that match, searching by Genre will give you the best results!' });
+
         // };
       };
 
