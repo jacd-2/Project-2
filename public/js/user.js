@@ -92,7 +92,7 @@ $(document).ready(function () {
                 // "</tr>" +
                 "<td><a id='delete-btn' class='btn btn-small black white-text' type='button' id='delete-btn' data-id=" + data[i].id + ">Delete</a></td></tr>"
               // console.log(displayTable);
-              $("#th-body-user").append(displayTable);
+              $("#th-body-user").prepend(displayTable);
 
             };
           };
