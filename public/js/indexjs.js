@@ -241,8 +241,10 @@ $(document).ready(function () {
                         var signedUserId = data[i].id;
                         return signInUser(signedUserId);
                     }
+                    // NEED TO FIGURE OUT THIS VALIDATION!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    // <<-------------------------------------------------------->>
                     // else {
-                        // return M.toast({ html: '!!!Something went wrong that email or password is incorrect please try again or sign up!!!', displayLength: 5000 });
+                        // return M.toast({ html: '!!!Something went wrong, that email or password is incorrect please try again or sign up!!!', displayLength: 5000 });
                     // };
 
                 };
