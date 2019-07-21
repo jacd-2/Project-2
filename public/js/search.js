@@ -245,22 +245,29 @@ $(document).ready(function () {
     existPass.val('')
     // console.log(exEM, exPass);
     $.get("/api/users", Users, function (data) {
-      // console.log(data);
-      for (var i = 0; i < data.length; i++) {
-        // console.log(data[i].user_name);
-        if ((exEM === data[i].email) && (exPass === data[i].password)) {
-          var signedUserId = data[i].id;
-          return signInUser(signedUserId);
-        }
-        // else {
-        //   return M.toast({ html: '!!!Something went wrong that email or password is incorrect please try again or sign up!!!', displayLength: 5000 });
-        // };
-      };
-      existEmail.val("")
-      existPass.val("")
+        // console.log(data);
+        var exEVal;
+        var exEPass;
+
+        for (var i = 0; i < data.length; i++) {
+            console.log(data[i].user_name);
+                exEVal = data[i].email;
+                exEPass = data[i].password;
+                // validating email and password then signing in
+                if ((exEM === exEVal) && (exPass === exEPass)) {
+                    var signedUserId = data[i].id;
+                    return signInUser(signedUserId);
+                } else if ((exPass !== exEPass)) {
+                    return M.toast({ html: '!!!Something went wrong, that email or password is incorrect please try again or sign up!!!', displayLength: 5000 });
+                } else if ((exEM !== exEVal)) {
+                    return M.toast({ html: '!!!Something went wrong, that email or password is incorrect please try again or sign up!!!', displayLength: 5000 });
+                }
+        };
+        existEmail.val("")
+        existPass.val("")
     });
 
-  };
+};
 
   function signInUser(id) {
     // console.log(id);

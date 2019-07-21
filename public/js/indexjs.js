@@ -230,24 +230,18 @@ $(document).ready(function () {
             var exEPass;
 
             for (var i = 0; i < data.length; i++) {
-                // console.log(data[i].user_name);
-
-                for (var i = 0; i < data.length; i++) {
-                    console.log(data[i].password);
+                console.log(data[i].user_name);
                     exEVal = data[i].email;
                     exEPass = data[i].password;
-
+                    // validating email and password then signing in
                     if ((exEM === exEVal) && (exPass === exEPass)) {
                         var signedUserId = data[i].id;
                         return signInUser(signedUserId);
+                    } else if ((exPass !== exEPass)) {
+                        return M.toast({ html: '!!!Something went wrong, that email or password is incorrect please try again or sign up!!!', displayLength: 5000 });
+                    } else if ((exEM !== exEVal)) {
+                        return M.toast({ html: '!!!Something went wrong, that email or password is incorrect please try again or sign up!!!', displayLength: 5000 });
                     }
-                    // NEED TO FIGURE OUT THIS VALIDATION!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    // <<-------------------------------------------------------->>
-                    // else {
-                        // return M.toast({ html: '!!!Something went wrong, that email or password is incorrect please try again or sign up!!!', displayLength: 5000 });
-                    // };
-
-                };
             };
             existEmail.val("")
             existPass.val("")
