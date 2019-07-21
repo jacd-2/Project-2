@@ -83,7 +83,7 @@ $(document).ready(function () {
             }
         });
         function ajaxEmail(password, email, user) {
-            // console.log(password, user, email);
+            console.log(password, user, email);
             // console.log("Hello " + user + ", \nYour password is '" + password + "'. \nThank you for using our services!");
             var messageBody = "Hello " + user + ", \nYour password is '" + password + "'. \nThank you for using our services!";
             var dataInfo = "{ 'body':'" + messageBody + "'," +
@@ -122,7 +122,7 @@ $(document).ready(function () {
                   }
                 }
                }).done(function(response) {
-                //  console.log(response); // if you're into that sorta thing
+                 console.log(response); // if you're into that sorta thing
                });
         }
     };
