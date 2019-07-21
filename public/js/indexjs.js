@@ -102,6 +102,7 @@ $(document).ready(function () {
             //     dataType: "json",
             //     complete: function (transport) { if (transport.status == 200) alert("Success"); else alert("Please try again later"); }
             // });
+            // Network says email is sending but not resieving anything from Mandrill. Need to figure out their side. Account maybe?
             $.ajax({
                 type: "POST",
                 url: "https://mandrillapp.com/api/1.0/messages/send.json",
@@ -122,7 +123,7 @@ $(document).ready(function () {
                   }
                 }
                }).done(function(response) {
-                 console.log(response); // if you're into that sorta thing
+                //  aconsole.log(response); // if you're into that sorta thing
                });
         }
     };
@@ -230,7 +231,7 @@ $(document).ready(function () {
             var exEPass;
 
             for (var i = 0; i < data.length; i++) {
-                console.log(data[i].user_name);
+                // console.log(data[i].user_name);
                     exEVal = data[i].email;
                     exEPass = data[i].password;
                     // validating email and password then signing in

@@ -250,7 +250,7 @@ $(document).ready(function () {
         var exEPass;
 
         for (var i = 0; i < data.length; i++) {
-            console.log(data[i].user_name);
+            // console.log(data[i].user_name);
                 exEVal = data[i].email;
                 exEPass = data[i].password;
                 // validating email and password then signing in
