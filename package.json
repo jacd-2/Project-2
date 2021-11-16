@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "ajax": "0.0.4",
-    "aws-sdk": "^2.437.0",
+    "aws-sdk": "^2.814.0",
     "bcryptjs": "^2.4.3",
     "chai": "^4.2.0",
     "dotenv": "^6.2.0",
